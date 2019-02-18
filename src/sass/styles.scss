@@ -1,0 +1,171 @@
+@font-face {
+    font-family: Gwent;
+    src: url('../font/gwent_font_by_pependejo-dc3d736.ttf');
+}
+// common rules
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+body{
+    font-family: Gwent; 
+    background-color: #10110C; 
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height:100vh;
+}
+.container{
+    width: 1240px;
+    margin: 0 auto;
+}
+// header
+.wrap-header{
+    border-bottom: 1px solid #2C250F; 
+    background-color: #0D0802;
+}
+.start-page-header{
+    text-align: center;
+    padding: 30px;
+}
+.description-fraction{
+    margin-top: 20px;
+    letter-spacing: 3px;
+    color: #1CC388;
+    text-shadow: 1px 1px #717171;
+}
+.choose-fraction{
+    text-transform: uppercase;
+    position: relative;
+}
+.choose-fraction::after{
+    content: "";
+    position: absolute;
+    bottom: -25%;
+    right: 35%;
+    height: 2px;
+    background-color: #ccc;
+    width: 30%; 
+}
+// main section
+.start-page-main{
+    display: flex;
+    align-items: center; 
+    padding: 10px 0;
+}
+.faction-explanation{
+    width: 30%;
+}
+.explanation-desc{
+    line-height: 30px;
+    width: 76%;
+    border: 3px solid #1CC388;
+    padding: 5px;
+    font-size: .8em;
+    box-shadow: 6px 2px 54px 3px #1CC388;
+    transition: .5s; 
+}
+.explanation-desc:hover{
+    transform: scale(1.05);
+    box-shadow: 6px 2px 16px 2px #1CC388;
+    transition: .5s;
+}
+.faction-choose{
+    width: 70%;
+    display: flex;
+    justify-content: space-between; 
+}
+.faction-choose > div{
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.faction-name{
+    margin-bottom: 10px;
+    transition: .3s;  
+}
+.faction-face{
+    display: block;
+    width: 200px; 
+    transition: .3s;  
+}
+.faction-desc{
+    width: 70%;
+    font-size: .9em;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 1.3;
+    background-color: #0E0903;
+    box-shadow: -1px -1px 20px -4px #fff;
+    padding: 3px;
+    transition: .3s;   
+}
+.coming-soon-label{
+    position: relative;
+}
+.coming-soon-label::after{
+    content: "coming soon";
+    position: absolute;
+    top: 60px;
+    left: 5px; 
+    color: #fff; 
+    background: red;
+    padding: 10px;
+}
+
+// hover
+[class $="-faction"]:hover .faction-name{
+    transform: translateY(-10px);
+    transition: .3s;  
+} 
+
+[class $="-faction"]:hover .faction-face:not(.coming-soon){
+    transform: scale(1.03);
+    transition: .3s; 
+    box-shadow: 0 0 20px 4px #1CC388;
+    cursor: pointer;
+}
+[class $="-faction"]:hover  .faction-desc{
+    color: red;
+    transition: .3s;  
+
+}
+// footer
+.wrap-footer{
+    border-top: 1px solid #2C250F;
+}
+.start-page-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #120904;
+}
+// button
+.accept-button{
+    border: none;
+    outline:none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+.action{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgb(18, 83, 10);
+    border: 1px solid rgb(18, 83, 10);
+    color: #fff;
+    text-align: center;
+    box-shadow: inset 0 0 0 3px #fff;
+    cursor: pointer;
+    line-height: 30px; 
+} 
+.accept-button:hover{
+    transform: scale(1.05)
+}

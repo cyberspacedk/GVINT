@@ -57,7 +57,7 @@ export function renderBattlefield(container) {
                                 <div class="rows__row"></div>
                             </div>
                             <div class="rows__melee">
-                                <span class="rows__score data-name="opponent-bottomRow""></span>
+                                <span class="rows__score" data-name="opponent-bottomRow"></span>
                                 <div class="rows__row"></div>
                             </div>
                         </div>

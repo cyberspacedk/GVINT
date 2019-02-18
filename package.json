@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "firebase": "^5.7.0"
   }
 }

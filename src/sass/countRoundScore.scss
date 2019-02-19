@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'gwent';
+    src: url(../fonts/gwent_font_by_pependejo-dc3d736.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // outline: 1px solid white;
+    color: white; 
+
+}
+
+.round-end {
+    &-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        z-index: 100;
+        background-color: rgba(1, 1, 20, 0.87);
+        display: flex;
+    }
+
+    &-container {
+        margin: 0 auto;
+        background-color: rgb(0, 0, 0);
+        width: 60%;
+        height: 120px;
+        align-self: center;
+        border: 1px solid gray;
+    }
+
+    &__modal {
+        display: flex;
+        height: 100%;
+    }
+
+    &__score {
+        flex: 1;
+        background-repeat: no-repeat;
+        background-size: 70%;
+        background-position: 10px 25px;
+    }
+
+    &__vs-score {
+        flex: 4;
+    }
+
+    &__text {
+        width: 100%;
+        text-align: center;
+        height: 50%;
+        border-bottom: 1px solid gray;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        line-height: 60px;
+        text-transform: uppercase;
+        color: #237DBC;
+    }
+
+    &__numbers {
+        height: 50%;
+        display: flex;
+    }
+
+    &__number {
+        flex: 1;
+        font-size: 3rem;
+        line-height: 60px;
+    }
+}
+
+.player__number {
+    text-align: right;
+    margin-right: 30px;
+}
+
+
+body {
+    background-image: url(../img/some-bg.jpg);
+    font-family: gwent;
+}
+
+.winner {
+    color: #CCA61B;
+}

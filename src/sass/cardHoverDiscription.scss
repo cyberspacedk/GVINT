@@ -2,16 +2,24 @@ body {
     display: flex;
     flex-wrap: wrap;
 }
-header, footer {
+header {
     width: 100vw;
     height: 20vh;
 }
+.leftBar {
+    width: 20vw;
+}
 main {
-    width: 70vw;
+    width: 60vw;
     height: 60vh;
 }
-.leftBar, .rightBar {
-    width: 15vw;
+.rightBar {
+    width: 20vw;
+}
+footer {
+    width: 100vw;
+    height: 20vh;
+
 }
 .hand {
     display: flex;

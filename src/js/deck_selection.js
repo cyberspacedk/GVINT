@@ -16,3 +16,4 @@ function deckSelections (e) {
 cardBox.addEventListener ("click", deckSelections);
 
 export {deckSelections};
+export default cardBox;

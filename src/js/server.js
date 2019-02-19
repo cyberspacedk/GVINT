@@ -22,19 +22,20 @@ export function play() {
         .then(snap => snap.val())
         .then(rooms => {
             if (!rooms) {
-                createRoom(JSON.parse(localStorage.getItem('userID')));
+                
                 console.log('create first room');
+                readDeck().then(data => createRoom(JSON.parse(localStorage.getItem('userID')),data));
                 listenRoomAdd();
                 return;
             }
             let keys = Object.keys(rooms);
             for (let room of keys) {
                 if (rooms[room].length < 2) {
-                    joinToRoom(room);
+                readDeck().then(data => joinToRoom(room,data));
                     console.log('join');
                     break;
                 } else {
-                    createRoom(JSON.parse(localStorage.getItem('userID')));
+                    readDeck().then(data => createRoom(JSON.parse(localStorage.getItem('userID')),data));
                     console.log('create');
                 }
             }
@@ -48,35 +49,48 @@ export function play() {
     })
 }
 
-export function createRoom(id) {
+export function createRoom(id, deck) {
     firebase.database().ref(`rooms/${id}`).set([{
         id: JSON.parse(localStorage.getItem('userID')),
-        deck: {
-            card1: {
-                name: 'Ciri'
-            },
-            card2: {
-                name: 'Geralt'
-            }
-        }
+        name: 'Player 1',
+        deck: deck,
+        cardHand:[],
+        graveyard: [],
+        topRow: [],
+        middleRow: [],
+        bottomRow: [],
+        endRound: false,
+        myTurn: false,
+        victoryCount: 0,
+        topRowSum: 0,
+        middleRowSum: 0,
+        bottomRowSum: 0,
+        total: 0,
     }])
     localStorage.setItem('roomID', id);
 }
 
-export function joinToRoom(id) {
+export function joinToRoom(id, deck) {
     firebase.database().ref(`rooms/${id}`).once('value')
         .then(snap => snap.val())
         .then(data => {
             data.push({
                 id: JSON.parse(localStorage.getItem('userID')),
-                deck: {
-                    card1: {
-                        name: 'Geralt'
-                    },
-                    card2: {
-                        name: 'Ciri'
-                    }
-                }
+                name: 'Player 2',
+                deck: deck,
+                cardHand:[],
+                graveyard: [],
+                topRow: [],
+                middleRow: [],
+                bottomRow: [],
+                endRound: false,
+                myTurn: false,
+                victoryCount: 0,
+                topRowSum: 0,
+                middleRowSum: 0,
+                bottomRowSum: 0,
+                total: 0,
+                
             })
             return data
         })
@@ -93,6 +107,7 @@ export function removeRoom() {
 
 export function userExit () {
     removeRoom();
+    alert('Ваш оппонент покинул игру');
 }
 
 export function redirectUser () {
@@ -112,4 +127,11 @@ export function listenRoomAdd () {
             }
         })
     })
+}
+
+// firebase.database().ref('decks').once('value')
+//         .then(snap => console.log(snap.val()))
+function readDeck() {
+    return firebase.database().ref(`decks/${JSON.parse(localStorage.getItem('faction'))}`).once('value')
+    .then(snap => snap.val())
 }

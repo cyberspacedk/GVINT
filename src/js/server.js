@@ -1,5 +1,5 @@
 import firebase from './firebase';
-
+import { renderBattlefield, body } from "./battlefield";
 
 export function userEnter() {
     firebase.auth().signInAnonymously()
@@ -120,7 +120,7 @@ export function listenRoomAdd () {
         .then(snap => snap.val())
         .then(data=> {
             if(data.length === 2) {
-             
+                renderBattlefield(body);
                     console.log('start');
                 
             }

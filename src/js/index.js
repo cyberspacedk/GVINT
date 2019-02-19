@@ -13,3 +13,5 @@ window.addEventListener('DOMContentLoaded', () => {userEnter()})
 window.addEventListener('unload', userExit);
 startBtn.addEventListener('click', start);
 deckContainer.addEventListener('click', chooseDeck);
+
+

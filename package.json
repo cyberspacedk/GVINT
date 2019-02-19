@@ -56,6 +56,7 @@
     "babel-polyfill": "^6.26.0",
     "firebase": "^5.8.3",
     "handlebars": "^4.1.0",
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "save": "^2.3.3"
   }
 }

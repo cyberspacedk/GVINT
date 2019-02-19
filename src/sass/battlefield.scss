@@ -2,13 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    outline: 1px solid gray;
+    // outline: 1px solid gray;
 }
 
+@font-face {
+    font-family: gwent;
+    src: url(../fonts/gwent_font_by_pependejo-dc3d736.ttf)
+}
 
 .battlefield {
     &__wrapper {
-        background-image: url(../img/battlefield-middle.jpg);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.842), rgba(4, 42, 68, 0.795)), url('../img/gameover-bg.jpg');
         background-size: cover;
         height: 100vh;
     }
@@ -23,7 +27,7 @@
 
     &__top {
         height: 14%;
-        background-image: url(../img/battlefield-top.jpg);
+        background-image: linear-gradient(rgba(189, 0, 0, 0.479), rgba(0, 0, 0, 0.589)), url(../img/battlefield-top.jpg);
         display: flex;
     }
 
@@ -40,7 +44,7 @@
     &__bottom {
         height: 14%;
         display: flex;
-        background-image: url(../img/battlefield-bottom.jpg);
+        background-image: linear-gradient(rgba(17, 19, 119, 0.842), black), url(../img/battlefield-bottom.jpg);
         background-size: cover;
     }
 
@@ -151,15 +155,15 @@
     }
 
     &__siege {
-        background-image: url(../img/row-seige.png);
+        background-image: url(../img/board-rows3.jpg);
     }
 
     &__range {
-        background-image: url(../img/row-range.JPG);
+        background-image: url(../img/board-range3.jpg);
     }
 
     &__melee {
-        background-image: url(../img/row-melee.JPG);
+        background-image: url(../img/board-melee3.jpg);
     }
 
     &__score {
@@ -170,6 +174,12 @@
     }
 }
 
+.rows > div {
+    // border: 2px solid white;
+    box-shadow: 0 4px 10px px rgb(134, 134, 134);
+}
+
+
 .right__card {
     flex: 9;
 }
@@ -179,38 +189,23 @@
     width: 80%;
     margin: 20px auto 0;
 
-	-moz-box-shadow: 0px 4px 5px 0px #070921;
-	-webkit-box-shadow: 0px 4px 5px 0px #070921;
-	box-shadow: 0px 4px 5px 0px #070921;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #01586b), color-stop(1, #070921));
-	background:-moz-linear-gradient(top, #01586b 5%, #070921 100%);
-	background:-webkit-linear-gradient(top, #01586b 5%, #070921 100%);
-	background:-o-linear-gradient(top, #01586b 5%, #070921 100%);
-	background:-ms-linear-gradient(top, #01586b 5%, #070921 100%);
-	background:linear-gradient(to bottom, #01586b 5%, #070921 100%);
+	box-shadow: 0px 4px 8px 0px #000000;
+	background:linear-gradient(to bottom, #3d3d3d 5%, #000000 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#01586b', endColorstr='#070921',GradientType=0);
-	background-color:#01586b;
-	-moz-border-radius:15px;
-	-webkit-border-radius:15px;
-	border-radius:15px;
-    border: 1px solid rgb(218, 218, 218);	
+	border-radius:5px;
+    border: 1px solid rgba(218, 218, 218, 0.479);	
 	cursor:pointer;
-	color:#fefffa;
-	font-family:Arial;
-	font-size: 1.2rem;
+	color: rgb(192, 170, 1);
+	font-family: gwent;
+	font-size: 1.3rem;
     font-weight:bold;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 	padding:2px .5rem;
 	text-decoration:none;
-	text-shadow:0px 1px 4px #cca3a3;
+	text-shadow:0px 1px 2px #0a0a0a;
 }
 .btn-pass:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #070921), color-stop(1, #01586b));
-	background:-moz-linear-gradient(top, #070921 5%, #01586b 100%);
-	background:-webkit-linear-gradient(top, #070921 5%, #01586b 100%);
-	background:-o-linear-gradient(top, #070921 5%, #01586b 100%);
-	background:-ms-linear-gradient(top, #070921 5%, #01586b 100%);
-	background:linear-gradient(to bottom, #070921 5%, #01586b 100%);
+	background:linear-gradient(to bottom, #000000 5%, #3d3d3d 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#070921', endColorstr='#01586b',GradientType=0);
 	background-color:#070921;
 }

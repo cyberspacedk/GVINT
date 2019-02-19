@@ -6,11 +6,11 @@ export function renderBattlefield(container) {
     <div class="battlefield__wrapper">
 
         <div class="battlefield__top">
-            <div class="battlefield__player-block player-block">
-                <img src="" alt="" class="player-block__image">
-                <div class="player-block__info">
-                    <p class="player-block__name"></p>
-                    <p class="player-block__system"></p>
+            <div class="battlefield__opponent-block opponent-block">
+                <img src="" alt="" class="opponent-block__image">
+                <div class="opponent-block__info">
+                    <p class="opponent-block__name"></p>
+                    <p class="opponent-block__system"></p>
                 </div>
             </div>
             <div class="battlefield__current-score"></div>
@@ -20,7 +20,7 @@ export function renderBattlefield(container) {
                 <p class="remaining-cards__number"></p>
             </div>
             <div class="battlefield__general-card"></div>
-            <div class="battlefield__hand hand" id="player-hand">
+            <div class="battlefield__hand hand" id="opponent-hand">
                 <div class="hand__card"></div>
                 <div class="hand__card"></div>
                 <div class="hand__card"></div>
@@ -103,7 +103,7 @@ export function renderBattlefield(container) {
             <p class="remaining-cards__number"></p>
         </div>
         <div class="battlefield__general-card"></div>
-        <div class="battlefield__hand hand"  id="opponent-hand">
+        <div class="battlefield__hand hand"  id="player-hand">
             <div class="hand__card"></div>
             <div class="hand__card"></div>
             <div class="hand__card"></div>

@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const isDevelopment = argv.mode === "development";
 const isProduction = !isDevelopment;
-const distPath = path.join(__dirname, "/public");
+const distPath = path.join(__dirname, "/build");
 
 const config = {
   entry: {
@@ -93,7 +93,8 @@ const config = {
       chunkFilename: "[id].css"
     }),
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
+      template: './public/index.html',
+      filename: 'index.html',
     })
   ],
   optimization: isProduction

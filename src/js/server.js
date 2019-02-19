@@ -1,5 +1,7 @@
 import firebase from './firebase';
 import { renderBattlefield, body } from "./battlefield";
+import { dealingCards } from './dealingCards';
+
 
 export function userEnter() {
     firebase.auth().signInAnonymously()
@@ -121,6 +123,7 @@ export function listenRoomAdd () {
         .then(data=> {
             if(data.length === 2) {
                 renderBattlefield(body);
+                findUser();
                     console.log('start');
                 
             }
@@ -130,7 +133,15 @@ export function listenRoomAdd () {
 
 // firebase.database().ref('decks').once('value')
 //         .then(snap => console.log(snap.val()))
+
 function readDeck() {
     return firebase.database().ref(`decks/${JSON.parse(localStorage.getItem('faction'))}`).once('value')
     .then(snap => snap.val())
+}
+function findUser(){
+return firebase.database().ref(`rooms/${(localStorage.getItem('roomID'))}`).once('value')
+.then(snap => snap.val()).then(arr => {
+    let x = arr.find(el => el.id===JSON.parse(localStorage.getItem('userID')))
+return x})
+.then(result => dealingCards(result))
 }

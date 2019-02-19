@@ -6,7 +6,8 @@
 ### [Правила игры Гвинт](https://www.youtube.com/watch?v=QpChgKSVkDM)
 
 
-```
+```javascript
+
 $ let userObj = {
     deck: [{},{}],
     cardHand:[{},{}],

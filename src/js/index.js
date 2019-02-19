@@ -1,3 +1,5 @@
 import { renderBattlefield } from './battlefield';
 
-renderBattlefield();
+const battlefield = document.querySelector('#battlefield');
+
+renderBattlefield(battlefield);

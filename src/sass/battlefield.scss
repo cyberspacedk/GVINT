@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    // outline: 1px solid gray;
+    outline: 1px solid gray;
 }
 
 
@@ -92,7 +92,7 @@
     display: flex;
 
     &__left {
-        width: 25%;
+        width: 20%;
         display: flex;
         flex-direction: column;
     }
@@ -136,6 +136,10 @@
     display: flex;
     flex-direction: column;
     padding: 5px 0 5px 5px;
+
+    &__row {
+        padding: 0 110px;
+    }
 
     &__siege,
     &__range,

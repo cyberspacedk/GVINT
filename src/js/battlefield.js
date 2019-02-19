@@ -19,7 +19,7 @@ export function renderBattlefield(container) {
                 <p class="remaining-cards__number"></p>
             </div>
             <div class="battlefield__general-card"></div>
-            <div class="battlefield__hand hand">
+            <div class="battlefield__hand hand" id="player-hand">
                 <div class="hand__card"></div>
                 <div class="hand__card"></div>
                 <div class="hand__card"></div>
@@ -46,31 +46,31 @@ export function renderBattlefield(container) {
                 <div class="middle__center">
                     <div class="middle__opponent">
                         <div class="middle__rows rows">
-                            <div class="rows__siege" data-name="opponent-topRow">
+                            <div class="rows__siege" data-name="opponent-topRow" id="opponent-topRow">
                                 <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>
-                            <div class="rows__range">
-                                <span class="rows__score" data-name="opponent-middleRow"></span>
+                            <div class="rows__range" data-name="opponent-middleRow" id="opponent-middleRow">
+                                <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>
-                            <div class="rows__melee">
-                                <span class="rows__score" data-name="opponent-bottomRow"></span>
+                            <div class="rows__melee" data-name="opponent-bottomRow" id="opponent-bottomRow">
+                                <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>
                         </div>
                     </div>
                     <div class="middle__player">
                         <div class="middle__rows rows">
-                            <div class="rows__siege">
+                            <div class="rows__siege" data-name="player-topRow" id="player-topRow">
                                 <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>
-                            <div class="rows__range">
+                            <div class="rows__range" data-name="player-middleRow" id="player-middleRow">
                                 <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>
-                            <div class="rows__melee">
+                            <div class="rows__melee" data-name="player-bottomRow" id="player-bottomRow">
                                 <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>
@@ -102,7 +102,7 @@ export function renderBattlefield(container) {
             <p class="remaining-cards__number"></p>
         </div>
         <div class="battlefield__general-card"></div>
-        <div class="battlefield__hand hand">
+        <div class="battlefield__hand hand"  id="opponent-hand">
             <div class="hand__card"></div>
             <div class="hand__card"></div>
             <div class="hand__card"></div>

@@ -25,7 +25,6 @@ export function play() {
                 
                 console.log('create first room');
                 readDeck().then(data => createRoom(JSON.parse(localStorage.getItem('userID')),data));
-                listenRoomAdd();
                 return;
             }
             let keys = Object.keys(rooms);
@@ -67,6 +66,7 @@ export function createRoom(id, deck) {
         bottomRowSum: 0,
         total: 0,
     }])
+    .then(() => listenRoomAdd());
     localStorage.setItem('roomID', id);
 }
 
@@ -120,10 +120,9 @@ export function listenRoomAdd () {
         .then(snap => snap.val())
         .then(data=> {
             if(data.length === 2) {
-                if(window.location.pathname.substr(1) !== 'C:/FE/Compendium/gwentServerTry/game.html') {
-                    window.location = 'C:/FE/Compendium/gwentServerTry/game.html';
+             
                     console.log('start');
-                }
+                
             }
         })
     })

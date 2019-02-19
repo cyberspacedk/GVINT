@@ -1,4 +1,4 @@
-import { coundRoundScores } from "./countRoundScore";
+import { coundRoundScores, drawGameOverModal } from "./countRoundScore";
 
 
 let user1 = {
@@ -36,4 +36,5 @@ let user2 = {
 }
 
 
-coundRoundScores(user1, user2);
+// coundRoundScores(user1, user2);
+drawGameOverModal(user1, user2);

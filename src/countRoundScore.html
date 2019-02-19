@@ -1,4 +1,4 @@
-<div class="round-end-container">
+<!-- <div class="round-end-container">
     <div class="round-end__modal">
         <div class="round-end__score player-score"></div>
         <div class="round-end__vs-score">
@@ -9,5 +9,34 @@
             </p>
         </div>
         <div class="round-end__score opponent-score"></div>
+    </div>
+</div> -->
+
+
+<div class="game-over-container">
+    <div class="game-over__modal">
+        <div class="victory-img"></div>
+        <table class="score-table">
+            <tr class="top-row">
+                <th>${user1.name}</th>
+                <th>${user2.name}</th>
+            </tr>
+            <tr class="score-row">
+                <td>${user1.roundsScore[0]}</td>
+                <td>${user2.roundsScore[0]}</td>
+            </tr>
+            <tr class="score-row">
+                <td>${user1.roundsScore[0]}</td>
+                <td>${user2.roundsScore[0]}</td>
+            </tr>
+            <tr class="score-row">
+                <td>${user1.roundsScore[0]}</td>
+                <td>${user2.roundsScore[0]}</td>
+            </tr>
+        </table>
+        <div class="overall-score">
+            <div class="player-overall-score"></div>
+            <div class="opponent-overall-score"></div>
+        </div>
     </div>
 </div>

@@ -9,13 +9,14 @@ let user1 = {
     topRow: [{},{}],
     middleRow: [{},{}],
     bottomRow: [{},{}],
-    endRound: true/false,
-    myTurn: true/false,
+    endRound: false,
+    myTurn: false,
     victoryCount: 0,
     topRowSum: 0,
-    middleRowSum: 0,
-    bottomRowSum: 0,
+    middleRowSum: 10,
+    bottomRowSum: 10,
     total: 0,
+    roundsScore: [120, 21, 2],
 }
 
 let user2 = {
@@ -26,15 +27,15 @@ let user2 = {
     topRow: [{},{}],
     middleRow: [{},{}],
     bottomRow: [{},{}],
-    endRound: true/false,
-    myTurn: true/false,
-    victoryCount: 0,
+    endRound: false,
+    myTurn: false,
+    victoryCount: 1,
     topRowSum: 0,
-    middleRowSum: 0,
+    middleRowSum: 100,
     bottomRowSum: 0,
     total: 0,
+    roundsScore: [30, 4, 50],
 }
 
 
-// coundRoundScores(user1, user2);
-drawGameOverModal(user1, user2);
+coundRoundScores(user1, user2);

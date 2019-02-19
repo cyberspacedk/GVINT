@@ -8,6 +8,9 @@ export function coundRoundScores(user1, user2) {
     user1.total = user1.topRowSum + user1.middleRowSum + user1.bottomRowSum;
     user2.total = user2.topRowSum + user2.middleRowSum + user2.bottomRowSum;
 
+    user1.roundsScore.push(user1.total);
+    user2.roundsScore.push(user2.total);
+
     determineWinner(user1, user2);
 }
 
@@ -142,20 +145,71 @@ export function drawGameOverModal(user1, user2) {
 
     gameOverModal.innerHTML = `
         <div class="game-over-container">
-            <div class="game-over__modal">
-                <div class="game-over__modal></div>
-                <div class="game-over__score player-score"></div>
-                <div class="game-over__vs-score">
-                    <p class="game-over__text">=</p>
-                    <p class="game-over__numbers">
-                        <span class="game-over__number player__number"></span>
-                        <span class="game-over__number opponent__number"></span>
-                    </p>
-                </div>
-                <div class="game-over__score opponent-score"></div>
-            </div>
+            <div class="victory-img"></div>
+            <table class="score-table">
+                <tr class="top-row">
+                    <th>${user1.name}</th>
+                    <th>${user2.name}</th>
+                </tr>
+                <tr class="score-row">
+                    <td class="user1-round-one-score">${user1.roundsScore[0]}</td>
+                    <td class="user2-round-one-score">${user2.roundsScore[0]}</td>
+                </tr>
+                <tr class="score-row">
+                    <td class="user1-round-two-score">${user1.roundsScore[1]}</td>
+                    <td class="user2-round-two-score">${user2.roundsScore[1]}</td>
+                </tr>
+                <tr class="score-row">
+                    <td class="user1-round-three-score">${user1.roundsScore[2]}</td>
+                    <td class="user2-round-three-score">${user2.roundsScore[2]}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="overall-score">
+            <div class="player-overall-score"></div>
+            <div class="opponent-overall-score"></div>
         </div>
     `;
 
     body.append(gameOverModal);
+
+    const userOneOverallScore = gameOverModal.querySelector('.player-overall-score');
+    const userTwoOverallScore = gameOverModal.querySelector('.opponent-overall-score');
+
+    const userOneRoundOneScore = gameOverModal.querySelector('.user1-round-one-score');
+    const userTwoRoundOneScore = gameOverModal.querySelector('.user2-round-one-score');
+    const userOneRoundTwoScore = gameOverModal.querySelector('.user1-round-two-score');
+    const userTwoRoundTwoScore = gameOverModal.querySelector('.user2-round-two-score');
+    const userOneRoundThreeScore = gameOverModal.querySelector('.user1-round-three-score');
+    const userTwoRoundThreeScore = gameOverModal.querySelector('.user2-round-three-score');
+
+    if (user1.roundsScore[0] > user2.roundsScore[0]) {
+        userOneRoundOneScore.classList.add('winner');
+        userTwoRoundOneScore.classList.add('looser');
+    } else if (user2.roundsScore[0] > user1.roundsScore[0]) {
+        userTwoRoundOneScore.classList.add('winner');
+        userOneRoundOneScore.classList.add('looser');
+    }
+
+    if (user1.roundsScore[1] > user2.roundsScore[1]) {
+        userOneRoundTwoScore.classList.add('winner');
+        userTwoRoundTwoScore.classList.add('looser');
+    } else if (user2.roundsScore[1] > user1.roundsScore[1]) {
+        userTwoRoundTwoScore.classList.add('winner');
+        userOneRoundTwoScore.classList.add('looser');
+    }
+
+    if (user1.roundsScore[2] > user2.roundsScore[2]) {
+        userOneRoundThreeScore.classList.add('winner');
+        userTwoRoundThreeScore.classList.add('looser');
+    } else if (user2.roundsScore[2] > user1.roundsScore[2]) {
+        userTwoRoundThreeScore.classList.add('winner');
+        userOneRoundThreeScore.classList.add('looser');
+    }
+
+
+    let victoryImages = [victoryImage0, victoryImage1, victoryImage2];
+
+    userOneOverallScore.style.backgroundImage = `url(${victoryImages[user1.victoryCount]})`;
+    userTwoOverallScore.style.backgroundImage = `url(${victoryImages[user2.victoryCount]})`;
 }

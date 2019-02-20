@@ -2,12 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    // outline: 1px solid gray;
+    outline: 1px solid gray;
 }
 
 @font-face {
     font-family: gwent;
     src: url(../fonts/gwent_font_by_pependejo-dc3d736.ttf)
+}
+
+body {
+    font-family: gwent;
 }
 
 .battlefield {
@@ -54,7 +58,7 @@
     }
 
     &__current-score {
-        width: 5%;
+        width: 7%;
     }
 
     &__round-score {
@@ -73,8 +77,25 @@
         flex: 1;
     }
 
-    &__graveyard {
+    &__graveyard-wrapper {
         width: 8%;
+        position: relative;
+    }
+
+    &__graveyard {
+        background-image: url(../img/graveyard-card.png);
+        background-size: 85%;
+        background-position-x: 50%;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        z-index: 1000;
+        
+
+        &--bottom {
+            bottom: 0px;
+        }
     }
 
     &__remaining-deck {
@@ -84,7 +105,7 @@
 }
 
 .player-block {
-    width: 19%;
+    width: 13%;
     display: flex;
 
     &__image {
@@ -93,8 +114,16 @@
     }
 
     &__info {
-        flex: 3;
+        flex: 2;
     }
+}
+
+.remaining-cards__image {
+    height: 50%;
+    background-image: url(../img/remaining-cards-icon.png);
+    background-size: 80%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 }
 
 .middle {
@@ -116,7 +145,7 @@
         width: 20%;
         display: flex;
         flex-direction: column;
-        padding: 20px;
+        padding: 25px 10px;
     }
 }
 
@@ -147,7 +176,8 @@
     padding: 5px 0 5px 5px;
 
     &__row {
-        padding: 0 110px;
+        padding: 0 80px 0 40px;
+        height: 100%;
     }
 
     &__siege,
@@ -181,7 +211,8 @@
 
 .rows > div {
     box-shadow: 0 2px 20px 5px rgb(0, 0, 0);
-    border: 1px solid rgb(56, 55, 55);    
+    border: 1px solid rgb(56, 55, 55);
+    border-radius: 4px;    
 }
 
 
@@ -192,6 +223,7 @@
 .btn-pass {
     flex: 1;
     width: 100%;
+    margin: 0 auto;
 
     box-shadow: 0 2px 20px 5px rgb(0, 0, 0);
 	background:linear-gradient(to bottom, #3d3d3d 5%, #000000 100%);
@@ -229,10 +261,11 @@
 
 .btn-wrapper {
     background-color: rgba(3, 1, 1, 0.493);
-    background-image: linear-gradient(rgba(3, 1, 1, 0.205) 0%, rgb(0, 0, 0) 40%, rgba(3, 1, 1, 0.137) 60%);
+    background-image: linear-gradient(rgba(3, 1, 1, 0.205) 0%, rgb(0, 0, 0) 40%, rgba(3, 1, 1, 0.137) 60%, rgba(3, 1, 1, 0.537) 100%);
 
     width: 135px;
-	border-radius:5px;
+    border-radius:5px;
+    margin: 0 auto;
 }
 
 .btn-wrapper:hover {

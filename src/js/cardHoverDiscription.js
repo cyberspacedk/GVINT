@@ -1,3 +1,4 @@
+export
 const hand = document.querySelector('.hand');
 const rightBar = document.querySelector('.rightBar')
 

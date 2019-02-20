@@ -1,2 +1,2 @@
 import './cardHoverDiscription'
-import '../sass/cardHoverDiscription'
+import '../sass/cardHoverDiscription.scss'

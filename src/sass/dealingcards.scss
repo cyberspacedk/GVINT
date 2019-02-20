@@ -1,5 +1,5 @@
 .card_in_hands{
-    width:  10%;
+    width:  9%;
     height: 100%;
 }
 
@@ -8,4 +8,8 @@
     max-width: 100%;
     height: auto;
     margin: auto;
+}
+
+#opponent-hand .card_in_hands {
+    width: 9%;
 }

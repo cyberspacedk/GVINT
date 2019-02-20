@@ -101,6 +101,20 @@ body {
 
 }
 
+.opponent-block {
+    width: 13%;
+    display: flex;
+
+    &__image {
+        display: block;
+        flex: 1;
+    }
+
+    &__info {
+        flex: 2;
+    }
+}
+
 .player-block {
     width: 13%;
     display: flex;

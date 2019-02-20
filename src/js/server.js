@@ -162,6 +162,23 @@ function findUser() {
 		})
 		.then((result) => {
             // console.log(result);
-            dealingCards(result.user, result.opponent)
+			dealingCards(result.user, result.opponent);
         })
+}
+
+
+export function updateUserObject (property, value) {
+	firebase
+		.database()
+		.ref(`rooms/${localStorage.getItem('roomID')}`)
+		.once('value')
+		.then(snap => snap.val())
+		.then(arr => {
+			let playerObj = arr.find((el) => el.id === JSON.parse(localStorage.getItem('userID')));
+			return {...playerObj, [property]: value};
+		})
+		.then(playerObj => firebase
+								.database()
+								.ref(`rooms/${localStorage.getItem('roomID')}/${JSON.parse(localStorage.getItem('userID'))}`)
+								.update(playerObj));
 }

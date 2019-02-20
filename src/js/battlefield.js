@@ -65,7 +65,7 @@ export function renderBattlefield(container) {
                     </div>
                     <div class="middle__player">
                         <div class="middle__rows rows">
-                            <div class="rows__siege" data-name="player-topRow" id="player-topRow">
+                            <div class="rows__melee" data-name="player-bottomRow" id="player-bottomRow">
                                 <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>
@@ -73,7 +73,7 @@ export function renderBattlefield(container) {
                                 <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>
-                            <div class="rows__melee" data-name="player-bottomRow" id="player-bottomRow">
+                            <div class="rows__siege" data-name="player-topRow" id="player-topRow">
                                 <span class="rows__score"></span>
                                 <div class="rows__row"></div>
                             </div>

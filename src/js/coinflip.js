@@ -1,39 +1,50 @@
 'use strict'
 
-window.addEventListener('DOMContentLoaded', randomFlip);
+
+import '../sass/coinflip.scss';
 
 
 
+class Flip {
+    constructor() {
 
+        this.body = document.querySelector('body'),
+        this.coin = document.createElement('div'),
+        this.coin.setAttribute('id', 'coin');
+        this.body.append(this.coin);
+        this.sideA = document.createElement('div'),
+        this.sideA.classList.add('side-a');
+        this.coin.append(this.sideA);
+        this.sideB = document.createElement('div'),
+        this.sideB.classList.add('side-b');
+        this.coin.append(this.sideB);
+        this.randomFlip();
+        
+        
+    }
 
-function randomFlip(event) {
+    randomFlip() {
 
-    event.preventDefault();
+            let lottery = Math.random();
+            this.coin.classList.remove('heads', 'tails');
+            if (lottery <= 0.5) {
+                this.coin.classList.add('heads');
+            } else {
+                this.coin.classList.add('tails')
+            }
 
+        
+            
+        return (this.coin.className)
+        
 
-    const body = document.querySelector('body');
-
-    const coin = document.createElement('div');
-    coin.setAttribute('id', 'coin');
-    body.append(coin);
-
-    const sideA = document.createElement('div');
-    sideA.classList.add('side-a');
-    coin.append(sideA);
-
-    const sideB = document.createElement('div');
-    sideB.classList.add('side-b');
-    coin.append(sideB);
-
-
-    setTimeout(function () {
-        let result = Math.random();
-        coin.classList.remove('heads', 'tails');
-        if (result <= 0.5) {
-            coin.classList.add('heads');
-        } else {
-            coin.classList.add('tails')
-        }
-    }, 200)
-
+         
+          
+    }
 }
+
+
+window.addEventListener('DOMContentLoaded', new Flip())
+
+
+

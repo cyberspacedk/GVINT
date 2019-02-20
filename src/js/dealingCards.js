@@ -1,12 +1,13 @@
 'use strict';
 
 import '../sass/dealingcards.scss';
-import DETHMOLD from '../img/NorthernRealms/DETHMOLD.png';
-import GERALT_IGNI from '../img/NorthernRealms/GERALT_IGNI.png';
-import KAEDWENI_CAVALRY from '../img/NorthernRealms/KAEDWENI CAVALRY.png';
-import KEIRA_METZ from '../img/NorthernRealms/KEIRA METZ.png';
-import King_Foltest from '../img/NorthernRealms/King Foltest.png';
-import PRINCE_STENNIS from '../img/NorthernRealms/PRINCE STENNIS.png';
+import {cards} from './cards';
+// import DETHMOLD from '../img/NorthernRealms/DETHMOLD.png';
+// import GERALT_IGNI from '../img/NorthernRealms/GERALT_IGNI.png';
+// import KAEDWENI_CAVALRY from '../img/NorthernRealms/KAEDWENI CAVALRY.png';
+// import KEIRA_METZ from '../img/NorthernRealms/KEIRA METZ.png';
+// import King_Foltest from '../img/NorthernRealms/King Foltest.png';
+// import PRINCE_STENNIS from '../img/NorthernRealms/PRINCE STENNIS.png';
 
 
 
@@ -24,13 +25,15 @@ export function dealingCards(obj) {
 		i ++
 	}
 	putOnBoard(obj.cardHand, '#player-hand')
-	// console.log("HAND" ,obj.cardHand);
-	// console.log("DECK", obj.deck);
+	console.log("HAND" ,obj.cardHand);
 }
 function putOnBoard(arr, container){
+	let reg = /[ \w-]+?(?=\.)/gi;
 	let div = document.querySelector(container);
-	let str = arr.reduce((acc, el)=> acc + `<div class="card_in_hands" data-name=${el.name}>
-	<img src=${el.img} class="img_size"></div>`, '');
+	let str = arr.reduce((acc, el)=> 
+		acc + `<div class="card_in_hands">
+		<img src=${cards[el.img.match(reg)[0]]} class="img_size" data-name=${el.name}></div>`, ''
+	)
+	console.log(str);
 	div.innerHTML = str;
-
 };

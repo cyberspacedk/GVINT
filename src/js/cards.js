@@ -1,0 +1,80 @@
+// NORTHERN
+import GERALT_IGNI from '../img/NorthernRealms/GERALT_IGNI.png';
+import DETHMOLD from '../img/NorthernRealms/DETHMOLD.png';
+import KAEDWENI_CAVALRY from '../img/NorthernRealms/KAEDWENI_CAVALRY.png';
+import KEIRA_METZ from '../img/NorthernRealms/KEIRA_METZ.png';
+import KING_FOLTEST from '../img/NorthernRealms/KING_FOLTEST.png';
+import PRINCE_STENNIS from '../img/NorthernRealms/PRINCE_STENNIS.png';
+import REAVER_SCOUT from '../img/NorthernRealms/REAVER_SCOUT.png';
+import REDANIAN_ELITE from '../img/NorthernRealms/REDANIAN_ELITE.png';
+import REDANIAN_KNIGHT from '../img/NorthernRealms/REDANIAN_KNIGHT.png';
+import REDANIAN_KNIGHT_ELECT from '../img/NorthernRealms/REDANIAN_KNIGHT_ELECT.png';
+import REINFORCEMENTS from '../img/NorthernRealms/REINFORCEMENTS.png';
+import SHANI from '../img/NorthernRealms/SHANI.png';
+import SIGISMUND_DIJKSTRA from '../img/NorthernRealms/SIGISMUND_DIJKSTRA.png';
+import SILE_DE_TANSARVILLE from '../img/NorthernRealms/SILE_DE_TANSARVILLE.png';
+import THALER from '../img/NorthernRealms/THALER.png';
+import TROLLOLOLO from '../img/NorthernRealms/TROLLOLOLO.png';
+
+// MONSTERS
+import DRAUG from '../img/Monster/DRAUG.png';
+import ARACHAS_BEHEMOTH from '../img/Monster/ARACHAS_BEHEMOTH.png';
+import ARACHAS_DRONE from '../img/Monster/ARACHAS_DRONE.png';
+import ARACHAS_QUEEN from '../img/Monster/ARACHAS_QUEEN.png';
+import CELAENO_HARPY from '../img/Monster/CELAENO_HARPY.png';
+import FORKTAIL from '../img/Monster/FORKTAIL.png';
+import FRIGHTENER from '../img/Monster/FRIGHTENER.png';
+import MONSTER_NEST from '../img/Monster/MONSTER_NEST.png';
+import MORVUDD from '../img/Monster/MORVUDD.png';
+import OZZREL from '../img/Monster/OZZREL.png';
+import RUEHIN from '../img/Monster/RUEHIN.png';
+import SLYZARD from '../img/Monster/SLYZARD.png';
+import TRISS_BUTTERFLIES from '../img/Monster/TRISS_BUTTERFLIES.png';
+import YENNEFER from '../img/Monster/YENNEFER.png';
+
+// NEUTRAL
+import ALZURS_DOUBLE_CROSS from '../img/Neutral/ALZURS_DOUBLE_CROSS.png';
+import FIRST_LIGHT from '../img/Neutral/FIRST_LIGHT.png';
+import MARCHING_ORDERS from '../img/Neutral/MARCHING_ORDERS.png';
+import ROYAL_DECREE from '../img/Neutral/ROYAL_DECREE.png';
+import THUNDERBOLT from '../img/Neutral/THUNDERBOLT.png';
+
+export let cards = {
+	GERALT_IGNI: GERALT_IGNI,
+	DETHMOLD: DETHMOLD,
+	KAEDWENI_CAVALRY: KAEDWENI_CAVALRY,
+	KEIRA_METZ: KEIRA_METZ,
+	KING_FOLTEST: KING_FOLTEST,
+	PRINCE_STENNIS: PRINCE_STENNIS,
+	REAVER_SCOUT: REAVER_SCOUT,
+	REDANIAN_ELITE: REDANIAN_ELITE,
+	REDANIAN_KNIGHT: REDANIAN_KNIGHT,
+	REDANIAN_KNIGHT_ELECT: REDANIAN_KNIGHT_ELECT,
+	REINFORCEMENTS: REINFORCEMENTS,
+	SHANI: SHANI,
+	SIGISMUND_DIJKSTRA: SIGISMUND_DIJKSTRA,
+	SILE_DE_TANSARVILLE: SILE_DE_TANSARVILLE,
+	THALER: THALER,
+	TROLLOLOLO: TROLLOLOLO,
+	// MONSTERS
+	DRAUG: DRAUG,
+	ARACHAS_BEHEMOTH: ARACHAS_BEHEMOTH,
+	ARACHAS_DRONE: ARACHAS_DRONE,
+	ARACHAS_QUEEN: ARACHAS_QUEEN,
+	CELAENO_HARPY: CELAENO_HARPY,
+	FORKTAIL: FORKTAIL,
+	FRIGHTENER: FRIGHTENER,
+	MONSTER_NEST: MONSTER_NEST,
+	MORVUDD: MORVUDD,
+	OZZREL: OZZREL,
+	RUEHIN: RUEHIN,
+	SLYZARD: SLYZARD,
+	TRISS_BUTTERFLIES: TRISS_BUTTERFLIES,
+	YENNEFER: YENNEFER,
+	ALZURS_DOUBLE_CROSS: ALZURS_DOUBLE_CROSS,
+	FIRST_LIGHT: FIRST_LIGHT,
+	MARCHING_ORDERS: MARCHING_ORDERS,
+	ROYAL_DECREE: ROYAL_DECREE,
+	THUNDERBOLT: THUNDERBOLT
+};
+

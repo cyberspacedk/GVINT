@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "rimraf public && npm install",
     "build": "webpack --mode production --colors --progress",
-    "prestart": "rimraf public && npm install",
     "start": "webpack-dev-server --mode development --hot --colors --progress"
   },
   "repository": {

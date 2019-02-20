@@ -33,7 +33,7 @@ let userObj = {
 // 4) Передати хід опоненту
 
 
-export function checkMoveCard(obj) {
+export function moveCardInGraveyard(obj) {
     const randomCard = Math.floor(Math.random() * obj.cardHand.length)
     const cardToGraveyard = obj.cardHand[randomCard]
     obj.cardHand.splice(`${randomCard}`, 1)
@@ -41,5 +41,5 @@ export function checkMoveCard(obj) {
     obj.myTurn = false
     
 }
-checkMoveCard(userObj)
+moveCardInGraveyard(userObj)
 console.log(userObj);

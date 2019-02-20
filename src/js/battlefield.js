@@ -80,7 +80,7 @@ export function renderBattlefield(container) {
     
                 <div class="middle__right">
                     <div class="right__card"></div>
-                    <button class="btn-pass">PASS</button>
+                    <div class="btn-wrapper"><button class="btn-pass">PASS</button></div>
                 </div>
     
             </div>

@@ -3,9 +3,7 @@ import {
     CountdownTimer,
   } from "./MakingMove";
 
-//   let {MakingMove} = require('./MakingMove');
-  import "../sass/styles.scss";
-//   let {CountdownTimer} = require('./MakingMove');
+import "../sass/styles.scss";
 
   let makingMove = new MakingMove();
-  makingMove.start();
+  makingMove.start(userObj);

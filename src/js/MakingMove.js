@@ -1,17 +1,4 @@
-//userObj
-let card = {
-  ability: 'string',
-  name: 'king',
-  positions: [
-      "Melee",
-      "Ranged",
-      "Siege"
-      ],
-  strength: 4,
-  type: "Gold",
-  img: "https://privatbank.ua/uploads/media/default/0001/01/7ac3b33b76a8838f0aa5e012a1c30c05a032b390.jpeg",
-  audio: "https://privatbank.ua/uploads/media/default/0001/01/7ac3b33b76a8838f0aa5e012a1c30c05a032b390.jpeg"
-}
+
 let userObj = {
   deck: [card,card],
   cardHand:[card,card],
@@ -57,7 +44,7 @@ class MakingMove{
       this.nameOfSelectedCard = null;
       this.selectedCard = null;
       this.selectedCardDiv = null;
-
+      this.userObj = null;
       // bind
       this.start = this.start.bind(this);
       this.handlerClickCard = this.handlerClickCard.bind(this);
@@ -68,8 +55,9 @@ class MakingMove{
       this.nextTurn = this.nextTurn.bind(this);
   }
 
-  start(){
+  start(userObj){
     // 0) Запустити таймер при старті ходу (60 сек)
+    this.userObj = userObj;
     this.countdownTimer.startCountdownTimer(60);
     this.hand.addEventListener("click", this.handlerClickCard);
   }
@@ -88,7 +76,7 @@ class MakingMove{
     this.selectedCardDiv = target;
     this.selectedCardDiv.classList.add("active-card"); 
     this.nameOfSelectedCard = target.parentElement.getAttribute("data-name");
-    this.selectedCard = userObj.cardHand.find(el=>el.name===this.nameOfSelectedCard);
+    this.selectedCard = this.userObj.cardHand.find(el=>el.name===this.nameOfSelectedCard);
     this.topRow.classList.remove("active-row");
     if (this.selectedCard.positions.includes("Melee")){
       this.topRow.addEventListener("click", this.handlerClickRow);
@@ -110,16 +98,16 @@ class MakingMove{
   handlerClickRow({target}){
     switch(target.id){
       case "player-topRow":
-      userObj.topRow.push(this.selectedCard);
+      this.userObj.topRow.push(this.selectedCard);
       break;
       case "player-middleRow":
-      userObj.middleRow.push(this.selectedCard);
+      this.userObj.middleRow.push(this.selectedCard);
       break;
       case "player-bottomRow":
-      userObj.bottomRow.push(this.selectedCard);
+      this.userObj.bottomRow.push(this.selectedCard);
       break;
     }
-    userObj.cardHand = userObj.cardHand.filter(el=>el.name !== this.nameOfSelectedCard);
+    this.userObj.cardHand = this.userObj.cardHand.filter(el=>el.name !== this.nameOfSelectedCard);
     this.topRow.classList.remove("active-row");
     this.middleRow.classList.remove("active-row");
     this.bottomRow.classList.remove("active-row");
@@ -142,21 +130,21 @@ class MakingMove{
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
   calculateTotalNumberOfPoints(){
-    userObj.topRowSum = userObj.topRow.reduce((acc, el)=> acc + el.strength, 0);
-    userObj.middleRowSum = userObj.middleRow.reduce((acc, el)=> acc + el.strength, 0);
-    userObj.bottomRowSum = userObj.bottomRow.reduce((acc, el)=> acc + el.strength, 0);
-    userObj.total = userObj.topRowSum + userObj.middleRowSum + userObj.bottomRowSum;
+    this.userObj.topRowSum = this.userObj.topRow.reduce((acc, el)=> acc + el.strength, 0);
+    this.userObj.middleRowSum = this.userObj.middleRow.reduce((acc, el)=> acc + el.strength, 0);
+    this.userObj.bottomRowSum = this.userObj.bottomRow.reduce((acc, el)=> acc + el.strength, 0);
+    this.userObj.total = this.userObj.topRowSum + this.userObj.middleRowSum + this.userObj.bottomRowSum;
   }
   // 2,3) Відобразити результат на екрані
   displayResult(){
-    this.topRowSumDiv.textContent = userObj.topRowSum
-    this.middleRowSumDiv.textContent = userObj.middleRowSum
-    this.bottomRowSumDiv.textContent = userObj.bottomRowSum
-    this.totalDiv.textContent = userObj.total;
+    this.topRowSumDiv.textContent = this.userObj.topRowSum;
+    this.middleRowSumDiv.textContent = this.userObj.middleRowSum;
+    this.bottomRowSumDiv.textContent = this.userObj.bottomRowSum;
+    this.totalDiv.textContent = this.userObj.total;
   }
   // 2,4) Зупинити таймер і передати хід 
   nextTurn(){
-    userObj.myTurn = false;
+    this.userObj.myTurn = false;
     this.countdownTimer.resetTimer ();
     this.nameOfSelectedCard = null;
     this.selectedCard = null;
@@ -238,7 +226,3 @@ class CountdownTimer{
     MakingMove,
     CountdownTimer,
   };
-  // module.exports = {
-  //   MakingMove: MakingMove,
-  //   CountdownTimer: CountdownTimer
-  // }

@@ -16,7 +16,7 @@ export function renderBattlefield(container) {
             <div class="battlefield__current-score"></div>
             <div class="battlefield__round-score"></div>
             <div class="battlefield__remaining-cards remaining-cards">
-                <img src="" alt="" class="remaining-cards__image">
+                <div class="remaining-cards__image"></div>                
                 <p class="remaining-cards__number"></p>
             </div>
             <div class="battlefield__general-card"></div>
@@ -32,7 +32,9 @@ export function renderBattlefield(container) {
                 <div class="hand__card"></div>
                 <div class="hand__card"></div>
             </div>
-            <div class="battlefield__graveyard"></div>
+            <div class="battlefield__graveyard-wrapper">
+                <div class="battlefield__graveyard"></div>
+            </div>
             <div class="battlefield__remaining-deck"></div>
         </div>
 
@@ -81,7 +83,7 @@ export function renderBattlefield(container) {
     
                 <div class="middle__right">
                     <div class="right__card"></div>
-                    <button class="btn-pass">PASS</button>
+                    <div class="btn-wrapper"><button class="btn-pass">PASS</button></div>
                 </div>
     
             </div>
@@ -99,7 +101,7 @@ export function renderBattlefield(container) {
         <div class="battlefield__current-score"></div>
         <div class="battlefield__round-score"></div>
         <div class="battlefield__remaining-cards remaining-cards">
-            <img src="" alt="" class="remaining-cards__image">
+            <div class="remaining-cards__image"></div>
             <p class="remaining-cards__number"></p>
         </div>
         <div class="battlefield__general-card"></div>
@@ -115,7 +117,9 @@ export function renderBattlefield(container) {
             <div class="hand__card"></div>
             <div class="hand__card"></div>
         </div>
-        <div class="battlefield__graveyard"></div>
+        <div class="battlefield__graveyard-wrapper">
+            <div class="battlefield__graveyard battlefield__graveyard--bottom"></div>
+        </div>
         <div class="battlefield__remaining-deck"></div>
     </div>
 

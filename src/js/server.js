@@ -55,6 +55,7 @@ export function createRoom(id, deck) {
 		.set([
 			{
 				id: JSON.parse(localStorage.getItem('userID')),
+				faction: JSON.parse(localStorage.getItem('faction')),
 				name: 'Player 1',
 				deck: deck,
 				cardHand: [],
@@ -84,6 +85,7 @@ export function joinToRoom(id, deck) {
 		.then((data) => {
 			data.push({
 				id: JSON.parse(localStorage.getItem('userID')),
+				faction: JSON.parse(localStorage.getItem('faction')),
 				name: 'Player 2',
 				deck: deck,
 				cardHand: [],

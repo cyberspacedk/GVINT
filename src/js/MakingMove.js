@@ -1,23 +1,4 @@
-
-let userObj = {
-  deck: [card,card],
-  cardHand:[card,card],
-  graveyard: [{},{}],
-  topRow: [card,card],
-  middleRow: [card,card],
-  bottomRow: [card,card],
-  endRound: false,
-  myTurn: true,
-  victoryCount: 0,
-  topRowSum: 0,
-  middleRowSum: 0,
-  bottomRowSum: 0,
-  total: 0,
-}
-
-
-// import { threadId } from "worker_threads";
-
+// 0) Запустити таймер при старті ходу (60 сек)
 // 1) Клік на карту виділяє її і підсвічує ряд куди можна поставити
 // 2) Клік на ряд і ставить карту в ряд якщо вона виділена і можна її туди ставити запускається її аудіо файл
 // 2,1) Активуємо її властивість

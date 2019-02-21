@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "rimraf public && npm install",
     "build": "webpack --mode production --colors --progress",
-    "prestart": "rimraf public && npm install",
     "start": "webpack-dev-server --mode development --hot --colors --progress"
   },
   "repository": {
@@ -54,7 +52,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "lodash": "^4.17.10",
-    "firebase": "^5.7.0"
+    "firebase": "^5.7.0",
+    "lodash": "^4.17.10"
   }
 }

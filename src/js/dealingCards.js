@@ -5,7 +5,7 @@ import { cards } from './cards';
 import monsterReverse from '../img/Factions/faction-mon-copy.png';
 import northernReverse from '../img/Factions/faction-northern-realms.png';
 import { updateUserObject } from "./server";
-
+import {randomFlip, drawCoin} from "./coinflip";
 
 export function dealingCards(player, opponent) {
 	let playerHand = fillCardHand(player);
@@ -38,9 +38,9 @@ function fillCardHand(userObj) {
 		userObj.cardHand.push(movedCard[0]);
 		i++;
 	}
-	console.log(userObj.deck);
-	updateUserObject('cardHand', userObj.cardHand);
-	updateUserObject('deck', userObj.deck);
+	// console.log(userObj.deck);
+	updateUserObject('cardHand', userObj.cardHand, JSON.parse(localStorage.getItem('index')));
+	updateUserObject('deck', userObj.deck, JSON.parse(localStorage.getItem('index')));
 
 	return userObj.cardHand;
 }

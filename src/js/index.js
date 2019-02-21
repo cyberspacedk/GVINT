@@ -16,11 +16,13 @@ const deckContainer = document.querySelector('.faction-choose');
 window.addEventListener('DOMContentLoaded', () => {
 	userEnter();
 });
-window.addEventListener('unload', userExit);
+window.addEventListener('unload', userExit);// якщо закриваємо вкладку в браузері запускаємоо метод userExit
 startBtn.addEventListener('click', start);
 deckContainer.addEventListener('click', chooseDeck);
 
 
 //   let makingMove = new MakingMove();
 //   makingMove.start(userObj);
+import './coinflip';
+
 

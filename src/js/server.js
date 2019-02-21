@@ -74,6 +74,7 @@ export function createRoom(id, deck) {
 		])
 		.then(() => listenRoomAdd());
 	localStorage.setItem('roomID', id);
+	localStorage.setItem('index', 0);
 }
 
 export function joinToRoom(id, deck) {
@@ -106,6 +107,7 @@ export function joinToRoom(id, deck) {
 		.then((data) => firebase.database().ref(`rooms/${id}`).set(data))
 		.then(() => listenRoomAdd());
 	localStorage.setItem('roomID', id);
+	localStorage.setItem('index', 1);
 }
 
 export function removeRoom() {
@@ -177,8 +179,9 @@ export function updateUserObject (property, value) {
 			let playerObj = arr.find((el) => el.id === JSON.parse(localStorage.getItem('userID')));
 			return {...playerObj, [property]: value};
 		})
-		.then(playerObj => firebase
-								.database()
-								.ref(`rooms/${localStorage.getItem('roomID')}/${JSON.parse(localStorage.getItem('userID'))}`)
-								.update(playerObj));
+		.then(playerObj => 
+			firebase
+				.database()
+				.ref(`rooms/${localStorage.getItem('roomID')}/${JSON.parse(localStorage.getItem('index'))}`)
+				.update(playerObj));
 }

@@ -1,20 +1,7 @@
 'use strict'
 import '../sass/coinflip.scss';
 
-
-// function randomFlip(usersObj) {
-    
-//     console.log("Local storage:", JSON.parse(localStorage.getItem("index")))
-//     if(JSON.parse(localStorage.getItem("index"))===0){
-//         let lottery = Math.round(Math.random());
-//         console.log()
-//     lottery ? usersObj.opponent.myTurn = true : usersObj.user.myTurn = true;
-//     console.log("Random lottery" + lottery)
-//     }
-//     return usersObj;
-//     // lottery ? coin.classList.add('heads') : coin.classList.add('tails');
-// }
-function drawCoin (userObj){
+function drawCoin (usersObj){
     // console.log(usersArr);
     const container = document.querySelector(".left__coin")
     container.innerHTML = `
@@ -23,9 +10,9 @@ function drawCoin (userObj){
     <div class="side-b"></div>
     </div>`;
     let coin = document.querySelector("#coin");
-    console.log("userObj");
-console.log(userObj);
-    if(userObj.myTurn) {
+    console.log(" coin flip usersObj");
+console.log(usersObj);
+    if(usersObj.user.myTurn) {
         if(usersObj.user.name === "Player 1") {
             coin.classList.add('player1')
         } else {

@@ -25,7 +25,6 @@ export function userEnter() {
 }
 
 export function play() {//
-	// let randomTurn = Math.round(Math.random()) === 0;
 	firebase.database().ref('rooms').once('value').then((snap) => snap.val()).then((rooms) => {// snap - отримуємо обєкт кімнат val - аналог response.JSON() once - один раз встановлюємо зєднання
 		if (!rooms) {
 			console.log('create first room');
@@ -45,7 +44,6 @@ export function play() {//
 		}
 	});
 	firebase.database().ref('rooms').on('child_removed', function(data) {
-		// console.log(localStorage.getItem('roomID'));
 		if (data.key === localStorage.getItem('roomID')) {
 			console.log('Disconected');
 		}
@@ -53,7 +51,7 @@ export function play() {//
 }
 
 export function createRoom(id, deck) {
-	let randomTurn = false;//Math.round(Math.random()) === 0;
+	let randomTurn = Math.round(Math.random()) === 0;
 	console.log("RandomFromJoinFunction",randomTurn);
 
 	firebase

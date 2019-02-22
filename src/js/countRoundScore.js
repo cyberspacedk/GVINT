@@ -1,3 +1,6 @@
+import { removeRoom } from "./server";
+
+
 import '../sass/countRoundScore.scss';
 import victoryImage0 from '../img/zero-victory.jpg';
 import victoryImage1 from '../img/one-victory.jpg';
@@ -87,6 +90,7 @@ function showWinner(user1, user2) {
 }
 
 function transferToMainPage() {
+    removeRoom();
     const body = document.querySelector('body');
 
     body.innerHTML = `

@@ -188,8 +188,9 @@ function findUser() {// знаходимо користувача і запус�
 		})
 		.then(users=> {
 			console.log("User Object with ", users.user)
+			if(users.user.myTurn === false) return;
 			let makingMove = new MakingMove();
-			makingMove.start(users);
+			makingMove.start(users.user);
 		})
 }
 

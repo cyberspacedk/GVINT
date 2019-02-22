@@ -163,8 +163,8 @@ body {
 
 .left {
     &__timer {
+        display: flex;
         flex: 1;
-        margin-right: 70px;
     }
     &__coin {
         flex: 1;
@@ -190,6 +190,9 @@ body {
     &__row {
         padding: 0 80px 0 40px;
         height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     &__siege,
@@ -199,6 +202,7 @@ body {
         position: relative;
         flex: 1;
         background-size: 100% 100%;
+        display: flex;
     }
 
     &__siege {

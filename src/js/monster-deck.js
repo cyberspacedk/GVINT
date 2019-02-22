@@ -1,4 +1,4 @@
-
+ 
 const monsters = [
     {
       ability: "без способности",

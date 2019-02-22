@@ -5,7 +5,8 @@ import { userEnter, userExit, updateUserObject} from './server';
 import { start } from './start-game';
 import { chooseDeck } from './chooseDeck';
 import { dealingCards } from './dealingCards';
-import {MakingMove} from "./MakingMove";
+import './coinflip';
+
 
 import '../sass/styles.scss';
 
@@ -14,6 +15,9 @@ const startBtn = document.querySelector('.accept-button');
 const deckContainer = document.querySelector('.faction-choose');
 
 window.addEventListener('DOMContentLoaded', () => {
+    let monsters = Math.round(Math.random())===0;
+
+    localStorage.setItem('faction', `${monsters ? `"monsters"` : `"nothernRealms"`}`);
 	userEnter();
 });
 window.addEventListener('unload', userExit);// якщо закриваємо вкладку в браузері запускаємоо метод userExit
@@ -21,8 +25,7 @@ startBtn.addEventListener('click', start);
 deckContainer.addEventListener('click', chooseDeck);
 
 
-//   let makingMove = new MakingMove();
-//   makingMove.start(userObj);
-import './coinflip';
+
+
 
 

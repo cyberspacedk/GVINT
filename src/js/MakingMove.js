@@ -54,6 +54,12 @@ class MakingMove{
     this.topRow.classList.remove("active-row");
     this.middleRow.classList.remove("active-row");
     this.bottomRow.classList.remove("active-row");
+
+    //remove listeners if card was not put on board
+    this.topRow.removeEventListener("click", this.handlerClickRow);
+    this.middleRow.removeEventListener("click", this.handlerClickRow);
+    this.bottomRow.removeEventListener("click", this.handlerClickRow);
+
     //Очистка попереднього кліка
     this.selectedCardDiv = target;
     this.selectedCardDiv.classList.add("active-card"); 

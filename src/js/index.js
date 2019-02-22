@@ -48,7 +48,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		e.target.classList.add('mousemove'); 
 		const HOVERDECK = new Audio();
 		HOVERDECK.src = hoverdeck;
-		HOVERDECK.play();
+        HOVERDECK.currentTime = 0;
+        HOVERDECK.play();
 	});
 
 	faction.addEventListener('mouseout',  (e)=>{ 

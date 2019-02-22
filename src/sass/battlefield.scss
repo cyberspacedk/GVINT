@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    outline: 1px solid gray;
+    // outline: 1px solid gray;
 }
 
 @font-face {
@@ -29,7 +29,8 @@ body {
         flex-direction: column;
     }
 
-    &__top {
+    &__top,
+    &__bottom  {
         height: 14%;
         background-image: linear-gradient(rgba(189, 0, 0, 0.336), rgba(0, 0, 0, 0.356)), url(../img/battlefield-top.jpg);
         display: flex;
@@ -48,13 +49,8 @@ body {
     }
 
     &__bottom {
-        height: 14%;
-        display: flex;
         background-image: linear-gradient(rgba(17, 19, 119, 0.842), black), url(../img/battlefield-bottom.jpg);
         background-size: cover;
-        border-top: 1px solid rgb(56, 55, 55);
-        box-shadow: 0 0 15px 5px rgba(29, 29, 29, 0.719);
-
     }
 
     &__current-score {
@@ -75,6 +71,7 @@ body {
 
     &__hand {
         flex: 1;
+        display: flex;
     }
 
     &__graveyard-wrapper {
@@ -88,7 +85,7 @@ body {
         background-position-x: 50%;
         background-repeat: no-repeat;
         position: absolute;
-        width: 100%;
+        width: 80%;
         height: 100px;
         z-index: 1000;
         
@@ -102,6 +99,20 @@ body {
         width: 8%;
     }
 
+}
+
+.opponent-block {
+    width: 13%;
+    display: flex;
+
+    &__image {
+        display: block;
+        flex: 1;
+    }
+
+    &__info {
+        flex: 2;
+    }
 }
 
 .player-block {
@@ -130,9 +141,10 @@ body {
     display: flex;
 
     &__left {
-        width: 20%;
+        width: 16%;
         display: flex;
         flex-direction: column;
+        margin-right: 70px;
     }
 
     &__center {
@@ -156,7 +168,7 @@ body {
     }
     &__coin {
         flex: 1;
-        margin-right: 70px;
+        width: 170px;
     }
 }
 

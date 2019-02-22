@@ -5,6 +5,9 @@
 // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
 // 2,3) Відобразити результат на екрані
 // 2,4) Зупинити таймер і передати хід 
+
+import { updateUserObject, updateUserSingleProperty } from "./server";
+
 import "../sass/MakingMove.scss";
 
 // main controller
@@ -66,12 +69,13 @@ class MakingMove{
     this.nameOfSelectedCard = target.getAttribute("data-name");
     console.log("target",target);
     console.log("target.getAttribute('data-name')",target.getAttribute("data-name"));
-    this.selectedCard = this.userObj.cardHand.find(el=>el.name==this.nameOfSelectedCard);
-    // this.selectedCard = this.userObj.cardHand.find(el=>{el.name==this.nameOfSelectedCard;
-    //   console.log("el.name",el.name);
-    //   console.log("this.nameOfSelectedCard",this.nameOfSelectedCard);
-    //   console.log("el.name==this.nameOfSelectedCard",el.name==this.nameOfSelectedCard);
-    // });
+    // this.selectedCard = this.userObj.cardHand.find(el=>el.name==this.nameOfSelectedCard);
+    this.selectedCard = this.userObj.cardHand.find(el=>{
+      console.log("el.name",el.name);
+      console.log("this.nameOfSelectedCard",this.nameOfSelectedCard);
+      console.log("el.name==this.nameOfSelectedCard",el.name==this.nameOfSelectedCard);
+      return el.name==this.nameOfSelectedCard;
+    });
     this.topRow.classList.remove("active-row");
     console.log("this.CardHand", this.userObj.cardHand)
     if (this.selectedCard.positions.includes("Melee")){
@@ -157,6 +161,14 @@ class MakingMove{
     this.topRow.removeEventListener("click", this.handlerClickRow);
     this.middleRow.removeEventListener("click", this.handlerClickRow);
     this.bottomRow.removeEventListener("click", this.handlerClickRow);
+
+    // console.log(this.userObj);
+    this.hand.removeEventListener("click", this.handlerClickCard);
+
+    const userIdx = JSON.parse(localStorage.getItem('index'));
+    let opponentIdx = userIdx ? 0 : 1;
+    updateUserObject(this.userObj, userIdx);
+    updateUserSingleProperty('myTurn', true, opponentIdx);
   }
 }
 

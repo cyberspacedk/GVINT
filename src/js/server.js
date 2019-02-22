@@ -83,8 +83,6 @@ export function createRoom(id, deck) {
 }
 
 export function joinToRoom(id, deck) { //Приєднання до кімнати нового користувача
-
-	
 	firebase
 		.database()
 		.ref(`rooms/${id}`)
@@ -112,7 +110,6 @@ export function joinToRoom(id, deck) { //Приєднання до кімнат�
 			});
 			return data;
 		})
-		// .then((data) => {updateUserObject("myTurn",!randomTurn, 0);return data;})
 		.then((data) => firebase.database().ref(`rooms/${id}`).set(data))
 		.then(() => listenRoomAdd());
 	localStorage.setItem('roomID', id);
@@ -144,10 +141,26 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 			.then((data) => {
 				if (data.length === 2) {
 					renderBattlefield(body);
-					findUser();
-					console.log("data",data)
+					findUser()
+						.then((result) => {
+							console.log('listen room add log!!!!');
+							dealingCards(result.user, result.opponent);
+							return result;
+						})
+						.then(users => {
+							drawCoin(users);
+							return users;
+						})
+						.then(users=> {
+							// console.log("User Object with ", users.user)
+							if(users.user.myTurn === false) return;
+							let makingMove = new MakingMove();
+							makingMove.start(users.user);
+						});
+					listenRoomChange();
+					// console.log("data",data)
 					
-					console.log('start');
+					// console.log('start');
 				}
 			});
 		}
@@ -173,30 +186,16 @@ function findUser() {// знаходимо користувача і запус�
 		.then((snap) => snap.val())
 		.then((arr) => {
 			console.log("Find User Array")
-			console.log(arr)
+			// console.log(arr)
 			let x = arr.find((el) => el.id === JSON.parse(localStorage.getItem('userID')));
 			let y = arr.find((el) => el.id !== JSON.parse(localStorage.getItem('userID')));
 			return { user: x, opponent: y };
 		})
-		.then((result) => {
-			dealingCards(result.user, result.opponent);
-			return result;
-		})
-		.then(users => {
-			drawCoin(users);
-			return users;
-		})
-		.then(users=> {
-			console.log("User Object with ", users.user)
-			if(users.user.myTurn === false) return;
-			let makingMove = new MakingMove();
-			makingMove.start(users.user);
-		})
 }
 
 
-export function updateUserObject (property, value, index) {// зиписуємо результати роздачі на бекенд
-	console.log("index in update User Object",index);
+export function updateUserSingleProperty (property, value, index) {// зиписуємо результати роздачі на бекенд
+	// console.log("index in update User Object",index);
 	firebase
 		.database()
 		.ref(`rooms/${localStorage.getItem('roomID')}`)
@@ -204,6 +203,7 @@ export function updateUserObject (property, value, index) {// зиписуємо
 		.then(snap => snap.val())
 		.then(arr => {
 			let playerObj = arr.find((el) => el.id === index);
+			// console.log('UPDATE!!!!!!!!!!!');
 			return {...playerObj, [property]: value};
 		})
 		.then(playerObj => 
@@ -211,4 +211,39 @@ export function updateUserObject (property, value, index) {// зиписуємо
 				.database()
 				.ref(`rooms/${localStorage.getItem('roomID')}/${index}`)
 				.update(playerObj));
+}
+
+export function updateUserObject(obj, index) {
+	firebase
+	.database()
+	.ref(`rooms/${localStorage.getItem('roomID')}`)
+	.once('value')
+	.then(snap => snap.val())
+	// .then(arr => {
+	// 	let playerObj = arr.find((el) => el.id === index);
+	// 	return {...obj};
+	// })
+	.then(() => 
+		firebase
+			.database()
+			.ref(`rooms/${localStorage.getItem('roomID')}/${index}`)
+			.update(obj));
+}
+
+function listenRoomChange() {
+	firebase
+		.database()
+		.ref(`rooms/${localStorage.getItem('roomID')}/${JSON.parse(localStorage.getItem('index'))}`)
+		.on('child_changed', (data) => {
+			if(typeof data.val() === 'boolean') {
+				findUser()
+				 .then(users => {
+					if(users.user.myTurn === false) return;
+					let makingMove = new MakingMove();
+					makingMove.start(users.user);
+					// console.log('listen room change', data.val())
+				 })
+			}
+		})
+
 }

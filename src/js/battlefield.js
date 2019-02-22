@@ -65,17 +65,17 @@ export function renderBattlefield(container) {
                     </div>
                     <div class="middle__player">
                         <div class="middle__rows rows">
-                            <div class="rows__melee" data-name="player-bottomRow" id="player-bottomRow">
+                            <div class="rows__melee" data-name="player-bottomRow">
                                 <span class="rows__score"></span>
-                                <div class="rows__row"></div>
+                                <div class="rows__row" id="player-topRow"></div>
                             </div>
-                            <div class="rows__range" data-name="player-middleRow" id="player-middleRow">
+                            <div class="rows__range" data-name="player-middleRow">
                                 <span class="rows__score"></span>
-                                <div class="rows__row"></div>
+                                <div class="rows__row" id="player-middleRow"></div>
                             </div>
-                            <div class="rows__siege" data-name="player-topRow" id="player-topRow">
+                            <div class="rows__siege" data-name="player-topRow">
                                 <span class="rows__score"></span>
-                                <div class="rows__row"></div>
+                                <div class="rows__row" id="player-bottomRow"></div>
                             </div>
                         </div>
                     </div>

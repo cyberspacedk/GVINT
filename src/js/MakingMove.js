@@ -5,7 +5,7 @@
 // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
 // 2,3) Відобразити результат на екрані
 // 2,4) Зупинити таймер і передати хід 
-
+import "../sass/MakingMove.scss";
 
 // main controller
 class MakingMove{
@@ -16,10 +16,10 @@ class MakingMove{
       this.middleRow = document.querySelector("#player-middleRow");
       this.bottomRow = document.querySelector("#player-bottomRow");
       // to output points
-      this.topRowSumDiv = document.querySelector("#player-topRow .rows__score");
-      this.middleRowSumDiv = document.querySelector("#player-middleRow .rows__score");
-      this.bottomRowSumDiv = document.querySelector("#player-bottomRow .rows__score");
-      this.totalDiv = document.querySelector("#battlefield__bottom .battlefield__current-score");
+      this.topRowSumDiv = document.querySelector("#player-topRow").previousElementSibling;
+      this.middleRowSumDiv = document.querySelector("#player-middleRow").previousElementSibling;
+      this.bottomRowSumDiv = document.querySelector("#player-bottomRow").previousElementSibling;
+      this.totalDiv = document.querySelector(".battlefield__bottom .battlefield__current-score");
       // timer
       this.countdownTimer = new CountdownTimer(document.querySelector(".left__timer"));
       this.nameOfSelectedCard = null;
@@ -45,6 +45,7 @@ class MakingMove{
 
   // 1) Клік на карту виділяє її і підсвічує ряд куди можна поставити
   handlerClickCard({target}){
+    console.log("output:",this.userObj);
     if(target.nodeName !== "IMG") {
       return;
     }
@@ -56,9 +57,17 @@ class MakingMove{
     //Очистка попереднього кліка
     this.selectedCardDiv = target;
     this.selectedCardDiv.classList.add("active-card"); 
-    this.nameOfSelectedCard = target.parentElement.getAttribute("data-name");
-    this.selectedCard = this.userObj.cardHand.find(el=>el.name===this.nameOfSelectedCard);
+    this.nameOfSelectedCard = target.getAttribute("data-name");
+    console.log("target",target);
+    console.log("target.getAttribute('data-name')",target.getAttribute("data-name"));
+    this.selectedCard = this.userObj.cardHand.find(el=>el.name==this.nameOfSelectedCard);
+    // this.selectedCard = this.userObj.cardHand.find(el=>{el.name==this.nameOfSelectedCard;
+    //   console.log("el.name",el.name);
+    //   console.log("this.nameOfSelectedCard",this.nameOfSelectedCard);
+    //   console.log("el.name==this.nameOfSelectedCard",el.name==this.nameOfSelectedCard);
+    // });
     this.topRow.classList.remove("active-row");
+    console.log("this.CardHand", this.userObj.cardHand)
     if (this.selectedCard.positions.includes("Melee")){
       this.topRow.addEventListener("click", this.handlerClickRow);
       this.topRow.classList.add("active-row");
@@ -77,6 +86,11 @@ class MakingMove{
   }
   // 2) Клік на ряд і ставить карту в ряд якщо вона виділена і можна її туди ставити запускається її аудіо файл
   handlerClickRow({target}){
+    console.log("Target_ID", target);
+    if(!target.classList.contains("rows__row")) return;
+    this.userObj.topRow = this.userObj.topRow ? this.userObj.topRow :  [];
+    this.userObj.middleRow = this.userObj.middleRow ? this.userObj.middleRow : [];
+    this.userObj.bottomRow = this.userObj.bottomRow ? this.userObj.bottomRow : [];
     switch(target.id){
       case "player-topRow":
       this.userObj.topRow.push(this.selectedCard);
@@ -88,12 +102,16 @@ class MakingMove{
       this.userObj.bottomRow.push(this.selectedCard);
       break;
     }
-    this.userObj.cardHand = this.userObj.cardHand.filter(el=>el.name !== this.nameOfSelectedCard);
+    // this.userObj.cardHand = this.userObj.cardHand.filter(el=>el.name !== this.nameOfSelectedCard);
+    const activeCardIndex = [...this.hand.querySelectorAll("img")].indexOf(this.selectedCardDiv)
+    
+    // const index = this.userObj.cardHand.indexOf(this.nameOfSelectedCard);
+    this.userObj.cardHand.splice(activeCardIndex,1);
     this.topRow.classList.remove("active-row");
     this.middleRow.classList.remove("active-row");
     this.bottomRow.classList.remove("active-row");
     this.selectedCardDiv.classList.remove("active-card");
-    target.append(this.selectedCardDiv);
+    target.append(this.selectedCardDiv.parentElement);
     //start audio of the selected card
     //
     // 2,1) Активуємо її властивість
@@ -130,6 +148,9 @@ class MakingMove{
     this.nameOfSelectedCard = null;
     this.selectedCard = null;
     this.selectedCardDiv = null;
+    this.topRow.removeEventListener("click", this.handlerClickRow);
+    this.middleRow.removeEventListener("click", this.handlerClickRow);
+    this.bottomRow.removeEventListener("click", this.handlerClickRow);
   }
 }
 
@@ -137,13 +158,13 @@ class CountdownTimer{
     constructor(parent){
       this.stopTime = null;
       this.id = null;
-      this.root = document.createElement("div");
-      this.root.classList.add("root");
-      parent.append(this.root);
-      this.root.innerHTML = `<div class="Countdown-timer">
-      <p class="time js-time">00</p>
+      // this.root = document.createElement("div");
+      // this.root.classList.add("root");
+      // parent.append(this.root);
+      parent.innerHTML = `<div class="Countdown-timer">
+      <p class="time js-time">60</p>
   </div>`;
-      this.time = this.root.querySelector(".js-time");
+      this.time = parent.querySelector(".js-time");
       this.startCountdownTimer = this.startCountdownTimer.bind(this);
       this.callback = this.callback.bind(this);
       this.updateTime = this.updateTime.bind(this);

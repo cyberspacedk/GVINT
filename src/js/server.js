@@ -2,6 +2,8 @@ import firebase from './firebase';
 import { renderBattlefield, body } from './battlefield';
 import { dealingCards } from './dealingCards';
 import { randomFlip, drawCoin } from './coinflip';
+import {MakingMove} from "./MakingMove";
+
 
 // Первая функция которая запускается выполняет вход пользователя.
 export function userEnter() {
@@ -52,8 +54,6 @@ export function play() {//
 
 export function createRoom(id, deck) {
 	let randomTurn = Math.round(Math.random()) === 0;
-	console.log("RandomFromJoinFunction",randomTurn);
-
 	firebase
 		.database()
 		.ref(`rooms/${id}`)
@@ -154,6 +154,7 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 	});
 }
 
+
 // firebase.database().ref('decks').once('value')
 //         .then(snap => console.log(snap.val()))
 
@@ -183,6 +184,13 @@ function findUser() {// знаходимо користувача і запус�
 		})
 		.then(users => {
 			drawCoin(users);
+			return users;
+		})
+		.then(users=> {
+			console.log("User Object with ", users.user)
+			if(users.user.myTurn === false) return;
+			let makingMove = new MakingMove();
+			makingMove.start(users.user);
 		})
 }
 

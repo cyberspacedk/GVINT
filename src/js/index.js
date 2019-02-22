@@ -19,7 +19,10 @@ import '../sass/styles.scss';
 const startBtn = document.querySelector('.accept-button');
 const deckContainer = document.querySelector('.faction-choose');
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
+    let monsters = Math.round(Math.random())===0;
+
+    localStorage.setItem('faction', `${monsters ? `"monsters"` : `"nothernRealms"`}`);
 	userEnter();
 	// background sound
 	const MTHEME = new Audio();
@@ -68,5 +71,8 @@ deckContainer.addEventListener('click', chooseDeck);
 //   let makingMove = new MakingMove();
 //   makingMove.start(userObj);
 import './coinflip';
+
+
+
 
 

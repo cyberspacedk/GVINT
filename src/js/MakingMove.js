@@ -132,6 +132,7 @@ class MakingMove{
     this.selectedCardDiv = null;
   }
 }
+
 class CountdownTimer{
     constructor(parent){
       this.stopTime = null;
@@ -197,7 +198,7 @@ class CountdownTimer{
     */
     getFormattedTime(time) {
       let seconds = Math.floor(time / 1000 % 60);
-      seconds = seconds>=10? seconds : "0" + seconds;
+      seconds = seconds>=10 ? seconds : "0" + seconds;
       return (seconds);
     }
   }

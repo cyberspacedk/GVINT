@@ -29,13 +29,18 @@ body{
 }
 .start-page-header{
     text-align: center;
-    padding: 30px;
+    padding: 13px 0 5px 0;
 }
 .description-fraction{
     margin-top: 20px;
     letter-spacing: 3px;
     color: #1CC388;
     text-shadow: 1px 1px #717171;
+}
+.default-choose{
+    padding-top: 5px;
+    color: gold;
+
 }
 .choose-fraction{
     text-transform: uppercase;
@@ -88,7 +93,8 @@ body{
     margin-bottom: 10px;
     transition: .3s;  
 }
-.faction-face{
+.faction-face,
+.coming-soon{
     display: block;
     width: 200px; 
     transition: .3s;  
@@ -123,16 +129,20 @@ body{
     transition: .3s;  
 } 
 
-[class $="-faction"]:hover .faction-face:not(.coming-soon){
-    transform: scale(1.03);
-    transition: .3s; 
-    box-shadow: 0 0 20px 4px #1CC388;
+[class $="-faction"]:hover .faction-face:not(.coming-soon){ 
+    transition: .3s;  
     cursor: pointer;
 }
 [class $="-faction"]:hover  .faction-desc{
     color: red;
-    transition: .3s;  
-
+    transition: .3s;   
+}
+.mousemove{
+    box-shadow: 0 0 20px 4px #1CC388;
+}
+.choosen{
+    transform: scale(1.03);
+    box-shadow: 0 0 30px 7px red; 
 }
 // footer
 .wrap-footer{

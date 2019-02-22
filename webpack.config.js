@@ -81,7 +81,7 @@ const config = {
 				}
 			},
 			{
-				test: /\.mp3$/,
+				test: /\.mp3|\.wav$/,
 				include: /src/,
 				loader: 'file-loader'
 			}

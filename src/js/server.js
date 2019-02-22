@@ -2,6 +2,7 @@ import firebase from './firebase';
 import { renderBattlefield, body } from './battlefield';
 import { dealingCards } from './dealingCards';
 import { randomFlip, drawCoin } from './coinflip';
+import {MakingMove} from "./MakingMove";
 
 
 // Первая функция которая запускается выполняет вход пользователя.
@@ -185,7 +186,11 @@ function findUser() {// знаходимо користувача і запус�
 			drawCoin(users);
 			return users;
 		})
-
+		.then(users=> {
+			console.log("User Object with ", users.user)
+			let makingMove = new MakingMove();
+			makingMove.start(users);
+		})
 }
 
 

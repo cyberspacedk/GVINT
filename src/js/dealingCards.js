@@ -43,7 +43,7 @@ function fillCardHand(userObj) {
 		userObj.cardHand.push(movedCard[0]);
 		i++;
 	}
-	console.log('user object deck!!!!!!!!!!!!!1', userObj.deck);
+	// console.log('user object deck!!!!!!!!!!!!!1', userObj.deck);
 
 	return {hand: userObj.cardHand, deck: userObj.deck};
 }

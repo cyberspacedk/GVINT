@@ -2,7 +2,6 @@
 import '../sass/coinflip.scss';
 
 function drawCoin (usersObj){
-    // console.log(usersArr);
     const container = document.querySelector(".left__coin")
     container.innerHTML = `
     <div id="coin">
@@ -10,8 +9,6 @@ function drawCoin (usersObj){
     <div class="side-b"></div>
     </div>`;
     let coin = document.querySelector("#coin");
-    console.log(" coin flip usersObj");
-console.log(usersObj);
     if(usersObj.user.myTurn) {
         if(usersObj.user.name === "Player 1") {
             coin.classList.add('player1')

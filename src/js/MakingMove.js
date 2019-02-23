@@ -48,7 +48,7 @@ class MakingMove{
 
   // 1) Клік на карту виділяє її і підсвічує ряд куди можна поставити
   handlerClickCard({target}){
-    console.log("output:",this.userObj);
+    // console.log("output:",this.userObj);
     if(target.nodeName !== "IMG") {
       return;
     }
@@ -67,17 +67,17 @@ class MakingMove{
     this.selectedCardDiv = target;
     this.selectedCardDiv.classList.add("active-card"); 
     this.nameOfSelectedCard = target.getAttribute("data-name");
-    console.log("target",target);
-    console.log("target.getAttribute('data-name')",target.getAttribute("data-name"));
+    // console.log("target",target);
+    // console.log("target.getAttribute('data-name')",target.getAttribute("data-name"));
     // this.selectedCard = this.userObj.cardHand.find(el=>el.name==this.nameOfSelectedCard);
     this.selectedCard = this.userObj.cardHand.find(el=>{
-      console.log("el.name",el.name);
-      console.log("this.nameOfSelectedCard",this.nameOfSelectedCard);
-      console.log("el.name==this.nameOfSelectedCard",el.name==this.nameOfSelectedCard);
+      // console.log("el.name",el.name);
+      // console.log("this.nameOfSelectedCard",this.nameOfSelectedCard);
+      // console.log("el.name==this.nameOfSelectedCard",el.name==this.nameOfSelectedCard);
       return el.name==this.nameOfSelectedCard;
     });
     this.topRow.classList.remove("active-row");
-    console.log("this.CardHand", this.userObj.cardHand)
+    // console.log("this.CardHand", this.userObj.cardHand)
     if (this.selectedCard.positions.includes("Melee")){
       this.topRow.addEventListener("click", this.handlerClickRow);
       this.topRow.classList.add("active-row");
@@ -96,7 +96,7 @@ class MakingMove{
   }
   // 2) Клік на ряд і ставить карту в ряд якщо вона виділена і можна її туди ставити запускається її аудіо файл
   handlerClickRow({target}){
-    console.log("Target_ID", target);
+    // console.log("Target_ID", target);
     if(!target.classList.contains("rows__row")) return;
     this.userObj.topRow = this.userObj.topRow ? this.userObj.topRow :  [];
     this.userObj.middleRow = this.userObj.middleRow ? this.userObj.middleRow : [];

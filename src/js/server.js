@@ -1,7 +1,7 @@
 import firebase from './firebase';
 import { renderBattlefield, body } from './battlefield';
 import { dealingCards } from './dealingCards';
-import { randomFlip, drawCoin } from './coinflip';
+import { drawCoin } from './coinflip';
 import {MakingMove} from "./MakingMove";
 
 

@@ -8,7 +8,7 @@
 
 import { updateUserObject, updateUserSingleProperty } from "./server";
 import { putOnRow, putOnBoard } from "./dealingCards";
-
+import {moveCardInGraveyard} from "./reset_card";
 import "../sass/MakingMove.scss";
 
 // main controller
@@ -62,8 +62,11 @@ class MakingMove{
     this.userObj = usersObj.user;
     this.opponentObj = usersObj.opponent;
     this.drawingOfUserStep();
-    this.countdownTimer.startCountdownTimer(60);
+    this.countdownTimer.startCountdownTimer(60,this.userObj,this.nextTurn);
+
+
     this.hand.addEventListener("click", this.handlerClickCard);
+
   }
   drawingOfUserStep(){
     console.log("Opponent Object", this.opponentObj);
@@ -225,6 +228,7 @@ class MakingMove{
     let opponentIdx = userIdx ? 0 : 1;
     updateUserObject(this.userObj, userIdx);
     updateUserSingleProperty('myTurn', true, opponentIdx);
+    this.totalUserCards.textContent = this.userObj.cardHand.length;
 
     // flip coin 
   
@@ -245,6 +249,7 @@ class MakingMove{
 
 class CountdownTimer{
     constructor(parent){
+      this.endOfTimer = false;
       this.stopTime = null;
       this.id = null;
       // this.root = document.createElement("div");
@@ -264,15 +269,15 @@ class CountdownTimer{
     *с текущего момента времени и до конца заданного интервала, обновляя содержимое элемента p.js-time 
     *новым значение времени в формате xx:xx.x (минуты:секунды.сотни_миллисекунд).
     */
-    startCountdownTimer (CountdownTime){
+    startCountdownTimer (CountdownTime,userObj,nextTurn){
       this.stopTime = Date.now() + (CountdownTime*1000);
-      this.id = setInterval(this.callback, 1000);
+      this.id = setInterval(()=> this.callback(userObj,nextTurn), 1000);
     }
     /*
     *Callback для setInterval Расчитывает текущее состояние таймера
     *и запускает метод обновления значений на экране
     */
-    callback (){
+    callback (userObj,nextTurn){
       let timeNow = Date.now();
       this.deltaTime = this.stopTime - timeNow;
       // 3)Якщо меньше 10 сек таймер міняє колір і звук
@@ -280,11 +285,14 @@ class CountdownTimer{
           this.time.style.color = "#ff0000";
       }      
       if (this.deltaTime <= 0) {
+        console.log('User',userObj);
         this.resetTimer();
-        moveCardInGraveyard();//переход хода если не походил
-        this.nextTurn();
+        userObj =  moveCardInGraveyard(userObj);
+        nextTurn()
+
       }
       this.updateTime(this.time, this.deltaTime);
+
     }
     /*
     *Полностью сбрасывает работу таймера
@@ -295,6 +303,7 @@ class CountdownTimer{
       this.stopTime = null;
       this.deltaTime = 0;
       this.updateTime(this.time, 0);
+
     }
     /*
     * Обновляет поле счетчика новым значением при вызове

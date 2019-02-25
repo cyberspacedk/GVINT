@@ -54,48 +54,21 @@ function createMarkUp() {
               <div class="left__coin"></div>
             </div>
 
-            <div class="battlefield__container">
-                <div class="battlefield__main">
-                    <div class="battlefield__middle">
-                        <div class="middle__left">
-                            <div class="left__timer"></div>
-                            <div class="left__coin"></div>
-                        </div>
-
-                        <div class="middle__center">
-                            <div class="middle__opponent">
-                                <div class="middle__rows rows">
-                                    <div class="rows__siege" data-name="opponent-topRow" >
-                                        <span class="rows__score"></span>
-                                        <div class="rows__row" id="opponent-bottomRow"></div>
-                                    </div>
-                                    <div class="rows__range" data-name="opponent-middleRow">
-                                        <span class="rows__score"></span>
-                                        <div class="rows__row" id="opponent-middleRow"></div>
-                                    </div>
-                                    <div class="rows__melee" data-name="opponent-bottomRow">
-                                        <span class="rows__score"></span>
-                                        <div class="rows__row" id="opponent-topRow"></div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                    <div class="middle__player">
-                        <div class="middle__rows rows">
-                            <div class="rows__melee" data-name="player-bottomRow">
-                                <span class="rows__score"></span>
-                                <div class="rows__row" id="player-topRow"></div>
-                            </div>
-                            <div class="rows__range" data-name="player-middleRow">
-                                <span class="rows__score"></span>
-                                <div class="rows__row" id="player-middleRow"></div>
-                            </div>
-                            <div class="rows__siege" data-name="player-topRow">
-                                <span class="rows__score"></span>
-                                <div class="rows__row" id="player-bottomRow"></div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="middle__center">
+              <div class="middle__opponent">
+                <div class="middle__rows rows">
+                  <div class="rows__siege" data-name="opponent-topRow" >
+                    <span class="rows__score"></span>
+                    <div class="rows__row" id="opponent-bottomRow"></div>
+                  </div>
+                  <div class="rows__range" data-name="opponent-middleRow">
+                    <span class="rows__score"></span>
+                    <div class="rows__row" id="opponent-middleRow"></div>
+                  </div>
+                  <div class="rows__melee" data-name="opponent-bottomRow">
+                    <span class="rows__score"></span>
+                    <div class="rows__row" id="opponent-topRow"></div>
+                  </div>
                 </div>
               </div>
 

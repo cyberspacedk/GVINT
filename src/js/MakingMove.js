@@ -28,6 +28,14 @@ class MakingMove{
       this.opponentMiddleRowSumDiv = document.querySelector("#opponent-middleRow").previousElementSibling;
       this.opponentBottomRowSumDiv = document.querySelector("#opponent-bottomRow").previousElementSibling;
       this.opponentTotalDiv = document.querySelector(".battlefield__top .battlefield__current-score");
+
+      // this.totalUserCards = document.querySelector('.battlefield__bottom .remaining-cards__number');
+      // this.totalOpponentCards = document.querySelector('.battlefield__top .remaining-cards__number');
+      // this.userName = document.querySelector('.user-block__name');
+      // this.opponentName = document.querySelector('.opponent-block__name');
+      // this.userVictoryCount = document.querySelector('.battlefield__bottom .battlefield__round-score');
+      // this.opponentVictoryCount = document.querySelector('.battlefield__top .battlefield__round-score');
+
       // timer
       this.countdownTimer = new CountdownTimer(document.querySelector(".left__timer"));
       this.nameOfSelectedCard = null;
@@ -61,6 +69,7 @@ class MakingMove{
     this.opponentMiddleRowSumDiv.textContent = this.opponentObj.middleRowSum;
     this.opponentBottomRowSumDiv.textContent = this.opponentObj.bottomRowSum;
     this.opponentTotalDiv.textContent = this.opponentObj.total;
+    
     if (this.opponentObj.topRow){
       putOnRow(this.opponentObj.topRow, "#opponent-topRow")
     }
@@ -70,6 +79,9 @@ class MakingMove{
     if (this.opponentObj.bottomRow){
       putOnRow(this.opponentObj.bottomRow, "#opponent-bottomRow")
     }
+
+    // this.totalUserCards.textContent = this.userObj.cardHand.length;
+    // this.totalOpponentCards.textContent = this.opponentObj.cardHand.length;
   }
   // 1) Клік на карту виділяє її і підсвічує ряд куди можна поставити
   handlerClickCard({target}){

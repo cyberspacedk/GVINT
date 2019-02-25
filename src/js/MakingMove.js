@@ -8,7 +8,7 @@
 
 import { updateUserObject, updateUserSingleProperty } from "./server";
 import { putOnRow, putOnBoard } from "./dealingCards";
-
+import {moveCardInGraveyard} from "./reset_card";
 import "../sass/MakingMove.scss";
 
 // main controller
@@ -61,7 +61,7 @@ class MakingMove{
 
       
       // 0) Запустити таймер при старті ходу (60 сек)
-      console.log("users Object", usersObj);
+      // console.log("users Object", usersObj);
       this.userObj = usersObj.user;
       this.opponentObj = usersObj.opponent;
       if (this.userObj.myTurn && !this.userObj.endRound) {
@@ -69,9 +69,14 @@ class MakingMove{
         this.countdownTimer.startCountdownTimer(60);
         this.hand.addEventListener("click", this.handlerClickCard);
         this.passBtn.addEventListener('click', this.onPass);
+        
       } 
-      //else showModal() & clear battlefield
+      // !!! else showModal() & clear battlefield
+      
   }
+
+  // !!! додати метод - аналог start для опонента, щоб в опонента відмальовувалися ходи юзера
+
   drawingOfUserStep(){
     console.log("Opponent Object", this.opponentObj);
     this.opponentTopRowSumDiv.textContent = this.opponentObj.topRowSum;
@@ -216,8 +221,19 @@ class MakingMove{
   }
   // 2,4) Зупинити таймер і передати хід 
   nextTurn(){
-    if (!this.opponentObj.endRound) {
+    const userIdx = JSON.parse(localStorage.getItem('index'));
+
+    if (this.opponentObj.endRound) {
+      console.log('this.opponentObj', this.opponentObj);
+      // console.log('this.userObj', this.userObj);
+      updateUserSingleProperty('myTurn', false, userIdx);
+      updateUserSingleProperty('myTurn', true, userIdx);
+      this.drawingOfUserStep();
+
+      // this.userObj.myTurn = true;
+    } else {
       this.userObj.myTurn = false;
+    };
       this.countdownTimer.resetTimer ();
       this.nameOfSelectedCard = null;
       this.selectedCard = null;
@@ -230,7 +246,6 @@ class MakingMove{
       // console.log(this.userObj);
       this.hand.removeEventListener("click", this.handlerClickCard);
       
-      const userIdx = JSON.parse(localStorage.getItem('index'));
       let opponentIdx = userIdx ? 0 : 1;
       updateUserObject(this.userObj, userIdx);
       updateUserSingleProperty('myTurn', true, opponentIdx);
@@ -247,8 +262,6 @@ class MakingMove{
         this.coinSide.classList.remove('coin-player2');
         this.coinSide.classList.add('coin-player1');
       }
-      
-    }
      
   }
 
@@ -262,6 +275,7 @@ class MakingMove{
 
 class CountdownTimer{
     constructor(parent){
+      this.endOfTimer = false;
       this.stopTime = null;
       this.id = null;
       // this.root = document.createElement("div");
@@ -281,15 +295,15 @@ class CountdownTimer{
     *с текущего момента времени и до конца заданного интервала, обновляя содержимое элемента p.js-time 
     *новым значение времени в формате xx:xx.x (минуты:секунды.сотни_миллисекунд).
     */
-    startCountdownTimer (CountdownTime){
+    startCountdownTimer (CountdownTime,userObj,nextTurn){
       this.stopTime = Date.now() + (CountdownTime*1000);
-      this.id = setInterval(this.callback, 1000);
+      this.id = setInterval(()=> this.callback(userObj,nextTurn), 1000);
     }
     /*
     *Callback для setInterval Расчитывает текущее состояние таймера
     *и запускает метод обновления значений на экране
     */
-    callback (){
+    callback (userObj,nextTurn){
       let timeNow = Date.now();
       this.deltaTime = this.stopTime - timeNow;
       // 3)Якщо меньше 10 сек таймер міняє колір і звук
@@ -297,11 +311,14 @@ class CountdownTimer{
           this.time.style.color = "#ff0000";
       }      
       if (this.deltaTime <= 0) {
+        // console.log('User',userObj);
         this.resetTimer();
-        moveCardInGraveyard();//переход хода если не походил
-        this.nextTurn();
+        userObj =  moveCardInGraveyard(userObj);
+        nextTurn()
+
       }
       this.updateTime(this.time, this.deltaTime);
+
     }
     /*
     *Полностью сбрасывает работу таймера
@@ -312,6 +329,7 @@ class CountdownTimer{
       this.stopTime = null;
       this.deltaTime = 0;
       this.updateTime(this.time, 0);
+
     }
     /*
     * Обновляет поле счетчика новым значением при вызове
@@ -329,7 +347,6 @@ class CountdownTimer{
       return (seconds);
     }
   }
-
 
   export {
     MakingMove,

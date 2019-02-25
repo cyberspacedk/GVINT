@@ -21,8 +21,8 @@ export function userEnter() {
 		.catch(function(error) {
 			let errorCode = error.code;
 			let errorMessage = error.message;
-			console.log(errorCode);
-			console.log(errorMessage);
+			// console.log(errorCode);
+			// console.log(errorMessage);
 		});
 }
 
@@ -133,9 +133,9 @@ export function userExit() { // виход з гри при закритті в�
 	alert('Ваш оппонент покинул игру');
 }
 
-export function redirectUser() {
-	console.log('asdfdfsdfsdfsdf');
-}
+// export function redirectUser() {
+	// console.log('asdfdfsdfsdfsdf');
+// }
 
 export function listenRoomAdd() {// слухаємо в кімнаті чи зявився новий користувач
 	firebase.database().ref(`rooms/${localStorage.getItem('roomID')}`).on('child_added', function(data) {
@@ -201,7 +201,7 @@ function findUser() {// знаходимо користувача і запус�
 		.once('value')
 		.then((snap) => snap.val())
 		.then((arr) => {
-			console.log("Find User Array")
+			// console.log("Find User Array")
 			// console.log(arr)
 			let x = arr.find((el) => el.id === JSON.parse(localStorage.getItem('userID')));
 			let y = arr.find((el) => el.id !== JSON.parse(localStorage.getItem('userID')));
@@ -254,9 +254,12 @@ function listenRoomChange() {
 			if(typeof data.val() === 'boolean') {
 				findUser()
 				 .then(users => {
-					 console.log("Objact with users", users);
-					if(users.user.myTurn === false) return;
+					//  console.log("Objact with users", users);
 					let makingMove = new MakingMove();
+					if(users.user.myTurn === false) {
+						makingMove.drawingOfUserStep();
+						return;
+					}
 					makingMove.start(users);
 					// console.log('listen room change', data.val())
 				 })

@@ -2,9 +2,9 @@ import { removeRoom } from "./server";
 
 
 import '../sass/countRoundScore.scss';
-import victoryImage0 from '../img/zero-victory.jpg';
-import victoryImage1 from '../img/one-victory.jpg';
-import victoryImage2 from '../img/two-victories.JPG';
+import victoryImage0 from '../img/zero-victory.png';
+import victoryImage1 from '../img/one-victory.png';
+import victoryImage2 from '../img/two-victories.png';
 
 
 export function coundRoundScores(user1, user2) {

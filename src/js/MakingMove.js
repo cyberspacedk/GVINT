@@ -35,6 +35,7 @@ class MakingMove{
       // this.opponentName = document.querySelector('.opponent-block__name');
       // this.userVictoryCount = document.querySelector('.battlefield__bottom .battlefield__round-score');
       // this.opponentVictoryCount = document.querySelector('.battlefield__top .battlefield__round-score');
+      this.coinSide = document.querySelector('#coin');
 
       // timer
       this.countdownTimer = new CountdownTimer(document.querySelector(".left__timer"));
@@ -82,6 +83,19 @@ class MakingMove{
 
     // this.totalUserCards.textContent = this.userObj.cardHand.length;
     this.totalOpponentCards.textContent = this.opponentObj.cardHand.length;
+
+    
+      if(this.userObj.name === "Player 1") {
+          this.coinSide.classList.remove('player2');
+          this.coinSide.classList.remove('coin-player2');
+          this.coinSide.classList.add('coin-player1'); 
+      } 
+      else {
+          this.coinSide.classList.remove('player1');
+          this.coinSide.classList.remove('coin-player1');
+          this.coinSide.classList.add('coin-player2');
+      }
+   
   }
   // 1) Клік на карту виділяє її і підсвічує ряд куди можна поставити
   handlerClickCard({target}){
@@ -168,7 +182,7 @@ class MakingMove{
     // 2,3) Відобразити результат на екрані
     this.displayResult()
     // 2,4) Зупинити таймер і передати хід 
-    this.nextTurn()
+    this.nextTurn();
   }
   // 2,1) Активуємо її властивість
   activeAbility(){
@@ -210,6 +224,21 @@ class MakingMove{
     let opponentIdx = userIdx ? 0 : 1;
     updateUserObject(this.userObj, userIdx);
     updateUserSingleProperty('myTurn', true, opponentIdx);
+
+    // flip coin 
+  
+      if(this.userObj.name === "Player 1") {
+          this.coinSide.classList.remove('player1');
+          this.coinSide.classList.remove('coin-player1');
+          this.coinSide.classList.add('coin-player2');
+
+      } else {
+          this.coinSide.classList.remove('player2');
+          this.coinSide.classList.remove('coin-player2');
+          this.coinSide.classList.add('coin-player1');
+      }
+   
+     
   }
 }
 

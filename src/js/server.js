@@ -77,7 +77,10 @@ export function createRoom(id, deck) {
 				total: 0
 			}
 		])
-		.then(() => listenRoomAdd());
+		.then(() => {
+			listenRoomAdd();
+			listenRoomClose();
+		});
 	localStorage.setItem('roomID', id);
 	localStorage.setItem('index', 0);
 }
@@ -111,7 +114,10 @@ export function joinToRoom(id, deck) { //Приєднання до кімнат�
 			return data;
 		})
 		.then((data) => firebase.database().ref(`rooms/${id}`).set(data))
-		.then(() => listenRoomAdd());
+		.then(() => {
+			listenRoomAdd();
+			listenRoomClose();
+			});
 	localStorage.setItem('roomID', id);
 	localStorage.setItem('index', 1);
 }
@@ -123,6 +129,7 @@ export function removeRoom() { // видалення кімнати
 
 export function userExit() { // виход з гри при закритті вкладки
 	removeRoom();
+	firebase.database().ref(`user/${JSON.parse(localStorage.getItem('userID'))}`).remove();
 	alert('Ваш оппонент покинул игру');
 }
 
@@ -167,6 +174,16 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 	});
 }
 
+function listenRoomClose() {
+	firebase
+		.database().ref('rooms').on('child_removed', (snap) => {
+			if(snap.key == localStorage.getItem('roomID')) {
+				alert('your opponent left the room');
+
+				//run function to redirect to start page
+			}	
+		});
+}
 
 // firebase.database().ref('decks').once('value')
 //         .then(snap => console.log(snap.val()))

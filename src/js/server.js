@@ -155,7 +155,7 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 							// console.log("User Object with ", users.user)
 							if(users.user.myTurn === false) return;
 							let makingMove = new MakingMove();
-							makingMove.start(users.user);
+							makingMove.start(users);
 						});
 					listenRoomChange();
 					// console.log("data",data)
@@ -238,9 +238,10 @@ function listenRoomChange() {
 			if(typeof data.val() === 'boolean') {
 				findUser()
 				 .then(users => {
+					 console.log("Objact with users", users);
 					if(users.user.myTurn === false) return;
 					let makingMove = new MakingMove();
-					makingMove.start(users.user);
+					makingMove.start(users);
 					// console.log('listen room change', data.val())
 				 })
 			}

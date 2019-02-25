@@ -60,7 +60,7 @@ function createMarkUp () {
                                 <div class="middle__rows rows">
                                     <div class="rows__siege" data-name="opponent-topRow" >
                                         <span class="rows__score"></span>
-                                        <div class="rows__row" id="opponent-topRow"></div>
+                                        <div class="rows__row" id="opponent-bottomRow"></div>
                                     </div>
                                     <div class="rows__range" data-name="opponent-middleRow">
                                         <span class="rows__score"></span>
@@ -68,7 +68,7 @@ function createMarkUp () {
                                     </div>
                                     <div class="rows__melee" data-name="opponent-bottomRow">
                                         <span class="rows__score"></span>
-                                        <div class="rows__row" id="opponent-bottomRow"></div>
+                                        <div class="rows__row" id="opponent-topRow"></div>
                                     </div>
                                 </div>
                             </div>

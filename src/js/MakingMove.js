@@ -7,6 +7,7 @@
 // 2,4) Зупинити таймер і передати хід 
 
 import { updateUserObject, updateUserSingleProperty } from "./server";
+import { putOnRow } from "./dealingCards";
 
 import "../sass/MakingMove.scss";
 
@@ -23,12 +24,17 @@ class MakingMove{
       this.middleRowSumDiv = document.querySelector("#player-middleRow").previousElementSibling;
       this.bottomRowSumDiv = document.querySelector("#player-bottomRow").previousElementSibling;
       this.totalDiv = document.querySelector(".battlefield__bottom .battlefield__current-score");
+      this.opponentTopRowSumDiv = document.querySelector("#opponent-topRow").previousElementSibling;
+      this.opponentMiddleRowSumDiv = document.querySelector("#opponent-middleRow").previousElementSibling;
+      this.opponentBottomRowSumDiv = document.querySelector("#opponent-bottomRow").previousElementSibling;
+      this.opponentTotalDiv = document.querySelector(".battlefield__top .battlefield__current-score");
       // timer
       this.countdownTimer = new CountdownTimer(document.querySelector(".left__timer"));
       this.nameOfSelectedCard = null;
       this.selectedCard = null;
       this.selectedCardDiv = null;
       this.userObj = null;
+      this.opponentObj = null;
       // bind
       this.start = this.start.bind(this);
       this.handlerClickCard = this.handlerClickCard.bind(this);
@@ -37,15 +43,34 @@ class MakingMove{
       this.calculateTotalNumberOfPoints = this.calculateTotalNumberOfPoints.bind(this);
       this.displayResult = this.displayResult.bind(this);
       this.nextTurn = this.nextTurn.bind(this);
+      this.drawingOfUserStep = this.drawingOfUserStep.bind(this);
   }
 
-  start(userObj){
+  start(usersObj){
     // 0) Запустити таймер при старті ходу (60 сек)
-    this.userObj = userObj;
+    console.log("users Object", usersObj);
+    this.userObj = usersObj.user;
+    this.opponentObj = usersObj.opponent;
+    this.drawingOfUserStep();
     this.countdownTimer.startCountdownTimer(60);
     this.hand.addEventListener("click", this.handlerClickCard);
   }
-
+  drawingOfUserStep(){
+    console.log("Opponent Object", this.opponentObj);
+    this.opponentTopRowSumDiv.textContent = this.opponentObj.topRowSum;
+    this.opponentMiddleRowSumDiv.textContent = this.opponentObj.middleRowSum;
+    this.opponentBottomRowSumDiv.textContent = this.opponentObj.bottomRowSum;
+    this.opponentTotalDiv.textContent = this.opponentObj.total;
+    if (this.opponentObj.topRow){
+      putOnRow(this.opponentObj.topRow, "#opponent-topRow")
+    }
+    if (this.opponentObj.middleRow){
+      putOnRow(this.opponentObj.middleRow, "#opponent-middleRow")
+    }
+    if (this.opponentObj.bottomRow){
+      putOnRow(this.opponentObj.bottomRow, "#opponent-bottomRow")
+    }
+  }
   // 1) Клік на карту виділяє її і підсвічує ряд куди можна поставити
   handlerClickCard({target}){
     // console.log("output:",this.userObj);

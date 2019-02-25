@@ -31,6 +31,17 @@ function putOnBoard(opponentFaction, arr, container) {
 			</div>`,'');
 	div.innerHTML = str;
 }
+export function putOnRow(arr, container) {
+	let reg = /[ \w-]+?(?=\.)/gi;
+	let div = document.querySelector(container);
+	let str = arr.reduce(
+		(acc, el) =>
+			acc +`
+			<div class="card_in_hands">
+			<img class="img_size" src=${cards[el.img.match(reg)[0]]}>
+			</div>`,'');
+	div.innerHTML = str;
+}
 
 function fillCardHand(userObj) {
 	let movedCard = null;

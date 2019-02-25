@@ -59,6 +59,10 @@ body {
 
     &__round-score {
         width: 4%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+        
     }
 
     &__remaining-cards {

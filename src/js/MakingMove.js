@@ -29,8 +29,8 @@ class MakingMove{
       this.opponentBottomRowSumDiv = document.querySelector("#opponent-bottomRow").previousElementSibling;
       this.opponentTotalDiv = document.querySelector(".battlefield__top .battlefield__current-score");
 
-      // this.totalUserCards = document.querySelector('.battlefield__bottom .remaining-cards__number');
-      // this.totalOpponentCards = document.querySelector('.battlefield__top .remaining-cards__number');
+      this.totalUserCards = document.querySelector('.battlefield__bottom .remaining-cards__number');
+      this.totalOpponentCards = document.querySelector('.battlefield__top .remaining-cards__number');
       // this.userName = document.querySelector('.user-block__name');
       // this.opponentName = document.querySelector('.opponent-block__name');
       // this.userVictoryCount = document.querySelector('.battlefield__bottom .battlefield__round-score');
@@ -81,7 +81,7 @@ class MakingMove{
     }
 
     // this.totalUserCards.textContent = this.userObj.cardHand.length;
-    // this.totalOpponentCards.textContent = this.opponentObj.cardHand.length;
+    this.totalOpponentCards.textContent = this.opponentObj.cardHand.length;
   }
   // 1) Клік на карту виділяє її і підсвічує ряд куди можна поставити
   handlerClickCard({target}){
@@ -187,6 +187,10 @@ class MakingMove{
     this.middleRowSumDiv.textContent = this.userObj.middleRowSum;
     this.bottomRowSumDiv.textContent = this.userObj.bottomRowSum;
     this.totalDiv.textContent = this.userObj.total;
+
+    // display count cards
+	this.totalUserCards.textContent = this.userObj.cardHand.length;
+   
   }
   // 2,4) Зупинити таймер і передати хід 
   nextTurn(){

@@ -155,12 +155,11 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 							// console.log("User Object with ", users.user)
 							if(users.user.myTurn === false) return;
 							let makingMove = new MakingMove();
-							makingMove.start(users);
+							setTimeout(()=>{
+								makingMove.start(users);
+							}, 3000);
 						});
-					listenRoomChange();
-					// console.log("data",data)
-					
-					// console.log('start');
+					listenRoomChange(); 
 				}
 			});
 		}

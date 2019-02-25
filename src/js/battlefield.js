@@ -58,15 +58,15 @@ function createMarkUp() {
               <div class="middle__opponent">
                 <div class="middle__rows rows">
                   <div class="rows__siege" data-name="opponent-topRow" >
-                    <span class="rows__score"></span>
+                    <span class="rows__score">0</span>
                     <div class="rows__row" id="opponent-bottomRow"></div>
                   </div>
                   <div class="rows__range" data-name="opponent-middleRow">
-                    <span class="rows__score"></span>
+                    <span class="rows__score">0</span>
                     <div class="rows__row" id="opponent-middleRow"></div>
                   </div>
                   <div class="rows__melee" data-name="opponent-bottomRow">
-                    <span class="rows__score"></span>
+                    <span class="rows__score">0</span>
                     <div class="rows__row" id="opponent-topRow"></div>
                   </div>
                 </div>
@@ -75,15 +75,15 @@ function createMarkUp() {
               <div class="middle__player">
                 <div class="middle__rows rows">
                   <div class="rows__melee" data-name="player-bottomRow">
-                    <span class="rows__score"></span>
+                    <span class="rows__score">0</span>
                     <div class="rows__row" id="player-topRow"></div>
                   </div>
                   <div class="rows__range" data-name="player-middleRow">
-                    <span class="rows__score"></span>
+                    <span class="rows__score">0</span>
                     <div class="rows__row" id="player-middleRow"></div>
                   </div>
                   <div class="rows__siege" data-name="player-topRow">
-                    <span class="rows__score"></span>
+                    <span class="rows__score">0</span>
                     <div class="rows__row" id="player-bottomRow"></div>
                   </div>
                 </div>

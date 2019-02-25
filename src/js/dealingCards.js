@@ -7,9 +7,9 @@ import northernReverse from '../img/Factions/faction-northern-realms.png';
 import { updateUserSingleProperty } from "./server";
 
 // victory images
-// import victoryImage0 from '../img/zero-victory.jpg';
-// import victoryImage1 from '../img/one-victory.jpg';
-// import victoryImage2 from '../img/two-victories.JPG';
+import victoryImage0 from '../img/zero-victory.jpg';
+import victoryImage1 from '../img/one-victory.jpg';
+import victoryImage2 from '../img/two-victories.JPG';
 
 
 export function dealingCards(player, opponent) {
@@ -90,7 +90,9 @@ function displayedPlayerData (user, opponent){
 	opponentName.textContent = opponent.name;
 
 	// display victory
-	// userVictoryCount.style.background = ``;
-	// opponentVictoryCount.style.background = ``;
+	let victoryImages = [victoryImage0, victoryImage1, victoryImage2]
+
+    userVictoryCount.style.backgroundImage = `url(${victoryImages[user.victoryCount]})`;
+    opponentVictoryCount.style.backgroundImage = `url(${victoryImages[opponent.victoryCount]})`; 
 
 }

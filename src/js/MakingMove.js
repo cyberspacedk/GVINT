@@ -32,11 +32,9 @@ class MakingMove{
 
       this.totalUserCards = document.querySelector('.battlefield__bottom .remaining-cards__number');
       this.totalOpponentCards = document.querySelector('.battlefield__top .remaining-cards__number');
-      // this.userName = document.querySelector('.user-block__name');
-      // this.opponentName = document.querySelector('.opponent-block__name');
-      // this.userVictoryCount = document.querySelector('.battlefield__bottom .battlefield__round-score');
-      // this.opponentVictoryCount = document.querySelector('.battlefield__top .battlefield__round-score');
+
       this.coinSide = document.querySelector('#coin');
+      this.passBtn = document.querySelector('.btn-pass');
 
       // timer
       this.countdownTimer = new CountdownTimer(document.querySelector(".left__timer"));
@@ -54,16 +52,25 @@ class MakingMove{
       this.displayResult = this.displayResult.bind(this);
       this.nextTurn = this.nextTurn.bind(this);
       this.drawingOfUserStep = this.drawingOfUserStep.bind(this);
-  }
+      this.onPass = this.onPass.bind(this);
 
-  start(usersObj){
-    // 0) Запустити таймер при старті ходу (60 сек)
-    console.log("users Object", usersObj);
-    this.userObj = usersObj.user;
-    this.opponentObj = usersObj.opponent;
-    this.drawingOfUserStep();
-    this.countdownTimer.startCountdownTimer(60);
-    this.hand.addEventListener("click", this.handlerClickCard);
+    }
+    
+    
+    start(usersObj){
+
+      
+      // 0) Запустити таймер при старті ходу (60 сек)
+      console.log("users Object", usersObj);
+      this.userObj = usersObj.user;
+      this.opponentObj = usersObj.opponent;
+      if (this.userObj.myTurn && !this.userObj.endRound) {
+        this.drawingOfUserStep();
+        this.countdownTimer.startCountdownTimer(60);
+        this.hand.addEventListener("click", this.handlerClickCard);
+        this.passBtn.addEventListener('click', this.onPass);
+      } 
+      //else showModal() & clear battlefield
   }
   drawingOfUserStep(){
     console.log("Opponent Object", this.opponentObj);
@@ -209,37 +216,47 @@ class MakingMove{
   }
   // 2,4) Зупинити таймер і передати хід 
   nextTurn(){
-    this.userObj.myTurn = false;
-    this.countdownTimer.resetTimer ();
-    this.nameOfSelectedCard = null;
-    this.selectedCard = null;
-    this.selectedCardDiv = null;
-    this.topRow.removeEventListener("click", this.handlerClickRow);
-    this.middleRow.removeEventListener("click", this.handlerClickRow);
-    this.bottomRow.removeEventListener("click", this.handlerClickRow);
-
-    // console.log(this.userObj);
-    this.hand.removeEventListener("click", this.handlerClickCard);
-
-    const userIdx = JSON.parse(localStorage.getItem('index'));
-    let opponentIdx = userIdx ? 0 : 1;
-    updateUserObject(this.userObj, userIdx);
-    updateUserSingleProperty('myTurn', true, opponentIdx);
-
-    // flip coin 
-  
+    if (!this.opponentObj.endRound) {
+      this.userObj.myTurn = false;
+      this.countdownTimer.resetTimer ();
+      this.nameOfSelectedCard = null;
+      this.selectedCard = null;
+      this.selectedCardDiv = null;
+      this.topRow.removeEventListener("click", this.handlerClickRow);
+      this.middleRow.removeEventListener("click", this.handlerClickRow);
+      this.bottomRow.removeEventListener("click", this.handlerClickRow);
+      this.passBtn.removeEventListener('click', this.onPass);
+      
+      // console.log(this.userObj);
+      this.hand.removeEventListener("click", this.handlerClickCard);
+      
+      const userIdx = JSON.parse(localStorage.getItem('index'));
+      let opponentIdx = userIdx ? 0 : 1;
+      updateUserObject(this.userObj, userIdx);
+      updateUserSingleProperty('myTurn', true, opponentIdx);
+      
+      // flip coin 
+      
       if(this.userObj.name === "Player 1") {
-          this.coinSide.classList.remove('player1');
-          this.coinSide.classList.remove('coin-player1');
-          this.coinSide.classList.add('coin-player2');
-
+        this.coinSide.classList.remove('player1');
+        this.coinSide.classList.remove('coin-player1');
+        this.coinSide.classList.add('coin-player2');
+        
       } else {
-          this.coinSide.classList.remove('player2');
-          this.coinSide.classList.remove('coin-player2');
-          this.coinSide.classList.add('coin-player1');
+        this.coinSide.classList.remove('player2');
+        this.coinSide.classList.remove('coin-player2');
+        this.coinSide.classList.add('coin-player1');
       }
-   
+      
+    }
      
+  }
+
+  // 2,5) По кліку на кнопку Pass
+  onPass() {
+    this.nextTurn();
+    this.userObj.endRound = true;
+    updateUserSingleProperty('endRound', true, JSON.parse(localStorage.getItem('index')));
   }
 }
 

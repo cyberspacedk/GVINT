@@ -19,6 +19,7 @@ import '../sass/styles.scss';
 const startBtn = document.querySelector('.accept-button');
 const deckContainer = document.querySelector('.faction-choose');
 
+
 window.addEventListener('DOMContentLoaded', () => {
     let monsters = Math.round(Math.random())===0;
 
@@ -72,8 +73,4 @@ deckContainer.addEventListener('click', chooseDeck);
 //   let makingMove = new MakingMove();
 //   makingMove.start(userObj);
 import './coinflip';
-
-
-
-
 

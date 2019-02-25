@@ -20,7 +20,7 @@ function onPass() {
         otherUser.myTurn = true;
     }    
     if (otherUser.endRound === false) {
-        makeaMove();
+        nextTurn();
         otherUser.myTurn = true;
     }
     if (user.endRound && otherUser.endRound) {

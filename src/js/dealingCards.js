@@ -7,9 +7,9 @@ import northernReverse from '../img/Factions/faction-northern-realms.png';
 import { updateUserSingleProperty } from "./server";
 
 // victory images
-import victoryImage0 from '../img/zero-victory.jpg';
-import victoryImage1 from '../img/one-victory.jpg';
-import victoryImage2 from '../img/two-victories.JPG';
+import victoryImage0 from '../img/zero-victory.png';
+import victoryImage1 from '../img/one-victory.png';
+import victoryImage2 from '../img/two-victories.png';
 
 
 export function dealingCards(player, opponent) {
@@ -27,7 +27,7 @@ export function dealingCards(player, opponent) {
 	displayedPlayerData(player, opponent);
 }
 
-function putOnBoard(opponentFaction, arr, container) {
+export function putOnBoard(opponentFaction, arr, container) {
 	let reg = /[ \w-]+?(?=\.)/gi;
 	let div = document.querySelector(container);
 	let str = arr.reduce(

@@ -7,7 +7,7 @@
 // 2,4) Зупинити таймер і передати хід 
 
 import { updateUserObject, updateUserSingleProperty } from "./server";
-import { putOnRow } from "./dealingCards";
+import { putOnRow, putOnBoard } from "./dealingCards";
 
 import "../sass/MakingMove.scss";
 
@@ -24,6 +24,7 @@ class MakingMove{
       this.middleRowSumDiv = document.querySelector("#player-middleRow").previousElementSibling;
       this.bottomRowSumDiv = document.querySelector("#player-bottomRow").previousElementSibling;
       this.totalDiv = document.querySelector(".battlefield__bottom .battlefield__current-score");
+
       this.opponentTopRowSumDiv = document.querySelector("#opponent-topRow").previousElementSibling;
       this.opponentMiddleRowSumDiv = document.querySelector("#opponent-middleRow").previousElementSibling;
       this.opponentBottomRowSumDiv = document.querySelector("#opponent-bottomRow").previousElementSibling;
@@ -80,7 +81,7 @@ class MakingMove{
     if (this.opponentObj.bottomRow){
       putOnRow(this.opponentObj.bottomRow, "#opponent-bottomRow")
     }
-
+    putOnBoard(this.opponentObj.faction, this.opponentObj.cardHand, "#opponent-hand");
     // this.totalUserCards.textContent = this.userObj.cardHand.length;
     this.totalOpponentCards.textContent = this.opponentObj.cardHand.length;
 

@@ -5,8 +5,8 @@ function drawCoin (usersObj){
     const container = document.querySelector(".left__coin")
     container.innerHTML = `
     <div id="coin">
-    <div class="side-a"></div>
-    <div class="side-b"></div>
+        <div class="side-a"></div>
+        <div class="side-b"></div>
     </div>`;
     let coin = document.querySelector("#coin");
     if(usersObj.user.myTurn) {

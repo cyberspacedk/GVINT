@@ -162,12 +162,11 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 							// console.log("User Object with ", users.user)
 							if(users.user.myTurn === false) return;
 							let makingMove = new MakingMove();
-							makingMove.start(users.user);
+							setTimeout(()=>{
+								makingMove.start(users);
+							}, 3000);
 						});
-					listenRoomChange();
-					// console.log("data",data)
-					
-					// console.log('start');
+					listenRoomChange(); 
 				}
 			});
 		}
@@ -255,9 +254,10 @@ function listenRoomChange() {
 			if(typeof data.val() === 'boolean') {
 				findUser()
 				 .then(users => {
+					 console.log("Objact with users", users);
 					if(users.user.myTurn === false) return;
 					let makingMove = new MakingMove();
-					makingMove.start(users.user);
+					makingMove.start(users);
 					// console.log('listen room change', data.val())
 				 })
 			}

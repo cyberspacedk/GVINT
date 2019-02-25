@@ -72,3 +72,15 @@ body {
     to { 
         transform: rotateY(1980deg); }
   }
+
+  // new code
+  .coin-player1 { 
+    background-image: url('../img/heads.png');
+    background-size: cover; 
+
+}
+.coin-player2 { 
+    background-image: url('../img/tails.png');
+    background-size: cover;
+    transform: rotateY(180deg); 
+}

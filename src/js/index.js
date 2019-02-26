@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		(e.target.dataset.faction === 'monsters') ? MS.play() : 	NRS.play();
 	})
  
-	faction.addEventListener('mousemove',  (e)=>{ 
+	faction.addEventListener('mouseover',  (e)=>{ 
 		if(e.target.nodeName !== 'IMG' || e.target.classList.contains('coming-soon')) return ; 
 		e.target.classList.add('mousemove'); 
 		const HOVERDECK = new Audio();
@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		e.target.classList.remove('mousemove'); 
 	}); 
 
-	startBtn.addEventListener('mousemove', ()=>{
+	startBtn.addEventListener('mouseover', ()=>{
 		const HOVERSTART = new Audio();
 		HOVERSTART.src = startgame;
 		HOVERSTART.play();

@@ -7,7 +7,6 @@ export class showMoreInfo{
         this.hand = document.querySelector('#player-hand');
         this.rightCard = document.querySelector('.right__card');
         //bind
-        // this.showCardDiscription = this.showCardDiscription.bind(this);
         this.start = this.start.bind(this);
     }
 
@@ -19,16 +18,14 @@ export class showMoreInfo{
             this.rightCard.innerHTML = '';
             if (ev.target.nodeName === 'IMG') {
                 console.log(users.user.cardHand.find(el => el.name === ev.target.dataset.name));
-                // console.log('mouse over card');
-                // const source = userObj.cardHand.find(el => el.name === ev.target.dataset.name);
                 this.rightCard.classList.add('showIn');
                 this.rightCard.classList.remove('showOut');
                 this.rightCard.innerHTML = `
                 <div>
                     <img src=${ev.target.src} alt="" class="right__card_image">
                     <div class='right__card_anotation'>
-                        <h2>${users.user.cardHand.find(el => el.name === ev.target.dataset.name).name}</h2>
-                        <h3>${users.user.cardHand.find(el => el.name === ev.target.dataset.name).type}</h3>
+                        <h3>${users.user.cardHand.find(el => el.name === ev.target.dataset.name).name}</h3>
+                        <h4>${users.user.cardHand.find(el => el.name === ev.target.dataset.name).type}</h4>
                     </div>
                     <div class='right__card_anotation'>
                         <p>${users.user.cardHand.find(el => el.name === ev.target.dataset.name).ability}</p>

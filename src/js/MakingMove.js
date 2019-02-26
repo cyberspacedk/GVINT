@@ -65,14 +65,16 @@ class MakingMove{
 
       if (this.userObj.endRound && this.opponentObj.endRound) {
         // showModal() & clear battlefield
-
+        updateUserSingleProperty('myTurn', false, 0);
+        updateUserSingleProperty('myTurn', false, 1);
         coundRoundScores(this.userObj, this.opponentObj);
         return;
       }
       
       if(this.userObj.myTurn === false) return;
       
-
+      console.log('this.opponentObj in start', this.opponentObj);
+      
       this.drawingOfOpponentStep();
 
       if (this.userObj.endRound) {
@@ -247,6 +249,7 @@ class MakingMove{
 
   // 2,5) По кліку на кнопку Pass
   handlerOnPassBtn() {
+    // if (!this.userObj.endRound && !this.opponentObj.endRound) {};
     this.nextTurn();
     this.userObj.endRound = true;
     updateUserSingleProperty('endRound', true, JSON.parse(localStorage.getItem('index')));

@@ -258,6 +258,8 @@ function listenRoomChange() {
 					let makingMove = new MakingMove();
 					makingMove.start(users);
 					// console.log(data.val());
+					console.log('!!!!!!!!!!!!  start 2nd round !!!!!!!!!!!!!!!');
+					
 				 })
 			}
 		})

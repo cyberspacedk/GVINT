@@ -1,4 +1,5 @@
 import { removeRoom, updateUserSingleProperty } from "./server";
+import clearBattlefield from "./clear_battlefield";
 
 import '../sass/countRoundScore.scss';
 import victoryImage0 from '../img/zero-victory.png';
@@ -93,7 +94,20 @@ function showRoundEndModal(user1, user2, victor, isDraw) {
         user2VictoryCount.style.backgroundImage = `url(${victoryImages[user2.victoryCount]})`;
     }
 
-    setTimeout(() => roundEndModal.remove(), 5000);
+    setTimeout(() => {
+        roundEndModal.remove();
+        const userId = JSON.parse(localStorage.getItem('userID')) === victor.id;
+        let victorIdx = userId ? JSON.parse(localStorage.getItem('index')) : JSON.parse(localStorage.getItem('index')) === 0 ? 1 : 0;
+        // let opponentIdx = victorIdx === 0 ? 1 : 0;
+        if (victorIdx === JSON.parse(localStorage.getItem('index'))) {
+            clearBattlefield(user1)
+                .then(() => {
+                    updateUserSingleProperty('myTurn', true, victorIdx);
+                    // updateUserSingleProperty('myTurn', false, opponentIdx);
+                })
+        };
+        
+    }, 10000);
 }
 
 function showWinner(user1, user2) {

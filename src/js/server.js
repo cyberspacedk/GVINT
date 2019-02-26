@@ -2,7 +2,8 @@ import firebase from './firebase';
 import { renderBattlefield, body } from './battlefield';
 import { dealingCards } from './dealingCards';
 import { drawCoin } from './coinflip';
-import {MakingMove} from "./MakingMove";
+import { MakingMove } from "./MakingMove";
+import { showMoreInfo } from './cardHoverDiscription';
 
 
 // Первая функция которая запускается выполняет вход пользователя.
@@ -146,24 +147,26 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 			.once('value')
 			.then((snap) => snap.val())
 			.then((data) => {
-				if (data.length === 2) {
-					renderBattlefield(body);
+				if (data.length === 2) {								// if to room coming second player... 
+					renderBattlefield(body);							// ...rewrite body content...
 					findUser()
 						.then((result) => {
 							console.log('listen room add log!!!!');
-							dealingCards(result.user, result.opponent);
+							dealingCards(result.user, result.opponent);	// ...calling dealingCards function...
 							return result;
 						})
 						.then(users => {
-							drawCoin(users);
+							drawCoin(users);							// ...draw the Coin...
 							return users;
 						})
 						.then(users=> {
 							// console.log("User Object with ", users.user)
 							if(users.user.myTurn === false) return;
 							let makingMove = new MakingMove();
+							let cardMouseOver = new showMoreInfo();
 							setTimeout(()=>{
 								makingMove.start(users);
+								cardMouseOver.start(users);
 							}, 3000);
 						});
 					listenRoomChange(); 

@@ -9,6 +9,8 @@
 import { updateUserObject, updateUserSingleProperty } from "./server";
 import { putOnRow, putOnBoard } from "./dealingCards";
 import {moveCardInGraveyard} from "./reset_card";
+import { coundRoundScores } from "./countRoundScore";
+
 import "../sass/MakingMove.scss";
 
 // main controller
@@ -53,7 +55,6 @@ class MakingMove{
       this.nextTurn = this.nextTurn.bind(this);
       this.drawingOfOpponentStep = this.drawingOfOpponentStep.bind(this);
       this.handlerOnPassBtn = this.handlerOnPassBtn.bind(this);
-
     }
     
     
@@ -64,12 +65,13 @@ class MakingMove{
 
       if (this.userObj.endRound && this.opponentObj.endRound) {
         // showModal() & clear battlefield
-        alert("Modal Window with result of the round");
-        this.nextTurn();
+
+        coundRoundScores(this.userObj, this.opponentObj);
         return;
       }
-
+      
       if(this.userObj.myTurn === false) return;
+      
 
       this.drawingOfOpponentStep();
 
@@ -84,7 +86,6 @@ class MakingMove{
   }
 
   drawingOfOpponentStep(){
-    console.log("Opponent Object", this.opponentObj);
     this.opponentTopRowSumDiv.textContent = this.opponentObj.topRowSum;
     this.opponentMiddleRowSumDiv.textContent = this.opponentObj.middleRowSum;
     this.opponentBottomRowSumDiv.textContent = this.opponentObj.bottomRowSum;
@@ -136,17 +137,10 @@ class MakingMove{
     this.selectedCardDiv = target;
     this.selectedCardDiv.classList.add("active-card"); 
     this.nameOfSelectedCard = target.getAttribute("data-name");
-    // console.log("target",target);
-    // console.log("target.getAttribute('data-name')",target.getAttribute("data-name"));
-    // this.selectedCard = this.userObj.cardHand.find(el=>el.name==this.nameOfSelectedCard);
     this.selectedCard = this.userObj.cardHand.find(el=>{
-      // console.log("el.name",el.name);
-      // console.log("this.nameOfSelectedCard",this.nameOfSelectedCard);
-      // console.log("el.name==this.nameOfSelectedCard",el.name==this.nameOfSelectedCard);
       return el.name==this.nameOfSelectedCard;
     });
     // this.topRow.classList.remove("active-row");
-    // console.log("this.CardHand", this.userObj.cardHand)
     if (this.selectedCard.positions.includes("Melee")){
       this.topRow.addEventListener("click", this.handlerClickRow);
       this.topRow.classList.add("active-row");
@@ -165,7 +159,6 @@ class MakingMove{
   }
   // 2) Клік на ряд і ставить карту в ряд якщо вона виділена і можна її туди ставити запускається її аудіо файл
   handlerClickRow({target}){
-    // console.log("Target_ID", target);
     if(!target.classList.contains("rows__row")) return;
     this.userObj.topRow = this.userObj.topRow ? this.userObj.topRow :  [];
     this.userObj.middleRow = this.userObj.middleRow ? this.userObj.middleRow : [];
@@ -231,13 +224,14 @@ class MakingMove{
     this.topRow.removeEventListener("click", this.handlerClickRow);
     this.middleRow.removeEventListener("click", this.handlerClickRow);
     this.bottomRow.removeEventListener("click", this.handlerClickRow);
-    this.passBtn.removeEventListener('click', this.onPass);
+    this.passBtn.removeEventListener('click', this.handlerOnPassBtn);
     this.hand.removeEventListener("click", this.handlerClickCard);
     
     const userIdx = JSON.parse(localStorage.getItem('index'));
     let opponentIdx = userIdx ? 0 : 1;
-    updateUserObject(this.userObj, userIdx);
-    updateUserSingleProperty('myTurn', true, opponentIdx);
+    updateUserObject(this.userObj, userIdx)
+      .then(() => updateUserSingleProperty('myTurn', true, opponentIdx));
+    
     
     // flip coin 
     if(this.userObj.name === "Player 1") {

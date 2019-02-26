@@ -230,7 +230,7 @@ export function updateUserSingleProperty (property, value, index) {// зипис
 }
 
 export function updateUserObject(obj, index) {
-	firebase
+	return firebase
 	.database()
 	.ref(`rooms/${localStorage.getItem('roomID')}`)
 	.once('value')
@@ -251,17 +251,13 @@ function listenRoomChange() {
 		.database()
 		.ref(`rooms/${localStorage.getItem('roomID')}/${JSON.parse(localStorage.getItem('index'))}`)
 		.on('child_changed', (data) => {
-			if(typeof data.val() === 'boolean') {
+			// console.log(data);
+			if(data.key === 'myTurn') {
 				findUser()
 				 .then(users => {
-					//  console.log("Objact with users", users);
 					let makingMove = new MakingMove();
-					// if(users.user.myTurn === false) {
-					// 	// makingMove.pass(users);
-					// 	return;
-					// }
 					makingMove.start(users);
-					// console.log('listen room change', data.val())
+					// console.log(data.val());
 				 })
 			}
 		})

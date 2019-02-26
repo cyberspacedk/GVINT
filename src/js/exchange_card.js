@@ -1,4 +1,5 @@
 import '../sass/exchange_card.scss';
+import { cards } from '.cards';
 
 export function changeCardAfterRaund (obj){
     const body = document.querySelector('body');
@@ -8,7 +9,7 @@ export function changeCardAfterRaund (obj){
     const exchange_card__subtitle = document.querySelector(".exchange-card__subtitle");
     const exchange_card__imgOndivInfo = document.querySelector('.exchange-card__imgOndivInfo');
     const btnShutDown = document.querySelector('.exchange-card__btnShutDown');
-    const exchange_card__btnConfirm = document.querySelector(".exchange-card__btnConfirm")
+    const exchange_card__btnConfirm = document.querySelector(".exchange-card__btnConfirm");
 
 
     function threeRandomCardAfterRaund(obj) {

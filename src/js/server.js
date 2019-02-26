@@ -256,10 +256,10 @@ function listenRoomChange() {
 				 .then(users => {
 					//  console.log("Objact with users", users);
 					let makingMove = new MakingMove();
-					if(users.user.myTurn === false) {
-						makingMove.drawingOfUserStep();
-						return;
-					}
+					// if(users.user.myTurn === false) {
+					// 	// makingMove.pass(users);
+					// 	return;
+					// }
 					makingMove.start(users);
 					// console.log('listen room change', data.val())
 				 })

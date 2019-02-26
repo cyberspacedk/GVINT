@@ -51,33 +51,39 @@ class MakingMove{
       this.calculateTotalNumberOfPoints = this.calculateTotalNumberOfPoints.bind(this);
       this.displayResult = this.displayResult.bind(this);
       this.nextTurn = this.nextTurn.bind(this);
-      this.drawingOfUserStep = this.drawingOfUserStep.bind(this);
-      this.onPass = this.onPass.bind(this);
+      this.drawingOfOpponentStep = this.drawingOfOpponentStep.bind(this);
+      this.handlerOnPassBtn = this.handlerOnPassBtn.bind(this);
 
     }
     
     
-    start(usersObj){
-
-      
+    start(usersObj){ 
       // 0) Запустити таймер при старті ходу (60 сек)
-      // console.log("users Object", usersObj);
       this.userObj = usersObj.user;
       this.opponentObj = usersObj.opponent;
-      if (this.userObj.myTurn && !this.userObj.endRound) {
-        this.drawingOfUserStep();
-        this.countdownTimer.startCountdownTimer(60);
-        this.hand.addEventListener("click", this.handlerClickCard);
-        this.passBtn.addEventListener('click', this.onPass);
-        
-      } 
-      // !!! else showModal() & clear battlefield
-      
+
+      if (this.userObj.endRound && this.opponentObj.endRound) {
+        // showModal() & clear battlefield
+        alert("Modal Window with result of the round");
+        this.nextTurn();
+        return;
+      }
+
+      if(this.userObj.myTurn === false) return;
+
+      this.drawingOfOpponentStep();
+
+      if (this.userObj.endRound) {
+        this.nextTurn();
+        return;
+      }
+
+      this.countdownTimer.startCountdownTimer(60);
+      this.hand.addEventListener("click", this.handlerClickCard);
+      this.passBtn.addEventListener('click', this.handlerOnPassBtn);
   }
 
-  // !!! додати метод - аналог start для опонента, щоб в опонента відмальовувалися ходи юзера
-
-  drawingOfUserStep(){
+  drawingOfOpponentStep(){
     console.log("Opponent Object", this.opponentObj);
     this.opponentTopRowSumDiv.textContent = this.opponentObj.topRowSum;
     this.opponentMiddleRowSumDiv.textContent = this.opponentObj.middleRowSum;
@@ -94,7 +100,7 @@ class MakingMove{
       putOnRow(this.opponentObj.bottomRow, "#opponent-bottomRow")
     }
     putOnBoard(this.opponentObj.faction, this.opponentObj.cardHand, "#opponent-hand");
-    // this.totalUserCards.textContent = this.userObj.cardHand.length;
+
     this.totalOpponentCards.textContent = this.opponentObj.cardHand.length;
 
     
@@ -112,7 +118,6 @@ class MakingMove{
   }
   // 1) Клік на карту виділяє її і підсвічує ряд куди можна поставити
   handlerClickCard({target}){
-    // console.log("output:",this.userObj);
     if(target.nodeName !== "IMG") {
       return;
     }
@@ -140,18 +145,18 @@ class MakingMove{
       // console.log("el.name==this.nameOfSelectedCard",el.name==this.nameOfSelectedCard);
       return el.name==this.nameOfSelectedCard;
     });
-    this.topRow.classList.remove("active-row");
+    // this.topRow.classList.remove("active-row");
     // console.log("this.CardHand", this.userObj.cardHand)
     if (this.selectedCard.positions.includes("Melee")){
       this.topRow.addEventListener("click", this.handlerClickRow);
       this.topRow.classList.add("active-row");
     }
-    this.middleRow.classList.remove("active-row");
+    // this.middleRow.classList.remove("active-row");
     if (this.selectedCard.positions.includes("Ranged")){
       this.middleRow.addEventListener("click", this.handlerClickRow);
       this.middleRow.classList.add("active-row");
     }
-    this.bottomRow.classList.remove("active-row");
+    // this.bottomRow.classList.remove("active-row");
     if (this.selectedCard.positions.includes("Siege")){
       this.bottomRow.addEventListener("click", this.handlerClickRow);
       this.bottomRow.classList.add("active-row");
@@ -214,59 +219,40 @@ class MakingMove{
     this.middleRowSumDiv.textContent = this.userObj.middleRowSum;
     this.bottomRowSumDiv.textContent = this.userObj.bottomRowSum;
     this.totalDiv.textContent = this.userObj.total;
-
-    // display count cards
-	this.totalUserCards.textContent = this.userObj.cardHand.length;
-   
+    this.totalUserCards.textContent = this.userObj.cardHand.length; // display count cards
   }
   // 2,4) Зупинити таймер і передати хід 
   nextTurn(){
+    this.userObj.myTurn = false;
+    this.countdownTimer.resetTimer ();
+    this.nameOfSelectedCard = null;
+    this.selectedCard = null;
+    this.selectedCardDiv = null;
+    this.topRow.removeEventListener("click", this.handlerClickRow);
+    this.middleRow.removeEventListener("click", this.handlerClickRow);
+    this.bottomRow.removeEventListener("click", this.handlerClickRow);
+    this.passBtn.removeEventListener('click', this.onPass);
+    this.hand.removeEventListener("click", this.handlerClickCard);
+    
     const userIdx = JSON.parse(localStorage.getItem('index'));
-
-    if (this.opponentObj.endRound) {
-      console.log('this.opponentObj', this.opponentObj);
-      // console.log('this.userObj', this.userObj);
-      updateUserSingleProperty('myTurn', false, userIdx);
-      updateUserSingleProperty('myTurn', true, userIdx);
-      this.drawingOfUserStep();
-
-      // this.userObj.myTurn = true;
+    let opponentIdx = userIdx ? 0 : 1;
+    updateUserObject(this.userObj, userIdx);
+    updateUserSingleProperty('myTurn', true, opponentIdx);
+    
+    // flip coin 
+    if(this.userObj.name === "Player 1") {
+      this.coinSide.classList.remove('player1');
+      this.coinSide.classList.remove('coin-player1');
+      this.coinSide.classList.add('coin-player2');
     } else {
-      this.userObj.myTurn = false;
-    };
-      this.countdownTimer.resetTimer ();
-      this.nameOfSelectedCard = null;
-      this.selectedCard = null;
-      this.selectedCardDiv = null;
-      this.topRow.removeEventListener("click", this.handlerClickRow);
-      this.middleRow.removeEventListener("click", this.handlerClickRow);
-      this.bottomRow.removeEventListener("click", this.handlerClickRow);
-      this.passBtn.removeEventListener('click', this.onPass);
-      
-      // console.log(this.userObj);
-      this.hand.removeEventListener("click", this.handlerClickCard);
-      
-      let opponentIdx = userIdx ? 0 : 1;
-      updateUserObject(this.userObj, userIdx);
-      updateUserSingleProperty('myTurn', true, opponentIdx);
-      
-      // flip coin 
-      
-      if(this.userObj.name === "Player 1") {
-        this.coinSide.classList.remove('player1');
-        this.coinSide.classList.remove('coin-player1');
-        this.coinSide.classList.add('coin-player2');
-        
-      } else {
-        this.coinSide.classList.remove('player2');
-        this.coinSide.classList.remove('coin-player2');
-        this.coinSide.classList.add('coin-player1');
-      }
-     
+      this.coinSide.classList.remove('player2');
+      this.coinSide.classList.remove('coin-player2');
+      this.coinSide.classList.add('coin-player1');
+    }
   }
 
   // 2,5) По кліку на кнопку Pass
-  onPass() {
+  handlerOnPassBtn() {
     this.nextTurn();
     this.userObj.endRound = true;
     updateUserSingleProperty('endRound', true, JSON.parse(localStorage.getItem('index')));

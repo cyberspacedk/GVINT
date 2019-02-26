@@ -13,9 +13,22 @@ main {
     width: 60vw;
     height: 60vh;
 }
-.rightBar {
+.right__card {
     width: 20vw;
 }
+.right__card img{
+    width: 100%;
+}
+.anotationBGI{
+    background-image: ;
+    background-size: contain;
+}
+.right__card h3{}
+.right__card p::before{
+
+}
+.right__card p{}
+
 footer {
     width: 100vw;
     height: 20vh;
@@ -24,3 +37,4 @@ footer {
 .hand {
     display: flex;
 }
+

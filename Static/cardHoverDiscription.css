@@ -1,0 +1,69 @@
+*{margin: 0;padding: 0;box-sizing: border-box; outline: 1px solid green;}
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+header, footer {
+    width: 100vw;
+    height: 12vh;
+}
+.leftBar {
+    width: 20vw;
+}
+main {
+    width: 58vw;
+    height: 75vh;
+}
+.middle__right {
+    width: 20vw;
+    padding: 25px 10px;
+}
+
+.right__card{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 290px;
+    transform: rotateY(90deg);
+    transition: 1s;
+}
+.bigImage{
+    width: 128%;
+    left: -63px;
+    top: -75px;
+    position: absolute;
+}
+
+
+.right__card h3{}
+.right__card p::before{
+
+}
+.right__card p{}
+
+.anotationBGI p,
+.anotationBGI h2,
+.anotationBGI h3 {
+    color: rgb(214, 210, 210);
+    /* background-image: url('./img/anotationBGI.png'); */
+    /* background-size: cover; */
+    background-color: #000;
+    padding-left: 15px;
+    /* margin-top: 15px; */
+}
+.anotationBGI p::before {
+    content: '';
+    background-image: url(./img/borderLeft.png);
+    background-size: contain;
+}
+.hand {
+    display: flex;
+    justify-content: center;
+}
+
+.moveLeft {
+    transform: rotateY(0deg);
+    transition: 1s;
+}
+

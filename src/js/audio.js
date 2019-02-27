@@ -17,30 +17,29 @@ import THALER from '../img/NorthernRealms/THALER.mp3';
 import TROLLOLOLO from '../img/NorthernRealms/TROLLOLOLO.mp3';
 
 // MONSTERS
-import DRAUG from '../img/Monster/DRAUG.png';
-import ARACHAS_BEHEMOTH from '../img/Monster/ARACHAS_BEHEMOTH.png';
-import ARACHAS_DRONE from '../img/Monster/ARACHAS_DRONE.png';
-import ARACHAS_QUEEN from '../img/Monster/ARACHAS_QUEEN.png';
-import CELAENO_HARPY from '../img/Monster/CELAENO_HARPY.png';
-import FORKTAIL from '../img/Monster/FORKTAIL.png';
-import FRIGHTENER from '../img/Monster/FRIGHTENER.png';
-import MONSTER_NEST from '../img/Monster/MONSTER_NEST.png';
-import MORVUDD from '../img/Monster/MORVUDD.png';
-import OZZREL from '../img/Monster/OZZREL.png';
-import RUEHIN from '../img/Monster/RUEHIN.png';
-import SLYZARD from '../img/Monster/SLYZARD.png';
-import TRISS_BUTTERFLIES from '../img/Monster/TRISS_BUTTERFLIES.png';
-import YENNEFER from '../img/Monster/YENNEFER.png';
-
+import DRAUG from '../img/Monster/DRAUG.mp3';
+import ARACHAS_BEHEMOTH from '../img/Monster/ARACHAS_BEHEMOTH.mp3';
+import ARACHAS_DRONE from '../img/Monster/ARACHAS_DRONE.mp3';
+import ARACHAS_QUEEN from '../img/Monster/ARACHAS_QUEEN.mp3';
+import CELAENO_HARPY from '../img/Monster/CELAENO_HARPY.mp3';
+import FORKTAIL from '../img/Monster/FORKTAIL.mp3';
+import FRIGHTENER from '../img/Monster/FRIGHTENER.mp3';
+import MONSTER_NEST from '../img/Monster/MONSTER_NEST.mp3';
+import MORVUDD from '../img/Monster/MORVUDD.mp3';
+import OZZREL from '../img/Monster/OZZREL.mp3';
+import RUEHIN from '../img/Monster/RUEHIN.mp3';
+import SLYZARD from '../img/Monster/SLYZARD.mp3';
+import TRISS_BUTTERFLIES from '../img/Monster/TRISS_BUTTERFLIES.mp3';
+import YENNEFER from '../img/Monster/YENNEFER.mp3';
 
 // NEUTRAL
-import ALZURS_DOUBLE_CROSS from '../img/Neutral/ALZURS_DOUBLE_CROSS.png';
-import FIRST_LIGHT from '../img/Neutral/FIRST_LIGHT.png';
-import MARCHING_ORDERS from '../img/Neutral/MARCHING_ORDERS.png';
-import ROYAL_DECREE from '../img/Neutral/ROYAL_DECREE.png';
-import THUNDERBOLT from '../img/Neutral/THUNDERBOLT.png';
+import ALZURS_DOUBLE_CROSS from '../img/Neutral/ALZURS_DOUBLE_CROSS.mp3';
+import FIRST_LIGHT from '../img/Neutral/FIRST_LIGHT.mp3';
+import MARCHING_ORDERS from '../img/Neutral/MARCHING_ORDERS.mp3';
+import ROYAL_DECREE from '../img/Neutral/ROYAL_DECREE.mp3';
+import THUNDERBOLT from '../img/Neutral/THUNDERBOLT.mp3';
 
-export let cards = {
+export let audio = {
 	GERALT_IGNI: GERALT_IGNI,
 	DETHMOLD: DETHMOLD,
 	KAEDWENI_CAVALRY: KAEDWENI_CAVALRY,
@@ -72,10 +71,10 @@ export let cards = {
 	SLYZARD: SLYZARD,
 	TRISS_BUTTERFLIES: TRISS_BUTTERFLIES,
 	YENNEFER: YENNEFER,
+	// NEUTRAL
 	ALZURS_DOUBLE_CROSS: ALZURS_DOUBLE_CROSS,
 	FIRST_LIGHT: FIRST_LIGHT,
 	MARCHING_ORDERS: MARCHING_ORDERS,
 	ROYAL_DECREE: ROYAL_DECREE,
 	THUNDERBOLT: THUNDERBOLT,
 };
-

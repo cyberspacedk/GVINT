@@ -1,15 +1,19 @@
 .card_in_hands{
-    width:  9%;
+    width:  10%;
     height: 100%;
 }
 
 .img_size{
     display: block;
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
     margin: auto;
 }
 
 #opponent-hand .card_in_hands {
-    width: 9%;
+    width: 10%;
+}
+
+#player-hand .img_size {
+    cursor: pointer;
 }

@@ -19,7 +19,7 @@ function createMarkUp() {
               <p class="opponent-block__system"></p>
           </div>
         </div>
-        <div class="battlefield__current-score"></div>
+        <div class="battlefield__current-score">0</div>
         <div class="battlefield__round-score"></div>
         <div class="battlefield__remaining-cards remaining-cards">
           <div class="remaining-cards__image"></div>                
@@ -106,7 +106,7 @@ function createMarkUp() {
             <p class="player-block__system"></p>
           </div>
         </div>
-        <div class="battlefield__current-score"></div>
+        <div class="battlefield__current-score">0</div>
         <div class="battlefield__round-score"></div>
         <div class="battlefield__remaining-cards remaining-cards">
           <div class="remaining-cards__image"></div>

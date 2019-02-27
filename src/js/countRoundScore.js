@@ -108,17 +108,16 @@ function showRoundEndModal(user1, user2, victor, isDraw) {
                 })
         // };
         
-    }, 10000);
+    }, 5000);
 }
 
 function showWinner(user1, user2) {
     drawGameOverModal(user1, user2);
 
-    setTimeout(() => transferToMainPage, 5000);
+    setTimeout(() => transferToMainPage(), 10000);
 }
 
 function transferToMainPage() {
-    removeRoom();
     const body = document.querySelector('body');
 
     body.innerHTML = `
@@ -166,7 +165,9 @@ function transferToMainPage() {
                 <button class="accept-button"><span class="action">A</span> ПРИНЯТЬ</button>
             </footer>
         </div>
-    `
+    `;
+
+    removeRoom();
 }
 
 export function drawGameOverModal(user1, user2) {

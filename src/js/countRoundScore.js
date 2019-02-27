@@ -98,14 +98,14 @@ function showRoundEndModal(user1, user2, victor, isDraw) {
         roundEndModal.remove();
         const userId = JSON.parse(localStorage.getItem('userID')) === victor.id;
         let victorIdx = userId ? JSON.parse(localStorage.getItem('index')) : JSON.parse(localStorage.getItem('index')) === 0 ? 1 : 0;
-        // let opponentIdx = victorIdx === 0 ? 1 : 0;
-        if (victorIdx === JSON.parse(localStorage.getItem('index'))) {
-            clearBattlefield(user1)
+        let opponentIdx = victorIdx === 0 ? 1 : 0;
+        // if (victorIdx === JSON.parse(localStorage.getItem('index'))) {
+            clearBattlefield(victor, victorIdx, opponentIdx, user1, user2)
                 .then(() => {
                     updateUserSingleProperty('myTurn', true, victorIdx);
                     // updateUserSingleProperty('myTurn', false, opponentIdx);
                 })
-        };
+        // };
         
     }, 10000);
 }

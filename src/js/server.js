@@ -33,15 +33,21 @@ export function play() {//
 			readDeck().then((data) => createRoom(JSON.parse(localStorage.getItem('userID')), data));
 			return;
 		}
+		let count = 0;
 		let keys = Object.keys(rooms);
-		for (let room of keys) {
-			if (rooms[room].length < 2) {
+		for (let room of keys){
+			if (rooms[room].length < 2){
 				readDeck().then((data) => joinToRoom(room, data));
 				console.log('join');
 				break;
 			} else {
+				count++;
+				if(count < keys.length){
+					continue
+				} else {
 				readDeck().then((data) => createRoom(JSON.parse(localStorage.getItem('userID')), data));
 				console.log('create');
+				}
 			}
 		}
 	});
@@ -85,7 +91,7 @@ export function createRoom(id, deck) {
 	localStorage.setItem('index', 0);
 }
 
-export function joinToRoom(id, deck) { //Приєднання до кімнати нового користувача
+export function joinToRoom(id, deck) { //Приєднання до існуючої кімнати нового користувача
 	firebase
 		.database()
 		.ref(`rooms/${id}`)
@@ -139,6 +145,7 @@ export function userExit() { // виход з гри при закритті в�
 
 export function listenRoomAdd() {// слухаємо в кімнаті чи зявився новий користувач
 	firebase.database().ref(`rooms/${localStorage.getItem('roomID')}`).on('child_added', function(data) {
+		console.log("data",data);
 		if(data.key === "1"){
 			firebase
 			.database()

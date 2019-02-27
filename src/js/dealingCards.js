@@ -30,6 +30,7 @@ export function dealingCards(player, opponent) {
 export function putOnBoard(opponentFaction, arr, container) {
 	let reg = /[ \w-]+?(?=\.)/gi;
 	let div = document.querySelector(container);
+	arr = arr? arr : [];
 	let str = arr.reduce(
 		(acc, el) =>
 			acc +`

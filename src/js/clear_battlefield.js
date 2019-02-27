@@ -10,7 +10,7 @@ import { putOnRow } from "./dealingCards";
 // 1) прописати умову запуску функції (наприклад, функція запускається після того, як відобразилося модальне вікно з результатами раунду)
 // 2) при виклику передати аргументами 2 об'єкти - користувач 1 та користувач 2
 
-function clearBattlefield (userA) {
+function clearBattlefield (victor, victorIdx, opponentIdx, userA, userB) {
     console.log('clearBattlefield works!');
     
     userA.graveyard = userA.graveyard ? userA.graveyard : [];
@@ -28,32 +28,33 @@ function clearBattlefield (userA) {
     userA.middleRowSum = 0;
     userA.bottomRowSum = 0;
 
-    // userB.graveyard = userB.graveyard ? userB.graveyard : [];
-    // userB.topRow = userB.topRow ? userB.topRow : [];
-    // userB.middleRow = userB.middleRow ? userB.middleRow : [];
-    // userB.bottomRow = userB.bottomRow ? userB.bottomRow : [];
+    userB.graveyard = userB.graveyard ? userB.graveyard : [];
+    userB.topRow = userB.topRow ? userB.topRow : [];
+    userB.middleRow = userB.middleRow ? userB.middleRow : [];
+    userB.bottomRow = userB.bottomRow ? userB.bottomRow : [];
 
-    // userB.graveyard = [...userB.graveyard, ...userB.topRow, ...userB.middleRow, ...userB.bottomRow];
-    // userB.topRow = [];
-    // userB.middleRow = [];
-    // userB.bottomRow = [];
+    userB.graveyard = [...userB.graveyard, ...userB.topRow, ...userB.middleRow, ...userB.bottomRow];
+    userB.topRow = [];
+    userB.middleRow = [];
+    userB.bottomRow = [];
     
-    // userB.total = 0;
-    // userB.topRowSum = 0;
-    // userB.middleRowSum = 0;
-    // userB.bottomRowSum = 0;
+    userB.total = 0;
+    userB.topRowSum = 0;
+    userB.middleRowSum = 0;
+    userB.bottomRowSum = 0;
 
     
     userA.endRound = false; 
-    // userB.endRound = false;    
+    userB.endRound = false;    
 
-    // const notVictor = victor.id === userA.id ? userB : userA;
+    const notVictor = victor.id === userA.id ? userB : userA;
 
     // return updateUserObject(victor, victorIdx).then(()=>updateUserObject(notVictor, opponentIdx));
 
     clearFrontEnd();
 
-    return updateUserObject(userA, JSON.parse(localStorage.getItem('index')));
+    // return updateUserObject(userA, JSON.parse(localStorage.getItem('index')));
+    return Promise.all([updateUserObject(victor, victorIdx), updateUserObject(notVictor, opponentIdx)])
 };
 
 function clearFrontEnd () {

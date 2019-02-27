@@ -103,8 +103,7 @@ class MakingMove{
       putOnRow(this.opponentObj.bottomRow, "#opponent-bottomRow")
     }
     putOnBoard(this.opponentObj.faction, this.opponentObj.cardHand, "#opponent-hand");
-
-    this.totalOpponentCards.textContent = this.opponentObj.cardHand.length;
+   this.totalOpponentCards.textContent =  this.opponentObj.cardHand ? this.opponentObj.cardHand.length : 0;
 
     
       if(this.userObj.name === "Player 1") {
@@ -195,7 +194,8 @@ class MakingMove{
     // 2,3) Відобразити результат на екрані
     this.displayResult()
     // 2,4) Зупинити таймер і передати хід 
-    this.nextTurn();
+    console.log("cardHand before last pass", this.userObj.cardHand , !this.userObj.cardHand.length);
+    !this.userObj.cardHand.length? this.handlerOnPassBtn() : this.nextTurn();
   }
   // 2,1) Активуємо її властивість
   activeAbility(){
@@ -250,9 +250,10 @@ class MakingMove{
   // 2,5) По кліку на кнопку Pass
   handlerOnPassBtn() {
     // if (!this.userObj.endRound && !this.opponentObj.endRound) {};
-    this.nextTurn();
+    console.log("Last Pass")
     this.userObj.endRound = true;
     updateUserSingleProperty('endRound', true, JSON.parse(localStorage.getItem('index')));
+    this.nextTurn();
   }
 }
 

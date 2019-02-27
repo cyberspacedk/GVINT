@@ -26,9 +26,9 @@ window.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('faction', `${monsters ? `"monsters"` : `"nothernRealms"`}`);
 	userEnter();
 	// background sound
-	const MTHEME = new Audio();
-	MTHEME.src= maintheme;
-	MTHEME.play();
+	new Audio(maintheme).play();
+	// MTHEME.src= maintheme;
+	// MTHEME.play();
 	
  
 	const faction = document.querySelector('.faction-choose'); 

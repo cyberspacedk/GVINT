@@ -33,17 +33,22 @@ export function play() {//
 			console.log('create first room');
 			readDeck().then((data) => createRoom(JSON.parse(localStorage.getItem('userID')), data));
 			return;
-		}			
+		}
+		let count = 0;
 		let keys = Object.keys(rooms);
-		for (let room of keys) {
-			if (rooms[room].length < 2) {
+		for (let room of keys){
+			if (rooms[room].length < 2){
 				readDeck().then((data) => joinToRoom(room, data));
 				console.log('join');
 				break;
 			} else {
-				console.log('create another room')
+				count++;
+				if(count < keys.length){
+					continue
+				} else {
 				readDeck().then((data) => createRoom(JSON.parse(localStorage.getItem('userID')), data));
 				console.log('create');
+				}
 			}
 		}
 	});
@@ -87,7 +92,7 @@ export function createRoom(id, deck) {
 	localStorage.setItem('index', 0);
 }
 
-export function joinToRoom(id, deck) { //Приєднання до кімнати нового користувача
+export function joinToRoom(id, deck) { //Приєднання до існуючої кімнати нового користувача
 	firebase
 		.database()
 		.ref(`rooms/${id}`)
@@ -141,6 +146,7 @@ export function userExit() { // виход з гри при закритті в�
 
 export function listenRoomAdd() {// слухаємо в кімнаті чи зявився новий користувач
 	firebase.database().ref(`rooms/${localStorage.getItem('roomID')}`).on('child_added', function(data) {
+		console.log("data",data);
 		if(data.key === "1"){
 			firebase
 			.database()
@@ -234,7 +240,7 @@ export function updateUserSingleProperty (property, value, index) {// зипис
 }
 
 export function updateUserObject(obj, index) {
-	firebase
+	return firebase
 	.database()
 	.ref(`rooms/${localStorage.getItem('roomID')}`)
 	.once('value')
@@ -255,17 +261,15 @@ function listenRoomChange() {
 		.database()
 		.ref(`rooms/${localStorage.getItem('roomID')}/${JSON.parse(localStorage.getItem('index'))}`)
 		.on('child_changed', (data) => {
-			if(typeof data.val() === 'boolean') {
+			// console.log(data);
+			if(data.key === 'myTurn') {
 				findUser()
 				 .then(users => {
-					//  console.log("Objact with users", users);
 					let makingMove = new MakingMove();
-					// if(users.user.myTurn === false) {
-					// 	// makingMove.pass(users);
-					// 	return;
-					// }
 					makingMove.start(users);
-					// console.log('listen room change', data.val())
+					// console.log(data.val());
+					console.log('!!!!!!!!!!!!  start 2nd round !!!!!!!!!!!!!!!');
+					
 				 })
 			}
 		})

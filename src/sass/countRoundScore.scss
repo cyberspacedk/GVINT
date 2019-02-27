@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'gwent';
+    src: url(../fonts/gwent_font_by_pependejo-dc3d736.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // outline: 1px solid white;
+    color: white; 
+
+}
+
+.round-end {
+    &-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        z-index: 100;
+        background-color: rgba(1, 1, 20, 0.87);
+        display: flex;
+    }
+
+    &-container {
+        margin: 0 auto;
+        background-color: rgb(0, 0, 0);
+        width: 60%;
+        height: 120px;
+        align-self: center;
+        border: 1px solid gray;
+    }
+
+    &__modal {
+        display: flex;
+        height: 100%;
+    }
+
+    &__score {
+        flex: 1;
+        background-repeat: no-repeat;
+        background-size: 70%;
+        background-position: 10px 25px;
+    }
+
+    &__vs-score {
+        flex: 4;
+    }
+
+    &__text {
+        width: 100%;
+        text-align: center;
+        height: 50%;
+        border-bottom: 1px solid gray;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        line-height: 60px;
+        text-transform: uppercase;
+        color: #237DBC;
+    }
+
+    &__numbers {
+        height: 50%;
+        display: flex;
+    }
+
+    &__number {
+        flex: 1;
+        font-size: 3rem;
+        line-height: 60px;
+    }
+}
+
+.player__number {
+    text-align: right;
+    margin-right: 30px;
+}
+
+
+body {
+    font-family: gwent;
+}
+
+.winner {
+    background: -webkit-linear-gradient(rgb(255, 245, 111), rgb(250, 100, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.game-over {
+    &-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        z-index: 100;
+        background-image: url(../img/gameover-bg.jpg);
+
+        &::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 117px;
+            background-color: rgba(0, 0, 0, 0.856);
+            overflow: hidden;
+        }
+
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 117px;
+            background-color: rgba(0, 0, 0, 0.856);
+            overflow: hidden;
+        }
+    }
+
+    &-container {
+        margin: 117px auto;
+        background-color: rgba(2, 2, 10, 0.842);
+        width: 100%;
+        height: 60%;
+        align-self: center;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+    }
+}
+
+.victory-img {
+    z-index: 20;
+    width: 500px;
+    height: 180px;
+    margin: 0 auto;
+    position: absolute;
+    top: 17px;
+    left: 48%;
+    transform: translateX(-50%);
+    background-image: url(../img/VICTORY_.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.score-table {
+    position: relative;
+    z-index: 100;
+    width: 400px;
+    height: 70%;
+    margin: 80px auto 0;
+    text-align: center;
+    font-size: 2rem;
+    border-collapse: collapse;
+    // border: 3px solid white;
+}
+
+.top-row > th {
+    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(0, 38, 51));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.looser {
+    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(0, 38, 51));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.overall-score {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    z-index: 100;
+    bottom: 17px;
+    display: flex;
+}
+
+.player-overall-score, .opponent-overall-score {
+    height: 100%;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-size: 60px;
+}
+
+.player-overall-score {
+    // background-image: url(../img/one-victory.JPG);
+    background-position: 84% 50%;
+}
+
+.opponent-overall-score {
+    // background-image: url(../img/two-victories.JPG);
+    background-position: 16% 50%    ;
+}

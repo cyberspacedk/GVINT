@@ -33,7 +33,7 @@ export function play() {//
 			console.log('create first room');
 			readDeck().then((data) => createRoom(JSON.parse(localStorage.getItem('userID')), data));
 			return;
-		}
+		}			
 		let keys = Object.keys(rooms);
 		for (let room of keys) {
 			if (rooms[room].length < 2) {
@@ -41,6 +41,7 @@ export function play() {//
 				console.log('join');
 				break;
 			} else {
+				console.log('create another room')
 				readDeck().then((data) => createRoom(JSON.parse(localStorage.getItem('userID')), data));
 				console.log('create');
 			}
@@ -161,12 +162,12 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 						})
 						.then(users=> {
 							// console.log("User Object with ", users.user)
+							let cardMouseOver = new showMoreInfo();
+							cardMouseOver.start(users);
 							if(users.user.myTurn === false) return;
 							let makingMove = new MakingMove();
-							let cardMouseOver = new showMoreInfo();
 							setTimeout(()=>{
 								makingMove.start(users);
-								cardMouseOver.start(users);
 							}, 3000);
 						});
 					listenRoomChange(); 

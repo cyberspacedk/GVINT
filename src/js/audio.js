@@ -1,45 +1,37 @@
 // NORTHERN
-import GERALT_IGNI from '../img/NorthernRealms/GERALT_IGNI.mp3';
-import DETHMOLD from '../img/NorthernRealms/DETHMOLD.mp3';
-import KAEDWENI_CAVALRY from '../img/NorthernRealms/KAEDWENI_CAVALRY.mp3';
-import KEIRA_METZ from '../img/NorthernRealms/KEIRA_METZ.mp3';
-import KING_FOLTEST from '../img/NorthernRealms/KING_FOLTEST.mp3';
-import PRINCE_STENNIS from '../img/NorthernRealms/PRINCE_STENNIS.mp3';
-import REAVER_SCOUT from '../img/NorthernRealms/REAVER_SCOUT.mp3';
-import REDANIAN_ELITE from '../img/NorthernRealms/REDANIAN_ELITE.mp3';
-import REDANIAN_KNIGHT from '../img/NorthernRealms/REDANIAN_KNIGHT.mp3';
-import REDANIAN_KNIGHT_ELECT from '../img/NorthernRealms/REDANIAN_KNIGHT_ELECT.mp3';
-import REINFORCEMENTS from '../img/NorthernRealms/REINFORCEMENTS.mp3';
-import SHANI from '../img/NorthernRealms/SHANI.mp3';
-import SIGISMUND_DIJKSTRA from '../img/NorthernRealms/SIGISMUND_DIJKSTRA.mp3';
-import SILE_DE_TANSARVILLE from '../img/NorthernRealms/SILE_DE_TANSARVILLE.mp3';
-import THALER from '../img/NorthernRealms/THALER.mp3';
-import TROLLOLOLO from '../img/NorthernRealms/TROLLOLOLO.mp3';
+	import GERALT_IGNI from '../audio/NorthernRealms/GERALT_IGNI.mp3';
+	import DETHMOLD from '../audio/NorthernRealms/DETHMOLD.mp3';
+	import KAEDWENI_CAVALRY from '../audio/NorthernRealms/KAEDWENI_CAVALRY.mp3';
+	import KEIRA_METZ from '../audio/NorthernRealms/KEIRA_METZ.mp3';
+	import KING_FOLTEST from '../audio/NorthernRealms/KING_FOLTEST.mp3';
+	import PRINCE_STENNIS from '../audio/NorthernRealms/PRINCE_STENNIS.mp3';
+	import REAVER_SCOUT from '../audio/NorthernRealms/REAVER_SCOUT.mp3';
+	import REDANIAN_ELITE from '../audio/NorthernRealms/REDANIAN_ELITE.mp3';
+	import REDANIAN_KNIGHT from '../audio/NorthernRealms/REDANIAN_KNIGHT.mp3';
+	import REDANIAN_KNIGHT_ELECT from '../audio/NorthernRealms/REDANIAN_KNIGHT_ELECT.mp3';
+	import REINFORCEMENT from '../audio/NorthernRealms/REINFORCEMENT.mp3';
+	import SHANI from '../audio/NorthernRealms/SHANI.mp3';
+	import SIGISMUND_DIJKSTRA from '../audio/NorthernRealms/SIGISMUND_DIJKSTRA.mp3';
+	import SILE_DE_TANSARVILLE from '../audio/NorthernRealms/SILE_DE_TANSARVILLE.mp3';
+	import THALER from '../audio/NorthernRealms/THALER.mp3';
+	import TROLLOLOLO from '../audio/NorthernRealms/TROLLOLOLO.mp3';
 
 // MONSTERS
-import DRAUG from '../img/Monster/DRAUG.mp3';
-import ARACHAS_BEHEMOTH from '../img/Monster/ARACHAS_BEHEMOTH.mp3';
-import ARACHAS_DRONE from '../img/Monster/ARACHAS_DRONE.mp3';
-import ARACHAS_QUEEN from '../img/Monster/ARACHAS_QUEEN.mp3';
-import CELAENO_HARPY from '../img/Monster/CELAENO_HARPY.mp3';
-import FORKTAIL from '../img/Monster/FORKTAIL.mp3';
-import FRIGHTENER from '../img/Monster/FRIGHTENER.mp3';
-import MONSTER_NEST from '../img/Monster/MONSTER_NEST.mp3';
-import MORVUDD from '../img/Monster/MORVUDD.mp3';
-import OZZREL from '../img/Monster/OZZREL.mp3';
-import RUEHIN from '../img/Monster/RUEHIN.mp3';
-import SLYZARD from '../img/Monster/SLYZARD.mp3';
-import TRISS_BUTTERFLIES from '../img/Monster/TRISS_BUTTERFLIES.mp3';
-import YENNEFER from '../img/Monster/YENNEFER.mp3';
+	import ARCHANAS from '../audio/Monster/ARCHANAS.mp3';
+	import FLY from '../audio/Monster/FLY.mp3';
+	import HARPY from '../audio/Monster/HARPY.mp3';
 
-// NEUTRAL
-import ALZURS_DOUBLE_CROSS from '../img/Neutral/ALZURS_DOUBLE_CROSS.mp3';
-import FIRST_LIGHT from '../img/Neutral/FIRST_LIGHT.mp3';
-import MARCHING_ORDERS from '../img/Neutral/MARCHING_ORDERS.mp3';
-import ROYAL_DECREE from '../img/Neutral/ROYAL_DECREE.mp3';
-import THUNDERBOLT from '../img/Neutral/THUNDERBOLT.mp3';
+// BACKGROUND
+	import hovercards from '../audio/Background/hovercards.mp3';
+	import hoverdeck from '../audio/Background/hoverdeck.wav';
+	import maintheme from '../audio/Background/maintheme.mp3';
+	import mainthemesecondary from '../audio/Background/mainthemesecondary.mp3';
+	import monstersound from '../audio/Background/monstersound.mp3';
+	import northdeck from '../audio/Background/northdeck.mp3';
+	import startgame from '../audio/Background/startgame.mp3';
 
 export let audio = {
+// NORTHERN
 	GERALT_IGNI: GERALT_IGNI,
 	DETHMOLD: DETHMOLD,
 	KAEDWENI_CAVALRY: KAEDWENI_CAVALRY,
@@ -50,31 +42,22 @@ export let audio = {
 	REDANIAN_ELITE: REDANIAN_ELITE,
 	REDANIAN_KNIGHT: REDANIAN_KNIGHT,
 	REDANIAN_KNIGHT_ELECT: REDANIAN_KNIGHT_ELECT,
-	REINFORCEMENTS: REINFORCEMENTS,
+	REINFORCEMENT: REINFORCEMENT,
 	SHANI: SHANI,
 	SIGISMUND_DIJKSTRA: SIGISMUND_DIJKSTRA,
 	SILE_DE_TANSARVILLE: SILE_DE_TANSARVILLE,
 	THALER: THALER,
 	TROLLOLOLO: TROLLOLOLO,
-	// MONSTERS
-	DRAUG: DRAUG,
-	ARACHAS_BEHEMOTH: ARACHAS_BEHEMOTH,
-	ARACHAS_DRONE: ARACHAS_DRONE,
-	ARACHAS_QUEEN: ARACHAS_QUEEN,
-	CELAENO_HARPY: CELAENO_HARPY,
-	FORKTAIL: FORKTAIL,
-	FRIGHTENER: FRIGHTENER,
-	MONSTER_NEST: MONSTER_NEST,
-	MORVUDD: MORVUDD,
-	OZZREL: OZZREL,
-	RUEHIN: RUEHIN,
-	SLYZARD: SLYZARD,
-	TRISS_BUTTERFLIES: TRISS_BUTTERFLIES,
-	YENNEFER: YENNEFER,
-	// NEUTRAL
-	ALZURS_DOUBLE_CROSS: ALZURS_DOUBLE_CROSS,
-	FIRST_LIGHT: FIRST_LIGHT,
-	MARCHING_ORDERS: MARCHING_ORDERS,
-	ROYAL_DECREE: ROYAL_DECREE,
-	THUNDERBOLT: THUNDERBOLT,
+// MONSTERS
+	ARCHANAS: ARCHANAS,
+	FLY: FLY,
+	HARPY: HARPY,
+// BACKGROUND
+	hovercards: hovercards,
+	hoverdeck: hoverdeck,
+	maintheme: maintheme,
+	mainthemesecondary: mainthemesecondary,
+	monstersound: monstersound,
+	northdeck: northdeck,
+	startgame: startgame,
 };

@@ -82,7 +82,7 @@ class MakingMove{
         return;
       }
 
-      this.countdownTimer.startCountdownTimer(60);
+      this.countdownTimer.startCountdownTimer(60, this.userObj, this.nextTurn);
       this.hand.addEventListener("click", this.handlerClickCard);
       this.passBtn.addEventListener('click', this.handlerOnPassBtn);
   }

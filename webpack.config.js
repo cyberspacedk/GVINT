@@ -60,15 +60,6 @@ const config = {
 							name: 'images/[name][hash].[ext]'
 						}
 					},
-					{
-						loader: 'image-webpack-loader',
-						options: {
-							mozjpeg: {
-								progressive: true,
-								quality: 70
-							}
-						}
-					}
 				]
 			},
 			{

@@ -73,7 +73,7 @@ class MakingMove{
       
       if(this.userObj.myTurn === false) return;
       
-      console.log('this.opponentObj in start', this.opponentObj);
+      // console.log('this.opponentObj in start', this.opponentObj);
       
       this.drawingOfOpponentStep();
 
@@ -194,7 +194,7 @@ class MakingMove{
     // 2,3) Відобразити результат на екрані
     this.displayResult()
     // 2,4) Зупинити таймер і передати хід 
-    console.log("cardHand before last pass", this.userObj.cardHand , !this.userObj.cardHand.length);
+    // console.log("cardHand before last pass", this.userObj.cardHand , !this.userObj.cardHand.length);
     !this.userObj.cardHand.length? this.handlerOnPassBtn() : this.nextTurn();
   }
   // 2,1) Активуємо її властивість
@@ -250,7 +250,7 @@ class MakingMove{
   // 2,5) По кліку на кнопку Pass
   handlerOnPassBtn() {
     // if (!this.userObj.endRound && !this.opponentObj.endRound) {};
-    console.log("Last Pass")
+    // console.log("Last Pass")
     this.userObj.endRound = true;
     updateUserSingleProperty('endRound', true, JSON.parse(localStorage.getItem('index')));
     this.nextTurn();

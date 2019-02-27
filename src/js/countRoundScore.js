@@ -1,6 +1,7 @@
 import { removeRoom, updateUserSingleProperty } from "./server";
 import clearBattlefield from "./clear_battlefield";
 
+
 import '../sass/countRoundScore.scss';
 import victoryImage0 from '../img/zero-victory.png';
 import victoryImage1 from '../img/one-victory.png';

@@ -1,16 +1,7 @@
 import '../sass/exchange_card.scss';
 import { cards } from '.cards';
 
-export function changeCardAfterRaund (obj){
-    const body = document.querySelector('body');
-    const exchange_card__selection = document.querySelector('.exchange-card__selection');
-    const exchange_card__wrapper = document.querySelector('.exchange-card__wrapper');
-    const exchange_card__title = document.querySelector(".exchange-card__title");
-    const exchange_card__subtitle = document.querySelector(".exchange-card__subtitle");
-    const exchange_card__imgOndivInfo = document.querySelector('.exchange-card__imgOndivInfo');
-    const btnShutDown = document.querySelector('.exchange-card__btnShutDown');
-    const exchange_card__btnConfirm = document.querySelector(".exchange-card__btnConfirm");
-
+function changeCardAfterRaund (obj){
 
     function threeRandomCardAfterRaund(obj) {
         let i = 0;
@@ -27,6 +18,7 @@ export function changeCardAfterRaund (obj){
     
     
     function paintCardOnBoard(obj){
+        let body = document.querySelector('body');
         body.innerHTML = `
     <div class="exchange-card__wrapper">
         <div class="exchange-card__ChousCard">Выберите карту</div>
@@ -48,6 +40,7 @@ export function changeCardAfterRaund (obj){
         </div>
     </div>`
     
+        let exchange_card__selection = document.querySelector('.exchange-card__selection');
         let exchange_card__cardOnBoard = obj.cardHand.reduce((acc, el) => acc + `<div class ='exchange-card__cardOnBoard'><img class = 'exchange-card__img' src=${el.img} alt="" data-name=${el.name}></div>`, '');
         exchange_card__selection.innerHTML += exchange_card__cardOnBoard;
     }
@@ -56,6 +49,7 @@ export function changeCardAfterRaund (obj){
     
     
         function timerModal() {
+            let exchange_card__wrapper = document.querySelector('.exchange-card__wrapper')
             let x = setInterval(fn => {
             exchange_card__wrapper.classList.add('exchange-card__displayNone')
             clearTimeout(x)
@@ -64,9 +58,13 @@ export function changeCardAfterRaund (obj){
         
     
         function fnShutDown() {
+            let exchange_card__wrapper = document.querySelector('.exchange-card__wrapper');
             exchange_card__wrapper.classList.add('exchange-card__displayNone')
             JSON.stringify(localStorage.removeItem('idxForChangeCard'))
         };
+    
+        let btnShutDown = document.querySelector('.exchange-card__btnShutDown');
+        let exchange_card__selection = document.querySelector('.exchange-card__selection');
         exchange_card__selection.addEventListener('click', (() => selectCard(event, userObj)))
         btnShutDown.addEventListener('click', fnShutDown);
     
@@ -75,12 +73,15 @@ export function changeCardAfterRaund (obj){
         if (event.target.nodeName !== 'IMG'){
             return}
         else {
-        const x = document.querySelectorAll('.exchange-card__img');
+        let x = document.querySelectorAll('.exchange-card__img');
         x.forEach(el => el.classList.remove('exchange-card__giveClass'));
         event.target.classList.add('exchange-card__giveClass');
         }
+        let exchange_card__title = document.querySelector(".exchange-card__title");
+        let exchange_card__subtitle = document.querySelector(".exchange-card__subtitle");
         let z = event.target.src;
         console.log(event.target);
+        let exchange_card__imgOndivInfo = document.querySelector('.exchange-card__imgOndivInfo');
         exchange_card__imgOndivInfo.setAttribute('src', z);
         let y = event.target.dataset.name;
         let idxImg = obj.cardHand.find(el => el.name === y)
@@ -90,6 +91,7 @@ export function changeCardAfterRaund (obj){
         JSON.stringify(localStorage.setItem('idxForChangeCard',`${index}`))
         console.log(obj.cardHand);
     }
+        let exchange_card__btnConfirm = document.querySelector(".exchange-card__btnConfirm")
         exchange_card__btnConfirm.addEventListener('click',(()=>fnChangeCard(userObj)))
     
     function fnChangeCard(obj){
@@ -100,6 +102,7 @@ export function changeCardAfterRaund (obj){
             let cardOnDeck = obj.deck.splice(Math.floor(Math.random()*obj.deck.length),1)[0]
             obj.cardHand.push(cardOnDeck)
             obj.deck.push(cardOnHand)
+            let exchange_card__wrapper = document.querySelector('.exchange-card__wrapper');
             exchange_card__wrapper.classList.add('exchange-card__displayNone')
             JSON.stringify(localStorage.removeItem('idxForChangeCard'))
         }}

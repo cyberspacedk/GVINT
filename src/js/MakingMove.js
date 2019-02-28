@@ -10,7 +10,7 @@ import { updateUserObject, updateUserSingleProperty } from "./server";
 import { putOnRow, putOnBoard } from "./dealingCards";
 import {moveCardInGraveyard} from "./reset_card";
 import { coundRoundScores } from "./countRoundScore";
-import {allAbilities} from './abilities';
+import * as allAbilities from './abilities';
 
 import "../sass/MakingMove.scss";
 
@@ -210,7 +210,7 @@ class MakingMove{
   // 2,1) Активуємо її властивість
   activeAbility(){
   //  
-  allAbilities.ARACHAS_DRONE(this.userObj, this.selectedCard, this.rowForAbilities);
+    allAbilities.ROYAL_DECREE(this.userObj);
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
   calculateTotalNumberOfPoints(){

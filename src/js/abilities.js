@@ -28,8 +28,51 @@ function ARACHAS_DRONE(userObj, card, container){
     }  
 
 }
-  
 
-export const allAbilities = { 
-    ARACHAS_DRONE, 
-};
+
+// ability: "Сыграйте золотой юнит из вашей колоды и увеличьте его на 2.",
+// name: "КОРОЛЕВСКИЙ УКАЗ",
+// positions: ["Melee"],
+// strength: 0,
+// type: "Gold",
+// img: '../img/Neutral/ROYAL DECREE.png',
+// audio: '../audio/Monster/ARCHANAS.mp3'
+  
+export function ROYAL_DECREE(userObj) {
+    const goldCardsArr = userObj.deck.filter(el => el.type == "Gold");
+    const goldCardIdx = Math.floor(Math.random() * goldCardsArr.length);
+
+    const randomGoldCard = goldCardsArr[goldCardIdx];
+
+    userObj.deck.splice(userObj.deck.indexOf(randomGoldCard), 1);
+
+    randomGoldCard.strength = randomGoldCard.strength * 2;
+
+    const positionsIdx = Math.floor(Math.random() * randomGoldCard.positions.length);
+
+    userObj.topRow = userObj.topRow ? userObj.topRow :  [];
+    userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
+    userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
+
+    switch(positionsIdx){
+        case 0: 
+            userObj.topRow = [...userObj.topRow, randomGoldCard] ;
+            putOnRow(userObj.topRow, '#player-topRow'); 
+            break;
+        case 1: 
+            userObj.middleRow = [...userObj.middleRow, randomGoldCard]; 
+            putOnRow(userObj.middleRow, '#player-middleRow');  
+            break;
+        case 2: 
+            userObj.bottomRow = [...userObj.bottomRow, randomGoldCard]; 
+            putOnRow(userObj.bottomRow, '#player-bottomRow');  
+            break;
+    }  
+    
+        // console.log('goldCardsArr', goldCardsArr);
+    // console.log('goldCardIdx', goldCardIdx);
+    // console.log('goldCrandomGoldCardardIdx', randomGoldCard);
+    // console.log('randomGoldCard.strength',  randomGoldCard.strength);
+    // console.log('positionsIdx', positionsIdx);
+}
+

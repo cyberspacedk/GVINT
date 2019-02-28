@@ -10,6 +10,7 @@ import { updateUserObject, updateUserSingleProperty } from "./server";
 import { putOnRow, putOnBoard } from "./dealingCards";
 import {moveCardInGraveyard} from "./reset_card";
 import { coundRoundScores } from "./countRoundScore";
+import {allAbilities} from './abilities_dk';
 
 import "../sass/MakingMove.scss";
 
@@ -21,6 +22,7 @@ class MakingMove{
       this.topRow = document.querySelector("#player-topRow");
       this.middleRow = document.querySelector("#player-middleRow");
       this.bottomRow = document.querySelector("#player-bottomRow");
+      this.rowForAbilities = null;
       // to output points
       this.topRowSumDiv = document.querySelector("#player-topRow").previousElementSibling;
       this.middleRowSumDiv = document.querySelector("#player-middleRow").previousElementSibling;
@@ -168,6 +170,8 @@ class MakingMove{
     this.userObj.topRow = this.userObj.topRow ? this.userObj.topRow :  [];
     this.userObj.middleRow = this.userObj.middleRow ? this.userObj.middleRow : [];
     this.userObj.bottomRow = this.userObj.bottomRow ? this.userObj.bottomRow : [];
+    this.rowForAbilities = target.id;
+
     switch(target.id){
       case "player-topRow":
       this.userObj.topRow.push(this.selectedCard);
@@ -179,6 +183,7 @@ class MakingMove{
       this.userObj.bottomRow.push(this.selectedCard);
       break;
     }
+    
     // this.userObj.cardHand = this.userObj.cardHand.filter(el=>el.name !== this.nameOfSelectedCard);
     const activeCardIndex = [...this.hand.querySelectorAll("img")].indexOf(this.selectedCardDiv)
     
@@ -193,6 +198,7 @@ class MakingMove{
     //
     // 2,1) Активуємо її властивість
     this.activeAbility()
+
     // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
     this.calculateTotalNumberOfPoints()
     // 2,3) Відобразити результат на екрані
@@ -203,7 +209,8 @@ class MakingMove{
   }
   // 2,1) Активуємо її властивість
   activeAbility(){
-  // 
+  //  
+  allAbilities.ARACHAS_DRONE(this.userObj, this.selectedCard, this.rowForAbilities);
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
   calculateTotalNumberOfPoints(){

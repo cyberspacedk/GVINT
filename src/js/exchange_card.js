@@ -12,7 +12,7 @@ export function threeRandomCardAfterRaund(obj) {
         obj.cardHand.push(randomCard)
         i++
     }
-    console.log('obj.cardHand',obj.cardHand);
+    // console.log('obj.cardHand',obj.cardHand);
     // paintCardOnBoard(obj)
     // timerModal();
     // putOnBoard(obj.faction, obj.cardHand, '#player-hand');

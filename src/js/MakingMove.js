@@ -64,10 +64,12 @@ class MakingMove{
       this.opponentObj = usersObj.opponent;
 
       if (this.userObj.endRound && this.opponentObj.endRound) {
-        // showModal() & clear battlefield
+        console.log('END OF ROUND IF');
         updateUserSingleProperty('myTurn', false, 0);
         updateUserSingleProperty('myTurn', false, 1);
-        coundRoundScores(this.userObj, this.opponentObj);
+        // updateUserSingleProperty('endRound', false, 0);
+        // updateUserSingleProperty('endRound', false, 1);
+        coundRoundScores(this.userObj, this.opponentObj, this.drawingOfOpponentStep, this.displayResult);
         return;
       }
       
@@ -76,6 +78,8 @@ class MakingMove{
       // console.log('this.opponentObj in start', this.opponentObj);
       
       this.drawingOfOpponentStep();
+
+      this.displayResult();
 
       if (this.userObj.endRound) {
         this.nextTurn();
@@ -247,13 +251,56 @@ class MakingMove{
     }
   }
 
+  // // 2,5) По кліку на кнопку Pass
+  // handlerOnPassBtn() {
+  //   // if (!this.userObj.endRound && !this.opponentObj.endRound) {};
+  //   // console.log("Last Pass")
+  //   this.userObj.endRound = true;
+  //   updateUserSingleProperty('endRound', true, JSON.parse(localStorage.getItem('index')));
+  //   this.nextTurn();
+  // }
+
+
   // 2,5) По кліку на кнопку Pass
   handlerOnPassBtn() {
+    if (this.userObj.endRound && this.opponentObj.endRound){
+
     // if (!this.userObj.endRound && !this.opponentObj.endRound) {};
     // console.log("Last Pass")
     this.userObj.endRound = true;
+    // updateUserSingleProperty('endRound', true, JSON.parse(localStorage.getItem('index')));
+    this.userObj.myTurn = false;
+    this.countdownTimer.resetTimer ();
+    this.nameOfSelectedCard = null;
+    this.selectedCard = null;
+    this.selectedCardDiv = null;
+    this.topRow.removeEventListener("click", this.handlerClickRow);
+    this.middleRow.removeEventListener("click", this.handlerClickRow);
+    this.bottomRow.removeEventListener("click", this.handlerClickRow);
+    this.passBtn.removeEventListener('click', this.handlerOnPassBtn);
+    this.hand.removeEventListener("click", this.handlerClickCard);
+    
+    const userIdx = JSON.parse(localStorage.getItem('index'));
+    let opponentIdx = userIdx ? 0 : 1;
+    updateUserObject(this.userObj, userIdx)
+      // .then(() => updateUserSingleProperty('myTurn', true, opponentIdx));
+    
+    
+    // flip coin 
+      if(this.userObj.name === "Player 1") {
+        this.coinSide.classList.remove('player1');
+        this.coinSide.classList.remove('coin-player1');
+        this.coinSide.classList.add('coin-player2');
+      } else {
+        this.coinSide.classList.remove('player2');
+        this.coinSide.classList.remove('coin-player2');
+        this.coinSide.classList.add('coin-player1');
+      }
+    } else {
+    this.userObj.endRound = true;
     updateUserSingleProperty('endRound', true, JSON.parse(localStorage.getItem('index')));
     this.nextTurn();
+  }
   }
 }
 

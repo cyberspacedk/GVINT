@@ -1,5 +1,6 @@
 import { removeRoom, updateUserSingleProperty } from "./server";
 import clearBattlefield from "./clear_battlefield"; 
+import firebase from "./firebase";
 
 import '../sass/countRoundScore.scss'; 
 
@@ -8,21 +9,41 @@ import victoryImage1 from '../img/one-victory.png';
 import victoryImage2 from '../img/two-victories.png';
 
 
-export function coundRoundScores(user1, user2) {
-    user1.total = user1.topRowSum + user1.middleRowSum + user1.bottomRowSum;
-    user2.total = user2.topRowSum + user2.middleRowSum + user2.bottomRowSum;
+export function coundRoundScores(user1, user2, drawingOfOpponentStep, displayResult) {
+    // firebase.database().ref(`rooms/${localStorage.getItem('roomID')}`).once('value')
+    //     .then(snap => snap.val())
+    //     .then(data => {
+    //         const userIdx = JSON.parse(localStorage.getItem('index'));
+    //         const opponentIdx = userIdx === 0 ? 1 : 0;
 
-    user1.roundsScore = user1.roundsScore ? user1.roundsScore : [];
-    user1.roundsScore.push(user1.total);
-    user2.roundsScore = user2.roundsScore ? user2.roundsScore : [];
-    user2.roundsScore.push(user2.total);
+    //         user1 = data[userIdx];
+    //         user2 = data[opponentIdx];
 
-    determineWinner(user1, user2);
+            
+    //         return [user1, user2];
+    //     })
+    //     .then(arr => determineWinner(arr[0], arr[1], updateInterface));
+        
+        user1.total = user1.topRowSum + user1.middleRowSum + user1.bottomRowSum;
+        user2.total = user2.topRowSum + user2.middleRowSum + user2.bottomRowSum;
+    
+        user1.roundsScore = user1.roundsScore ? user1.roundsScore : [];
+        user1.roundsScore.push(user1.total);
+        user2.roundsScore = user2.roundsScore ? user2.roundsScore : [];
+        user2.roundsScore.push(user2.total);
+
+        determineWinner(user1, user2, updateInterface);
+
+    function updateInterface() {
+        drawingOfOpponentStep(); 
+        displayResult();
+    }
+
 }
 
-function determineWinner(user1, user2) {
+function determineWinner(user1, user2, updateInterface) {
     let isDraw = false;
-    console.log('in determineWinner', user1, user2);
+    console.count('in determineWinner');
     let victor;
     if (user1.total > user2.total) {
         victor = user1;
@@ -42,13 +63,13 @@ function determineWinner(user1, user2) {
     }
 
     if (user1.victoryCount === 2 || user2.victoryCount === 2) {
-        showWinner(user1, user2);
+        // showWinner(user1, user2);
     } else {
-        showRoundEndModal(user1, user2, victor, isDraw);
+        showRoundEndModal(user1, user2, victor, isDraw, updateInterface);
     }
 }
 
-function showRoundEndModal(user1, user2, victor, isDraw) {
+function showRoundEndModal(user1, user2, victor, isDraw, updateInterface) {
     let message = victor ? `${victor.name} is the winner` : "it's a draw";
 
     const body = document.querySelector('body');
@@ -101,7 +122,7 @@ function showRoundEndModal(user1, user2, victor, isDraw) {
         let victorIdx = userId ? JSON.parse(localStorage.getItem('index')) : JSON.parse(localStorage.getItem('index')) === 0 ? 1 : 0;
         let opponentIdx = victorIdx === 0 ? 1 : 0;
         // if (victorIdx === JSON.parse(localStorage.getItem('index'))) {
-            clearBattlefield(victor, victorIdx, opponentIdx, user1, user2)
+            clearBattlefield(victor, victorIdx, opponentIdx, user1, user2, updateInterface)
                 .then(() => {
                     updateUserSingleProperty('myTurn', true, victorIdx);
                     // updateUserSingleProperty('myTurn', false, opponentIdx);

@@ -11,7 +11,7 @@ import { putOnBoard} from './dealingCards';
 // 1) прописати умову запуску функції (наприклад, функція запускається після того, як відобразилося модальне вікно з результатами раунду)
 // 2) при виклику передати аргументами 2 об'єкти - користувач 1 та користувач 2
 
-function clearBattlefield (victor, victorIdx, opponentIdx, userA, userB) {
+function clearBattlefield (victor, victorIdx, opponentIdx, userA, userB, updateInterface) {
     // console.log('clearBattlefield works!');
 
     userA.graveyard = userA.graveyard ? userA.graveyard : [];
@@ -54,7 +54,7 @@ function clearBattlefield (victor, victorIdx, opponentIdx, userA, userB) {
 
     // return updateUserObject(victor, victorIdx).then(()=>updateUserObject(notVictor, opponentIdx));
 
-    clearFrontEnd(userA);
+    clearFrontEnd(userA, updateInterface);
 
     // return updateUserObject(userA, JSON.parse(localStorage.getItem('index')));
    if(victorIdx === JSON.parse(localStorage.getItem('index')))
@@ -62,8 +62,9 @@ function clearBattlefield (victor, victorIdx, opponentIdx, userA, userB) {
    else{return Promise.all([])}
 };
 
-function clearFrontEnd (obj) {
-    
+function clearFrontEnd (obj, updateInterface) {
+    console.log('clearFrontEnd works!');
+
     const topRowSumDiv = document.querySelector("#player-topRow").previousElementSibling;
     const middleRowSumDiv = document.querySelector("#player-middleRow").previousElementSibling;
     const bottomRowSumDiv = document.querySelector("#player-bottomRow").previousElementSibling;
@@ -92,6 +93,8 @@ function clearFrontEnd (obj) {
     opponentBottomRowSumDiv.textContent = 0;
     opponentTotalDiv.textContent = 0;
     putOnBoard(obj.faction, obj.cardHand, '#player-hand');
+
+    updateInterface();
 }
 
 export default clearBattlefield;

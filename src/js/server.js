@@ -131,6 +131,7 @@ export function joinToRoom(id, deck) { //Приєднання до існуюч�
 export function removeRoom() { // видалення кімнати
 	firebase.database().ref(`rooms/${localStorage.getItem('roomID')}`).remove();
 	console.log('remove');
+	location.reload();
 }
 
 export function userExit() { // виход з гри при закритті вкладки
@@ -258,15 +259,15 @@ function listenRoomChange() {
 		.database()
 		.ref(`rooms/${localStorage.getItem('roomID')}/${JSON.parse(localStorage.getItem('index'))}`)
 		.on('child_changed', (data) => {
+			console.log('room change listener', data.key, data.val());
 			// console.log(data);
 			if(data.key === 'myTurn') {
 				findUser()
 				 .then(users => {
 					let makingMove = new MakingMove();
 					makingMove.start(users);
-					// console.log(data.val());
+					// console.log('room change listener', data.key, data.val());
 					console.log('!!!!!!!!!!!!  start 2nd round !!!!!!!!!!!!!!!');
-					
 				 })
 			}
 		})

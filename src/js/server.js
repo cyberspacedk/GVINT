@@ -168,8 +168,9 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 						})
 						.then(users=> {
 							// console.log("User Object with ", users.user)
-							let cardMouseOver = new showMoreInfo();
-							cardMouseOver.start(users);
+							// let cardMouseOver = new showMoreInfo();
+							// cardMouseOver.start(users);
+							readDecks();
 							if(users.user.myTurn === false) return;
 							let makingMove = new MakingMove();
 							setTimeout(()=>{
@@ -196,6 +197,17 @@ function listenRoomClose() {
 
 // firebase.database().ref('decks').once('value')
 //         .then(snap => console.log(snap.val()))
+
+function readDecks() {// функція отримує об'єкт всіх колод з сервера та передає його в cardHoverDiscription.js
+	return firebase
+		.database()
+		.ref(`decks/`)
+		.once('value')
+		.then((snap) => {
+			let cardMouseOver = new showMoreInfo();
+			cardMouseOver.start(snap.val());
+		});
+}
 
 function readDeck() {// функція отримує вибрану(записано в локалсторадж) колоду з сервера
 	return firebase

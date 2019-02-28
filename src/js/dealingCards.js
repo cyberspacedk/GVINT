@@ -47,7 +47,7 @@ export function putOnRow(arr, container) {
 		(acc, el) =>
 			acc +`
 			<div class="card_in_hands">
-			<img class="img_size" src=${cards[el.img.match(reg)[0]]}>
+			<img src=${cards[el.img.match(reg)[0]]} class="img_size" data-name=${el.name}>
 			</div>`,'');
 	div.innerHTML = str;
 }

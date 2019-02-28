@@ -2,7 +2,8 @@ import firebase from './firebase';
 import { renderBattlefield, body } from './battlefield';
 import { dealingCards } from './dealingCards';
 import { drawCoin } from './coinflip';
-import {MakingMove} from "./MakingMove";
+import { MakingMove } from "./MakingMove";
+import { showMoreInfo } from './cardHoverDiscription';
 
 
 // Первая функция которая запускается выполняет вход пользователя.
@@ -154,20 +155,23 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 			.once('value')
 			.then((snap) => snap.val())
 			.then((data) => {
-				if (data.length === 2) {
-					renderBattlefield(body);
+				if (data.length === 2) {								// if to room coming second player... 
+					renderBattlefield(body);							// ...rewrite body content...
 					findUser()
 						.then((result) => {
 							console.log('listen room add log!!!!');
-							dealingCards(result.user, result.opponent);
+							dealingCards(result.user, result.opponent);	// ...calling dealingCards function...
 							return result;
 						})
 						.then(users => {
-							drawCoin(users);
+							drawCoin(users);							// ...draw the Coin...
 							return users;
 						})
 						.then(users=> {
 							// console.log("User Object with ", users.user)
+							// let cardMouseOver = new showMoreInfo();
+							// cardMouseOver.start(users);
+							readDecks();
 							if(users.user.myTurn === false) return;
 							let makingMove = new MakingMove();
 							setTimeout(()=>{
@@ -194,6 +198,17 @@ function listenRoomClose() {
 
 // firebase.database().ref('decks').once('value')
 //         .then(snap => console.log(snap.val()))
+
+function readDecks() {// функція отримує об'єкт всіх колод з сервера та передає його в cardHoverDiscription.js
+	return firebase
+		.database()
+		.ref(`decks/`)
+		.once('value')
+		.then((snap) => {
+			let cardMouseOver = new showMoreInfo();
+			cardMouseOver.start(snap.val());
+		});
+}
 
 function readDeck() {// функція отримує вибрану(записано в локалсторадж) колоду з сервера
 	return firebase

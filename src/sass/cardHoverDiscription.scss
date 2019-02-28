@@ -2,6 +2,8 @@
     position: relative;
     padding-top: 260px;
     padding-left: 10px;
+    opacity: 0;
+    transition: 1s;
 }
 .right__card_image {
     position: absolute;
@@ -12,12 +14,7 @@
 .right__card_anotation {
     margin-top: 1rem;
 }
-
 .showIn {
     opacity: 100;
-    transition: 1s;
-}
-.showOut {
-    opacity: 0;
     transition: 1s;
 }

@@ -25,9 +25,6 @@ export class showMoreInfo{
         if (event.target.nodeName === 'IMG') {
             const reg = /[ \w-]+?(?=\.)/gi;
             const findTargetDeck = Object.values(this.decks).find(el => el.find(el => el.name === event.target.dataset.name));
-                console.log(event.target.dataset.name);
-                console.log(findTargetDeck);
-                console.log(findTargetDeck.find(el => el.name === event.target.dataset.name));
             const cardObject = findTargetDeck.find(el => el.name === event.target.dataset.name);
             this.rightCard.classList.add('showIn');
             this.rightCard.innerHTML = `

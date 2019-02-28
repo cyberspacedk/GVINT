@@ -15,11 +15,12 @@ export class showMoreInfo{
 
     start(decks) {// отримує об'єкт з усіма картами та запускає слухачі руки та столу 
         this.decks = decks;
-        this.hand.addEventListener("mouseover", this.hoverAction);
-        this.middleCenter.addEventListener("mouseover", this.hoverAction);
+        this.hand.addEventListener("click", (() => this.hoverAction(true)));
+        this.hand.addEventListener("mouseover", (() => this.hoverAction(false)));
+        this.middleCenter.addEventListener("mouseover", (() => this.hoverAction(false)));
     };
 
-    hoverAction() {// відмальовує параву бокову панель, програє звук картки
+    hoverAction(audioPlay) {// відмальовує параву бокову панель, програє звук картки
         this.rightCard.classList.remove('showIn');
         this.rightCard.innerHTML = '';
         if (event.target.nodeName === 'IMG') {
@@ -38,7 +39,7 @@ export class showMoreInfo{
                     <p>${cardObject.ability}</p>
                 </div>
             </div>`
-            new Audio(audio[cardObject.audio.match(reg)[0]]).play();
+            if (audioPlay) {new Audio(audio[cardObject.audio.match(reg)[0]]).play()};
         };
     };
 };

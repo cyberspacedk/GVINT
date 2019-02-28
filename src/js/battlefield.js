@@ -1,6 +1,7 @@
 import '../sass/battlefield.scss';
 export const body = document.querySelector('body');
 
+
 export function renderBattlefield(container) {
   container.innerHTML = createMarkUp();
   //need to render player name, remaining deck image (depanding on deck), VictoryCount image (crown) after dealing cards

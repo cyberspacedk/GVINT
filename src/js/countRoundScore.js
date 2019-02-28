@@ -1,8 +1,8 @@
 import { removeRoom, updateUserSingleProperty } from "./server";
-import clearBattlefield from "./clear_battlefield";
+import clearBattlefield from "./clear_battlefield"; 
 
+import '../sass/countRoundScore.scss'; 
 
-import '../sass/countRoundScore.scss';
 import victoryImage0 from '../img/zero-victory.png';
 import victoryImage1 from '../img/one-victory.png';
 import victoryImage2 from '../img/two-victories.png';
@@ -114,60 +114,12 @@ function showRoundEndModal(user1, user2, victor, isDraw) {
 function showWinner(user1, user2) {
     drawGameOverModal(user1, user2);
 
-    setTimeout(() => transferToMainPage(), 10000);
+    setTimeout(() => transferToMainPage(), 5000);
 }
 
-function transferToMainPage() {
-    const body = document.querySelector('body');
-
-    body.innerHTML = `
-        <!-- HEADER -->
-        <div class="wrap-header">
-            <header class="start-page-header container">
-                <h1 class="choose-fraction">ВЫБЕРИ СВОЮ КОЛОДУ</h1>
-                <p class="description-fraction">
-                Выберите фракцию, которая будет использоваться для вновь созданной
-                колоды</p>
-            </header>
-        </div>
-        <!-- MAIN -->
-        <div class="wrap-main">
-            <main class="start-page-main container">
-                <div class="faction-explanation">
-                    <p class="explanation-desc">
-                    Карты в игре "ГВИНТ" разделены на колоды. Каждая колода имеет
-                    уникальные карты. Выбери колоду и нажми
-                    <span class="action">A</span> чтобы продолжить.
-                    </p>
-                </div>
-                <div class="faction-choose">
-                    <div class="mosters-faction">
-                        <h2 class="faction-name">монстры</h2>
-                        <img class="faction-face" src="./img/Factions/faction-monsters.png" alt="monsters" />
-                        <p class="faction-desc"> В конце каждого раунда держите случайного нейтрального или монстрового юнита на своей стороне поля битвы.</p>
-                    </div>
-                    <div class="northern-faction">
-                        <h2 class="faction-name">северные царства</h2>
-                        <img class="faction-face" src="./img/Factions/faction-northern-realms.png" alt="northern-realms" />
-                        <p class="faction-desc">Всякий раз, когда золотой блок появляется на вашей стороне поля битвы, добавьте 2 к его силе.</p>
-                    </div>
-                    <div class="scoiatael-faction coming-soon-label">
-                        <h2 class="faction-name">Scoia'Tael</h2>
-                        <img class="faction-face coming-soon" src="./img/Factions/Scoia'Tael_Icon.png" alt="monsters" />
-                        <p class="faction-desc">В начале одного раунда за матч вы можете выбрать, кто играет первым.</p>
-                    </div>
-                </div>
-            </main>
-        </div>
-        <!-- FOOTER -->
-        <div class="wrap-footer">
-            <footer class="start-page-footer">
-                <button class="accept-button"><span class="action">A</span> ПРИНЯТЬ</button>
-            </footer>
-        </div>
-    `;
-
+function transferToMainPage() {  
     removeRoom();
+    location.reload();
 }
 
 export function drawGameOverModal(user1, user2) {
@@ -192,8 +144,8 @@ export function drawGameOverModal(user1, user2) {
                     <td class="user2-round-two-score">${user2.roundsScore[1]}</td>
                 </tr>
                 <tr class="score-row">
-                    <td class="user1-round-three-score">${user1.roundsScore[2]}</td>
-                    <td class="user2-round-three-score">${user2.roundsScore[2]}</td>
+                    <td class="user1-round-three-score">${(user1.roundsScore[2]) ? user1.roundsScore[2] : ''}</td>
+                    <td class="user2-round-three-score">${(user2.roundsScore[2]) ? user2.roundsScore[2] : ''}</td>
                 </tr>
             </table>
         </div>

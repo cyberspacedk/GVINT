@@ -10,7 +10,7 @@ import { updateUserObject, updateUserSingleProperty } from "./server";
 import { putOnRow, putOnBoard } from "./dealingCards";
 import {moveCardInGraveyard} from "./reset_card";
 import { coundRoundScores } from "./countRoundScore";
-import {allAbilities} from './abilities_dk';
+import {allAbilities} from './abilities';
 
 import "../sass/MakingMove.scss";
 

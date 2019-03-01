@@ -5,6 +5,7 @@ import { drawCoin } from './coinflip';
 import { MakingMove } from "./MakingMove";
 import { showMoreInfo } from './cardHoverDiscription';
 
+let makingMove = new MakingMove();
 
 // Первая функция которая запускается выполняет вход пользователя.
 export function userEnter() {
@@ -46,8 +47,8 @@ export function play() {//
 				if(count < keys.length){
 					continue
 				} else {
-				readDeck().then((data) => createRoom(JSON.parse(localStorage.getItem('userID')), data));
-				console.log('create');
+					readDeck().then((data) => createRoom(JSON.parse(localStorage.getItem('userID')), data));
+					console.log('create');
 				}
 			}
 		}
@@ -62,40 +63,40 @@ export function play() {//
 export function createRoom(id, deck) {
 	let randomTurn = Math.round(Math.random()) === 0;
 	firebase
-		.database()
-		.ref(`rooms/${id}`)
-		.set([
-			{
-				id: JSON.parse(localStorage.getItem('userID')),
-				faction: JSON.parse(localStorage.getItem('faction')),
-				name: 'Player 1',
-				deck: deck,
-				cardHand: [],
-				graveyard: [],
-				topRow: [],
-				middleRow: [],
-				bottomRow: [],
-				endRound: false,
-				myTurn: randomTurn,
-				victoryCount: 0,
-				topRowSum: 0,
-				middleRowSum: 0,
-				bottomRowSum: 0,
-				total: 0
-			}
-		])
-		.then(() => {
-			listenRoomAdd();
-			listenRoomClose();
-		});
+	.database()
+	.ref(`rooms/${id}`)
+	.set([
+		{
+			id: JSON.parse(localStorage.getItem('userID')),
+			faction: JSON.parse(localStorage.getItem('faction')),
+			name: 'Player 1',
+			deck: deck,
+			cardHand: [],
+			graveyard: [],
+			topRow: [],
+			middleRow: [],
+			bottomRow: [],
+			endRound: false,
+			myTurn: randomTurn,
+			victoryCount: 0,
+			topRowSum: 0,
+			middleRowSum: 0,
+			bottomRowSum: 0,
+			total: 0
+		}
+	])
+	.then(() => {
+		listenRoomAdd();
+		listenRoomClose();
+	});
 	localStorage.setItem('roomID', id);
 	localStorage.setItem('index', 0);
 }
 
 export function joinToRoom(id, deck) { //Приєднання до існуючої кімнати нового користувача
 	firebase
-		.database()
-		.ref(`rooms/${id}`)
+	.database()
+	.ref(`rooms/${id}`)
 		.once('value')
 		.then((snap) => snap.val())
 		.then((data) => {
@@ -173,7 +174,6 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 							// cardMouseOver.start(users);
 							readDecks();
 							if(users.user.myTurn === false) return;
-							let makingMove = new MakingMove();
 							setTimeout(()=>{
 								makingMove.start(users);
 							}, 3000);
@@ -184,6 +184,7 @@ export function listenRoomAdd() {// слухаємо в кімнаті чи зя
 		}
 	});
 }
+
 
 function listenRoomClose() {
 	firebase
@@ -279,7 +280,6 @@ function listenRoomChange() {
 			if(data.key === 'myTurn') {
 				findUser()
 				 .then(users => {
-					let makingMove = new MakingMove();
 					makingMove.start(users);
 					// console.log('room change listener', data.key, data.val());
 					console.log('!!!!!!!!!!!!  start 2nd round !!!!!!!!!!!!!!!');

@@ -13,11 +13,62 @@ import { coundRoundScores } from "./countRoundScore";
 import {allAbilities} from './abilities';
 
 import "../sass/MakingMove.scss";
+////////
+// enum PlayerState {
+//   MyTurn,
+//   OpponentTurn,
+//   EndRound
+// }
+/////////////
 
 // main controller
 class MakingMove{
   constructor (){
+// this.state = PlayerState.MyTurn;///////
       // find hand and row
+      this.hand = null;
+      this.topRow = null;
+      this.middleRow = null;
+      this.bottomRow = null;
+      this.rowForAbilities = null;
+      // to output points
+      this.topRowSumDiv = null;
+      this.middleRowSumDiv = null;
+      this.bottomRowSumDiv = null;
+      this.totalDiv = null;
+
+      this.opponentTopRowSumDiv = null;
+      this.opponentMiddleRowSumDiv = null;
+      this.opponentBottomRowSumDiv = null;
+      this.opponentTotalDiv = null;
+
+      this.totalUserCards = null;
+      this.totalOpponentCards = null;
+
+      this.coinSide = null;
+      this.passBtn = null;
+
+      // timer
+      this.countdownTimer = null;
+      this.nameOfSelectedCard = null;
+      this.selectedCard = null;
+      this.selectedCardDiv = null;
+      this.userObj = null;
+      this.opponentObj = null;
+      // bind
+      this.start = this.start.bind(this);
+      this.handlerClickCard = this.handlerClickCard.bind(this);
+      this.handlerClickRow = this.handlerClickRow.bind(this);
+      this.activeAbility = this.activeAbility.bind(this);
+      this.calculateTotalNumberOfPoints = this.calculateTotalNumberOfPoints.bind(this);
+      this.displayResult = this.displayResult.bind(this);
+      this.nextTurn = this.nextTurn.bind(this);
+      this.drawingOfOpponentStep = this.drawingOfOpponentStep.bind(this);
+      this.handlerOnPassBtn = this.handlerOnPassBtn.bind(this);
+    }
+    
+    
+    start(usersObj){ 
       this.hand = document.querySelector("#player-hand");
       this.topRow = document.querySelector("#player-topRow");
       this.middleRow = document.querySelector("#player-middleRow");
@@ -42,29 +93,23 @@ class MakingMove{
 
       // timer
       this.countdownTimer = new CountdownTimer(document.querySelector(".left__timer"));
-      this.nameOfSelectedCard = null;
-      this.selectedCard = null;
-      this.selectedCardDiv = null;
-      this.userObj = null;
-      this.opponentObj = null;
-      // bind
-      this.start = this.start.bind(this);
-      this.handlerClickCard = this.handlerClickCard.bind(this);
-      this.handlerClickRow = this.handlerClickRow.bind(this);
-      this.activeAbility = this.activeAbility.bind(this);
-      this.calculateTotalNumberOfPoints = this.calculateTotalNumberOfPoints.bind(this);
-      this.displayResult = this.displayResult.bind(this);
-      this.nextTurn = this.nextTurn.bind(this);
-      this.drawingOfOpponentStep = this.drawingOfOpponentStep.bind(this);
-      this.handlerOnPassBtn = this.handlerOnPassBtn.bind(this);
-    }
-    
-    
-    start(usersObj){ 
       // 0) Запустити таймер при старті ходу (60 сек)
       this.userObj = usersObj.user;
       this.opponentObj = usersObj.opponent;
-
+//////////////
+// switch (this.state) {
+//   case PlayerState.MyTurn: {
+    
+//     break;
+//   }
+//   case PlayerState.OpponentTurn: {
+//     break;
+//   }
+//   case PlayerState.EndRound: {
+//     break;
+//   }
+// }
+////////////////////
       if (this.userObj.endRound && this.opponentObj.endRound) {
         console.log('END OF ROUND IF');
         updateUserSingleProperty('myTurn', false, 0);
@@ -210,7 +255,9 @@ class MakingMove{
   // 2,1) Активуємо її властивість
   activeAbility(){
   //  
-  allAbilities.ARACHAS_DRONE(this.userObj, this.selectedCard, this.rowForAbilities);
+  // let reg = /[ \w-]+?(?=\.)/gi;
+  // allAbilities[this.selectedCard.img.match(reg)[0]](this.userObj, this.selectedCard, this.rowForAbilities);
+  // allAbilities.REAVER_SCOUT(this.userObj, this.selectedCard, this.rowForAbilities);
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
   calculateTotalNumberOfPoints(){

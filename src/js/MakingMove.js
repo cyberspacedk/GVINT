@@ -10,7 +10,7 @@ import { updateUserObject, updateUserSingleProperty } from "./server";
 import { putOnRow, putOnBoard } from "./dealingCards";
 import {moveCardInGraveyard} from "./reset_card";
 import { coundRoundScores } from "./countRoundScore";
-import {allAbilities} from './abilities';
+import * as allAbilities from './abilities';
 
 import "../sass/MakingMove.scss";
 ////////
@@ -242,7 +242,7 @@ class MakingMove{
     //start audio of the selected card
     //
     // 2,1) Активуємо її властивість
-    this.activeAbility()
+    this.activeAbility(target)
 
     // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
     this.calculateTotalNumberOfPoints()
@@ -253,7 +253,7 @@ class MakingMove{
     !this.userObj.cardHand.length? this.handlerOnPassBtn() : this.nextTurn();
   }
   // 2,1) Активуємо її властивість
-  activeAbility(){
+  activeAbility(target){
   //  
   let reg = /[ \w-]+?(?=\.)/gi;
   let oblParamForAbiliti = {
@@ -263,6 +263,8 @@ class MakingMove{
   }
   allAbilities[this.selectedCard.img.match(reg)[0]](oblParamForAbiliti);
   // allAbilities.REAVER_SCOUT(this.userObj, this.selectedCard, this.rowForAbilities);
+    // allAbilities.TRISS_BUTTERFLIES(this.userObj, this.opponentObj, this.drawingOfOpponentStep, this.displayResult, this.calculateTotalNumberOfPoints);
+    allAbilities.FRIGHTENER(this.userObj, target)
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
   calculateTotalNumberOfPoints(){
@@ -270,6 +272,11 @@ class MakingMove{
     this.userObj.middleRowSum = this.userObj.middleRow.reduce((acc, el)=> acc + el.strength, 0);
     this.userObj.bottomRowSum = this.userObj.bottomRow.reduce((acc, el)=> acc + el.strength, 0);
     this.userObj.total = this.userObj.topRowSum + this.userObj.middleRowSum + this.userObj.bottomRowSum;
+
+    // this.opponentObj.topRowSum = this.opponentObj.topRow.reduce((acc, el)=> acc + el.strength, 0);
+    // this.opponentObj.middleRowSum = this.opponentObj.middleRow.reduce((acc, el)=> acc + el.strength, 0);
+    // this.opponentObj.bottomRowSum = this.opponentObj.bottomRow.reduce((acc, el)=> acc + el.strength, 0);
+    // this.opponentObj.total = this.opponentObj.topRowSum + this.opponentObj.middleRowSum + this.opponentObj.bottomRowSum;
   }
   // 2,3) Відобразити результат на екрані
   displayResult(){

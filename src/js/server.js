@@ -191,6 +191,7 @@ function listenRoomClose() {
 		.database().ref('rooms').on('child_removed', (snap) => {
 			if(snap.key == localStorage.getItem('roomID')) {
 				alert('your opponent left the room');
+				location.reload();
 
 				//run function to redirect to start page
 			}	
@@ -211,7 +212,7 @@ function readDecks() {// функція отримує об'єкт всіх ко
 		});
 }
 
-function readDeck() {// функція отримує вибрану(записано в локалсторадж) колоду з сервера
+export function readDeck() {// функція отримує вибрану(записано в локалсторадж) колоду з сервера
 	return firebase
 		.database()
 		.ref(`decks/${JSON.parse(localStorage.getItem('faction'))}`)
@@ -275,7 +276,7 @@ function listenRoomChange() {
 		.database()
 		.ref(`rooms/${localStorage.getItem('roomID')}/${JSON.parse(localStorage.getItem('index'))}`)
 		.on('child_changed', (data) => {
-			console.log('room change listener', data.key, data.val());
+			// console.log('room change listener', data.key, data.val());
 			// console.log(data);
 			if(data.key === 'myTurn') {
 				findUser()

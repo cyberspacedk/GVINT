@@ -210,13 +210,14 @@ function readDecks() {// функція отримує об'єкт всіх ко
 		});
 }
 
-function readDeck() {// функція отримує вибрану(записано в локалсторадж) колоду з сервера
+export function readDeck() {// функція отримує вибрану(записано в локалсторадж) колоду з сервера
 	return firebase
 		.database()
 		.ref(`decks/${JSON.parse(localStorage.getItem('faction'))}`)
 		.once('value')
 		.then((snap) => snap.val());
 }
+
 function findUser() {// знаходимо користувача і запускаемо dealingCards яка роздає карти
 	return firebase
 		.database()

@@ -4,9 +4,8 @@
 // 2,1) Активуємо її властивість
 // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
 // 2,3) Відобразити результат на екрані
-// 2,4) Зупинити таймер і передати хід 
-
-import { updateUserObject, updateUserSingleProperty } from "./server";
+// 2,4) Зупинити таймер і передати хід  
+import { updateUserObject, updateUserSingleProperty} from "./server";
 import { putOnRow, putOnBoard } from "./dealingCards";
 import {moveCardInGraveyard} from "./reset_card";
 import { coundRoundScores } from "./countRoundScore";
@@ -211,8 +210,9 @@ class MakingMove{
   activeAbility(){
   //  
   // allAbilities.ARACHAS_DRONE(this.userObj, this.selectedCard, this.rowForAbilities);
-  allAbilities.CELAENO_HARPY(this.userObj, this.selectedCard, this.rowForAbilities);
-  
+  // allAbilities.CELAENO_HARPY(this.userObj, this.rowForAbilities);
+  allAbilities.ARACHAS_BEHEMOTH(this.userObj);
+
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
   calculateTotalNumberOfPoints(){

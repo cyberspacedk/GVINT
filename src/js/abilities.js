@@ -28,6 +28,7 @@ function whatRow(row, userObj, card){
 
 
 // ability: "Размещение: сыграйте все копии этого отряда из вашей колоды.",
+// WHO :  name: "ГЛАВОГЛАЗ"
 export function ARACHAS_DRONE(userObj, card, container){ 
     checkEmpty(userObj);
  
@@ -51,7 +52,8 @@ export function ARACHAS_DRONE(userObj, card, container){
 }
   
 
-// ability: "Размещение: создайте 2 Яйца гарпий слева",
+// ability: "Размещение: создайте 2 Яйца гарпий слева"
+// WHO : name: "ГАРПИЯ_КЕЛЕНО",
 export function CELAENO_HARPY(userObj, container){ 
         checkEmpty(userObj);
         const powerCards = userObj.deck.filter(elem => elem.strength > 0)
@@ -77,8 +79,9 @@ export function CELAENO_HARPY(userObj, container){
     }
 
  
-// There are 2 bugs: dont count strength and dont count total row
-//  ability: "Создавайте Молодого главоглаза в случайном ряду. Размещение: добавьте 2 ед. силы",
+// There are 2 bugs: dont count strength and dont count total row 
+// ability: "Создавайте Молодого главоглаза в случайном ряду. Размещение: добавьте 2 ед. силы",
+// WHO :  name: "ОГРОМНЫЙ ГЛАВОГЛАЗ",
  export function ARACHAS_BEHEMOTH(userObj){  
 
     checkEmpty(userObj);
@@ -95,3 +98,20 @@ export function CELAENO_HARPY(userObj, container){
     });  
  }
 
+// ability: "Поглотите 2 союзников и усилите себя их силой.",
+// WHO : name: "ВИЛКОХВОСТ",
+export function FORKTAIL(userObj, card){
+    checkEmpty(userObj);  
+
+    const powerCards = userObj.cardHand.filter(elem => elem.strength > 0); 
+    const randomCards = [powerCards[Math.floor(Math.random()*powerCards.length)],
+                         powerCards[Math.floor(Math.random()*powerCards.length)]];
+    const needMorePower =  randomCards.reduce((acc,elem)=> acc+elem.strength, 0);  
+
+    card.strength +=needMorePower; 
+    userObj.cardHand.splice(userObj.cardHand.indexOf(randomCards[0]),1);
+    userObj.cardHand.splice(userObj.cardHand.indexOf(randomCards[1]),1); 
+    
+    putOnRow( userObj.cardHand, '#player-hand');  
+ 
+} 

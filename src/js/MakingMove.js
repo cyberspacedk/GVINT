@@ -255,8 +255,13 @@ class MakingMove{
   // 2,1) Активуємо її властивість
   activeAbility(){
   //  
-  // let reg = /[ \w-]+?(?=\.)/gi;
-  // allAbilities[this.selectedCard.img.match(reg)[0]](this.userObj, this.selectedCard, this.rowForAbilities);
+  let reg = /[ \w-]+?(?=\.)/gi;
+  let oblParamForAbiliti = {
+    userObj: this.userObj,
+    selectedCard: this.selectedCard,
+    rowForAbilities: this.rowForAbilities,
+  }
+  allAbilities[this.selectedCard.img.match(reg)[0]](oblParamForAbiliti);
   // allAbilities.REAVER_SCOUT(this.userObj, this.selectedCard, this.rowForAbilities);
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 

@@ -197,7 +197,7 @@ class MakingMove{
     //start audio of the selected card
     //
     // 2,1) Активуємо її властивість
-    this.activeAbility()
+    this.activeAbility(target)
 
     // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
     this.calculateTotalNumberOfPoints()
@@ -208,9 +208,10 @@ class MakingMove{
     !this.userObj.cardHand.length? this.handlerOnPassBtn() : this.nextTurn();
   }
   // 2,1) Активуємо її властивість
-  activeAbility(){
+  activeAbility(target){
   //  
-    allAbilities.ROYAL_DECREE(this.userObj);
+    // allAbilities.TRISS_BUTTERFLIES(this.userObj, this.opponentObj, this.drawingOfOpponentStep, this.displayResult, this.calculateTotalNumberOfPoints);
+    allAbilities.FRIGHTENER(this.userObj, target)
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
   calculateTotalNumberOfPoints(){
@@ -218,6 +219,11 @@ class MakingMove{
     this.userObj.middleRowSum = this.userObj.middleRow.reduce((acc, el)=> acc + el.strength, 0);
     this.userObj.bottomRowSum = this.userObj.bottomRow.reduce((acc, el)=> acc + el.strength, 0);
     this.userObj.total = this.userObj.topRowSum + this.userObj.middleRowSum + this.userObj.bottomRowSum;
+
+    // this.opponentObj.topRowSum = this.opponentObj.topRow.reduce((acc, el)=> acc + el.strength, 0);
+    // this.opponentObj.middleRowSum = this.opponentObj.middleRow.reduce((acc, el)=> acc + el.strength, 0);
+    // this.opponentObj.bottomRowSum = this.opponentObj.bottomRow.reduce((acc, el)=> acc + el.strength, 0);
+    // this.opponentObj.total = this.opponentObj.topRowSum + this.opponentObj.middleRowSum + this.opponentObj.bottomRowSum;
   }
   // 2,3) Відобразити результат на екрані
   displayResult(){

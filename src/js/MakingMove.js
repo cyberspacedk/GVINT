@@ -212,7 +212,8 @@ class MakingMove{
   // allAbilities.ARACHAS_DRONE(this.userObj, this.selectedCard, this.rowForAbilities);
   // allAbilities.CELAENO_HARPY(this.userObj, this.rowForAbilities);
   // allAbilities.ARACHAS_BEHEMOTH(this.userObj);
-  allAbilities.FORKTAIL(this.userObj, this.rowForAbilities, this.selectedCard);
+  // allAbilities.FORKTAIL(this.userObj, this.rowForAbilities, this.selectedCard);
+  allAbilities.OZZREL(this.userObj, this.rowForAbilities);
 
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 

@@ -3,10 +3,11 @@ export const body = document.querySelector('body');
 
 
 export function renderBattlefield(container) {
-  container.innerHTML = createMarkUp();
+  container.innerHTML = createMarkUp();  
   //need to render player name, remaining deck image (depanding on deck), VictoryCount image (crown) after dealing cards
   //need to render remaining cards in hand after each move (Andrii function)
 }
+
 
 function createMarkUp() {
   return `
@@ -127,7 +128,7 @@ function createMarkUp() {
           <div class="hand__card"></div>
         </div>
         <div class="battlefield__graveyard-wrapper">
-          <div class="battlefield__graveyard battlefield__graveyard--bottom"></div>
+          <div class="battlefield__graveyard battlefield__graveyard--bottom"></div> 
         </div>
         <div class="battlefield__remaining-deck-wrapper">
           <div class="battlefield__remaining-deck"></div>

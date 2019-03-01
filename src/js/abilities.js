@@ -115,3 +115,33 @@ export function FORKTAIL(userObj, card){
     putOnRow( userObj.cardHand, '#player-hand');  
  
 } 
+
+// ability: "Вызовите на поле боя бронзового или серебряного юнита с кладбища",
+// name: "ОЗЗРЕЛ",
+
+export function OZZREL(userObj, container){  
+		if(userObj.graveyard == undefined) return; 
+
+		checkEmpty(userObj);   
+		
+    const graveUnit = {
+            ...userObj.graveyard.find(el => el.type == 'Bronze') || userObj.graveyard.find(el => el.type == 'Silver'),
+				} 
+
+    switch(container){
+			case "player-topRow": 
+					userObj.topRow = [...userObj.topRow, graveUnit] ;
+					putOnRow(userObj.topRow, '#player-topRow'); 
+					break;
+			case "player-middleRow": 
+					userObj.middleRow = [...userObj.middleRow, graveUnit]; 
+					putOnRow(userObj.middleRow, '#player-middleRow');  
+					break;
+			case "player-bottomRow": 
+					userObj.bottomRow = [...userObj.bottomRow, graveUnit]; 
+					putOnRow(userObj.bottomRow, '#player-bottomRow');  
+					break;
+    }  
+         
+
+}

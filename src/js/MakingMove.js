@@ -11,6 +11,7 @@ import { putOnRow, putOnBoard } from "./dealingCards";
 import {moveCardInGraveyard} from "./reset_card";
 import { coundRoundScores } from "./countRoundScore";
 import * as allAbilities from './abilities';
+import PutTheCardOnTheTable from "../audio/Background/PutTheCardOnTheTable.mp3";
 
 import "../sass/MakingMove.scss";
 ////////
@@ -47,7 +48,9 @@ class MakingMove{
 
       this.coinSide = null;
       this.passBtn = null;
-
+      //audio
+      this.soundPutTheCardOnTheTable = new Audio();
+      this.soundPutTheCardOnTheTable.src = PutTheCardOnTheTable;
       // timer
       this.countdownTimer = null;
       this.nameOfSelectedCard = null;
@@ -240,7 +243,7 @@ class MakingMove{
     this.selectedCardDiv.classList.remove("active-card");
     target.append(this.selectedCardDiv.parentElement);
     //start audio of the selected card
-    //
+    this.soundPutTheCardOnTheTable.play();
     // 2,1) Активуємо її властивість
     this.activeAbility(target)
 
@@ -256,12 +259,19 @@ class MakingMove{
   activeAbility(target){
   //  
   let reg = /[ \w-]+?(?=\.)/gi;
-  let oblParamForAbiliti = {
+  let objParamForAbiliti = {
     userObj: this.userObj,
     selectedCard: this.selectedCard,
     rowForAbilities: this.rowForAbilities,
+    opponentObj: this.opponentObj,
+    drawingOfOpponentStep: this.drawingOfOpponentStep,
+    displayResult: this.displayResult,
+    calculateTotalNumberOfPoints: this.calculateTotalNumberOfPoints,
+    targetRow: this.rowForAbilities, ///
   }
-  allAbilities[this.selectedCard.img.match(reg)[0]](oblParamForAbiliti);
+  let nameOfFunction = this.selectedCard.img.match(reg)[0];
+  console.log(this.selectedCard.img.match(reg)[0]);
+  allAbilities[nameOfFunction](objParamForAbiliti);
   // allAbilities.REAVER_SCOUT(this.userObj, this.selectedCard, this.rowForAbilities);
     // allAbilities.TRISS_BUTTERFLIES(this.userObj, this.opponentObj, this.drawingOfOpponentStep, this.displayResult, this.calculateTotalNumberOfPoints);
     allAbilities.FRIGHTENER(this.userObj, target)

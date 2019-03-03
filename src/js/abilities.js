@@ -3,194 +3,169 @@ import {putOnRow} from './dealingCards';
 import { updateUserObject } from "./server";
 import firebase from './firebase';
 
-function ARACHAS_DRONE(userObj, card, container){ 
+/////////////////
+//
+// Monster deck
+//
+/////////////////
 
-// choose the same cards
-    const sameCards =  userObj.deck.filter(elem=> elem.img === card.img); 
-// remove from original array
-    userObj.deck = userObj.deck.filter(elem=> elem.img !== card.img);  
-    
-    userObj.topRow = userObj.topRow ? userObj.topRow :  [];
-    userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
-    userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
-  
-    switch(container){
-        case "player-topRow": 
-            userObj.topRow = [...userObj.topRow, ...sameCards] ;
-            putOnRow(userObj.topRow, '#player-topRow'); 
-            break;
-        case "player-middleRow": 
-            userObj.middleRow = [...userObj.middleRow, ...sameCards]; 
-            putOnRow(userObj.middleRow, '#player-middleRow');  
-            break;
-        case "player-bottomRow": 
-            userObj.bottomRow = [...userObj.bottomRow, ...sameCards]; 
-            putOnRow(userObj.bottomRow, '#player-bottomRow');  
-            break;
-    }  
+export function SLYZARD({userObj, selectedCard, rowForAbilities}) {
 
-}
+    //
 
+};
 
-// ability: "Сыграйте золотой юнит из вашей колоды и увеличьте его на 2.",
-// name: "КОРОЛЕВСКИЙ УКАЗ",
-// positions: ["Melee"],
-// strength: 0,
-// type: "Gold",
-// img: '../img/Neutral/ROYAL DECREE.png',
+// ability: "Размещение: сыграйте все копии этого отряда из вашей колоды.",
+// name: "ГЛАВОГЛАЗ",
+// positions: ["Ranged"],
+// strength: 3,
+// type: "Bronze",
+// img: '../img/Monster/ARACHAS DRONE.png',
 // audio: '../audio/Monster/ARCHANAS.mp3'
-  
-// ability: "Размещение: выберите другой бронзовый дружественный отряд и сыграйте его копию из вашей колоды",
 
-function REAVER_SCOUT(userObj, card, container){ 
+export function ARACHAS_DRONE({userObj, selectedCard, rowForAbilities}) { 
 
-    // choose Bronze cards
-        const bronzeCards =  userObj.deck.filter(elem=> elem.type === "Bronze"); 
-        const bronzeCard = bronzeCards[Math.floor(Math.random()*bronzeCards.length)]
+    // choose the same cards
+        const sameCards =  userObj.deck.filter(elem=> elem.img === selectedCard.img); 
     // remove from original array
-        const bronzeCardIndex = bronzeCards.indexOf(bronzeCard)
-        userObj.deck.splice(bronzeCardIndex,1);
-
-        switch(container){
+        userObj.deck = userObj.deck.filter(elem=> elem.img !== selectedCard.img);  
+        
+        userObj.topRow = userObj.topRow ? userObj.topRow :  [];
+        userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
+        userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
+      
+        switch(rowForAbilities){
             case "player-topRow": 
-                userObj.topRow = [...userObj.topRow, bronzeCard] ;
+                userObj.topRow = [...userObj.topRow, ...sameCards] ;
                 putOnRow(userObj.topRow, '#player-topRow'); 
                 break;
             case "player-middleRow": 
-                userObj.middleRow = [...userObj.middleRow, bronzeCard]; 
+                userObj.middleRow = [...userObj.middleRow, ...sameCards]; 
                 putOnRow(userObj.middleRow, '#player-middleRow');  
                 break;
             case "player-bottomRow": 
-                userObj.bottomRow = [...userObj.bottomRow, bronzeCard]; 
+                userObj.bottomRow = [...userObj.bottomRow, ...sameCards]; 
                 putOnRow(userObj.bottomRow, '#player-bottomRow');  
                 break;
         }  
-    }
-
-export const allAbilities = { 
-    ARACHAS_DRONE, 
-    REAVER_SCOUT,
-};
-export function ROYAL_DECREE(userObj) {
-    const goldCardsArr = userObj.deck.filter(el => el.type == "Gold");
-    const goldCardIdx = Math.floor(Math.random() * goldCardsArr.length);
-
-    const randomGoldCard = goldCardsArr[goldCardIdx];
-
-    userObj.deck.splice(userObj.deck.indexOf(randomGoldCard), 1);
-
-    randomGoldCard.strength = randomGoldCard.strength * 2;
-
-    const positionsIdx = Math.floor(Math.random() * randomGoldCard.positions.length);
-
-    userObj.topRow = userObj.topRow ? userObj.topRow :  [];
-    userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
-    userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
-
-    switch(positionsIdx){
-        case 0: 
-            userObj.topRow = [...userObj.topRow, randomGoldCard] ;
-            putOnRow(userObj.topRow, '#player-topRow'); 
-            break;
-        case 1: 
-            userObj.middleRow = [...userObj.middleRow, randomGoldCard]; 
-            putOnRow(userObj.middleRow, '#player-middleRow');  
-            break;
-        case 2: 
-            userObj.bottomRow = [...userObj.bottomRow, randomGoldCard]; 
-            putOnRow(userObj.bottomRow, '#player-bottomRow');  
-            break;
-    }  
     
-        // console.log('goldCardsArr', goldCardsArr);
-    // console.log('goldCardIdx', goldCardIdx);
-    // console.log('goldCrandomGoldCardardIdx', randomGoldCard);
-    // console.log('randomGoldCard.strength',  randomGoldCard.strength);
-    // console.log('positionsIdx', positionsIdx);
 }
 
+export function CELAENO_HARPY({userObj, selectedCard, rowForAbilities}) {
 
-// ability: "Усильте сильнейший бронзовый или серебряный отряд из вашей колоды на 2 ед. и сыграйте его",
-// name: "ДВОЙНОЙ КРЕСТ АЛЬЗУРА",
-// positions: ["Melee"],
-// strength: 0,
+    //
+
+};
+
+export function ARACHAS_BEHEMOTH({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function FORKTAIL({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function OZZREL({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function MORVUDD({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function RUEHIN({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+// ability: "Обреченность. Размещение: переместите отряд из другого ряда на этой стороне в этот ряд. Возьмите верхнюю карту из вашей колоды.",
+// name: "ПУГАЧ",
+// positions: ["Melee", "Ranged", "Siege"],
+// strength: 12,
 // type: "Silver",
-// img: '../img/Neutral/ALZUR\'S DOUBLE–CROSS.png',
-// audio: '../audio/Monster/ARCHANAS.mp3'
-
-export function ALZURS_DOUBLE_CROSS(userObj) {
-    const bronzeAndSilverCards = userObj.deck.filter(el => el.type != "Gold");
-    const strongestBronzeOrSilverCard = bronzeAndSilverCards.sort((a, b) => b.strength - a.strength)[0];
-
-    strongestBronzeOrSilverCard.strength = strongestBronzeOrSilverCard.strength + 2;
-
-    userObj.deck.splice(userObj.deck.indexOf(strongestBronzeOrSilverCard), 1);
-
-    const positionsIdx = Math.floor(Math.random() * strongestBronzeOrSilverCard.positions.length);
-
-    userObj.topRow = userObj.topRow ? userObj.topRow :  [];
-    userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
-    userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
-
-    switch(positionsIdx){
-        case 0: 
-            userObj.topRow = [...userObj.topRow, strongestBronzeOrSilverCard] ;
-            putOnRow(userObj.topRow, '#player-topRow'); 
-            break;
-        case 1: 
-            userObj.middleRow = [...userObj.middleRow, strongestBronzeOrSilverCard]; 
-            putOnRow(userObj.middleRow, '#player-middleRow');  
-            break;
-        case 2: 
-            userObj.bottomRow = [...userObj.bottomRow, strongestBronzeOrSilverCard]; 
-            putOnRow(userObj.bottomRow, '#player-bottomRow');  
-            break;
-    }  
-}
-
-
-// ability: "Создайте бронзового трупоеда(ОЗЗРЕЛ) или инсектоида(ОГРОМНЫЙ ГЛАВОГЛАЗ) и усильте его на 3 ед",
-// name: "ГНЕЗДО ЧУДОВИЩ",
-// positions: ["Melee"],
-// strength: 0,
-// type: "Silver",
-// img: '../img/Monster/MONSTER NEST.png',
+// img: '../img/Monster/FRIGHTENER.png',
 // audio: '../audio/Monster/HARPY.mp3'
 
-export function MONSTER_NEST(userObj) {
-    const randomNum = Math.round(Math.random());
-    const randomPosition = Math.floor(Math.random() * 3);
+export function FRIGHTENER({userObj, targetRow}) {
+    //decided to postpone since there are no abilities the damage rows
 
-    const ozzrel = userObj.deck.find(el => el.name == 'ОЗЗРЕЛ') || userObj.cardHand.find(el => el.name == 'ОЗЗРЕЛ');
-    const arachasBehemoth = userObj.deck.find(el => el.name == 'ОГРОМНЫЙ_ГЛАВОГЛАЗ') || userObj.cardHand.find(el => el.name == 'ОГРОМНЫЙ_ГЛАВОГЛАЗ');
-    
-    console.log(ozzrel);
+    const playerAllCardsOnBoard = [...document.querySelectorAll('.middle__player .card_in_hands')]; //choose all cards on players board
+    console.log("targetRow", targetRow);
+    const cardsInTargetRow = [...targetRow.querySelectorAll('.card_in_hands')]; 
+    const cardsNotInTarget = playerAllCardsOnBoard.filter(el => !cardsInTargetRow.includes(el)); //filter all cards to remove those in target row
 
-    let newCard = randomNum ? ozzrel : arachasBehemoth;
+    //add class and listeners for sorted cards
+    cardsNotInTarget.forEach(el => {
+        el.classList.add('active-card');        
+        el.addEventListener('click', appendElement)
+    });
 
-    newCard.strength = newCard.strength + 3;
+    //move the card from hand to the table and remove all listeners and classes
+    function appendElement({target}) {
+        cardsNotInTarget.forEach(el => {
+            targetRow.append(target.parentNode);
+            el.classList.remove('active-card');        
 
-
-    userObj.topRow = userObj.topRow ? userObj.topRow :  [];
-    userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
-    userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
-
-    switch(randomPosition){
-        case 0: 
-            userObj.topRow = [...userObj.topRow, newCard] ;
-            putOnRow(userObj.topRow, '#player-topRow'); 
-            break;
-        case 1: 
-            userObj.middleRow = [...userObj.middleRow, newCard]; 
-            putOnRow(userObj.middleRow, '#player-middleRow');  
-            break;
-        case 2: 
-            userObj.bottomRow = [...userObj.bottomRow, newCard]; 
-            putOnRow(userObj.bottomRow, '#player-bottomRow');  
-            break;
+            el.removeEventListener('click', appendElement)
+        })
     }
 }
 
+// ability: "Размещение: создайте Единорога или Хиронекса",
+// name: "ЙЕННИФЭР",
+// positions: ["Melee", "Ranged", "Siege"],
+// strength: 6,
+// type: "Gold",
+// img: '../img/Monster/YENNEFER.png',
+// audio: '../audio/Monster/ARCHANAS.mp3'
+
+export function YENNEFER({userObj}) {
+    //decided to make this card without the ability, since there are no Unicorn or Chironex cards)
+}
+
+// ability: "В начале каждого вашего хода усиливайте все остальные слабейшие дружественные отряды на 1 ед. Месть: усильте все остальные слабейшие дружественные отряды на 2 ед",
+// name: "ТРИСС: ЗАКЛИНАТЕЛЬНИЦА",
+// positions: ["Melee", "Ranged", "Siege"],
+// strength: 6,
+// type: "Gold",
+// img: '../img/Monster/TRISS_BUTTERFLIES.png',
+// audio: '../audio/Monster/HARPY.mp3'
+
+export function TRISS_BUTTERFLIES({userObj}) {
+    //find the weakest card in hand
+    const weakestCard = userObj.cardHand
+        .filter(el => el.strength !== 0) //exclude elements that have 0 strength
+        .sort((a,b) => a.strength - b.strength)[0]; //select the element with lowest strength
+
+    //increase the strength of each weakest card
+    const cardsLikeWeakest = userObj.cardHand
+        .filter(el => el.strength === weakestCard.strength)
+        .map(el => {
+            el.strength++;
+            return el;
+            });
+
+
+
+    //when revenge (make sure it works only once)
+    let revenge = ''; //stub
+    if(revenge){
+        const weaksestCardsWhenRevenge = cardsLikeWeakest.map(el => {
+            el.strength++;
+            return el;
+        });
+
+    }
+}
 
 // ability: "Размещение: создайте Драугира в случайном ряду на стороне каждого игрока, имеющего в своем сбросе хотя бы одну бронзовую или серебряную карту",
 // name: "ДРАУГ",
@@ -200,11 +175,12 @@ export function MONSTER_NEST(userObj) {
 // img: '../img/Monster/DRAUG.png',
 // audio: '../audio/Monster/FLY.mp3'
 
-export function DRAUG(userObj, opponentObj, drawingOfOpponentStep, displayResult, calculateTotalNumberOfPoints) {
+export function DRAUG({userObj, opponentObj, drawingOfOpponentStep, displayResult, calculateTotalNumberOfPoints}) {
     const randomPositionPlayer = Math.floor(Math.random() * 3);
     const randomPositionOpponent = Math.floor(Math.random() * 3);
     const draugCard = userObj.deck.find(el => el.name == 'ДРАУГ') || userObj.cardHand.find(el => el.name == 'ДРАУГ');
 
+    userObj.graveyard = userObj.graveyard ? userObj.graveyard :  [];
     //start the function for player
     if (userObj.graveyard.find(el => el.type == 'Bronze') || userObj.graveyard.find(el => el.type == 'Silver')) {
 
@@ -282,84 +258,293 @@ export function DRAUG(userObj, opponentObj, drawingOfOpponentStep, displayResult
     calculateTotalNumberOfPoints();
 }
 
-// ability: "В начале каждого вашего хода усиливайте все остальные слабейшие дружественные отряды на 1 ед. Месть: усильте все остальные слабейшие дружественные отряды на 2 ед",
-// name: "ТРИСС: ЗАКЛИНАТЕЛЬНИЦА",
-// positions: ["Melee", "Ranged", "Siege"],
-// strength: 6,
-// type: "Gold",
-// img: '../img/Monster/TRISS_BUTTERFLIES.png',
+// ability: "Создайте бронзового трупоеда(ОЗЗРЕЛ) или инсектоида(ОГРОМНЫЙ ГЛАВОГЛАЗ) и усильте его на 3 ед",
+// name: "ГНЕЗДО ЧУДОВИЩ",
+// positions: ["Melee"],
+// strength: 0,
+// type: "Silver",
+// img: '../img/Monster/MONSTER NEST.png',
 // audio: '../audio/Monster/HARPY.mp3'
 
-export function TRISS_BUTTERFLIES(userObj) {
-    //find the weakest card in hand
-    const weakestCard = userObj.cardHand
-        .filter(el => el.strength !== 0) //exclude elements that have 0 strength
-        .sort((a,b) => a.strength - b.strength)[0]; //select the element with lowest strength
+export function MONSTER_NEST({userObj}) {
+    const randomNum = Math.round(Math.random());
+    const randomPosition = Math.floor(Math.random() * 3);
 
-    //increase the strength of each weakest card
-    const cardsLikeWeakest = userObj.cardHand
-        .filter(el => el.strength === weakestCard.strength)
-        .map(el => {
-            el.strength++;
-            return el;
-            });
+    const ozzrel = userObj.deck.find(el => el.name == 'ОЗЗРЕЛ') || userObj.cardHand.find(el => el.name == 'ОЗЗРЕЛ');
+    const arachasBehemoth = userObj.deck.find(el => el.name == 'ОГРОМНЫЙ_ГЛАВОГЛАЗ') || userObj.cardHand.find(el => el.name == 'ОГРОМНЫЙ_ГЛАВОГЛАЗ');
+    
+    console.log(ozzrel);
 
+    let newCard = randomNum ? ozzrel : arachasBehemoth;
+
+    newCard.strength = newCard.strength + 3;
 
 
-    //when revenge (make sure it works only once)
-    let revenge = ''; //stub
-    if(revenge){
-        const weaksestCardsWhenRevenge = cardsLikeWeakest.map(el => {
-            el.strength++;
-            return el;
-        });
+    userObj.topRow = userObj.topRow ? userObj.topRow :  [];
+    userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
+    userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
 
+    switch(randomPosition){
+        case 0: 
+            userObj.topRow = [...userObj.topRow, newCard] ;
+            putOnRow(userObj.topRow, '#player-topRow'); 
+            break;
+        case 1: 
+            userObj.middleRow = [...userObj.middleRow, newCard]; 
+            putOnRow(userObj.middleRow, '#player-middleRow');  
+            break;
+        case 2: 
+            userObj.bottomRow = [...userObj.bottomRow, newCard]; 
+            putOnRow(userObj.bottomRow, '#player-bottomRow');  
+            break;
     }
 }
 
-
-
-// ability: "Размещение: создайте Единорога или Хиронекса",
-// name: "ЙЕННИФЭР",
-// positions: ["Melee", "Ranged", "Siege"],
-// strength: 6,
-// type: "Gold",
-// img: '../img/Monster/YENNEFER.png',
+// ability: "Усильте сильнейший бронзовый или серебряный отряд из вашей колоды на 2 ед. и сыграйте его",
+// name: "ДВОЙНОЙ КРЕСТ АЛЬЗУРА",
+// positions: ["Melee"],
+// strength: 0,
+// type: "Silver",
+// img: '../img/Neutral/ALZUR\'S DOUBLE–CROSS.png',
 // audio: '../audio/Monster/ARCHANAS.mp3'
 
-export function YENNEFER(userObj) {
-    //decided to make this card without the ability, since there are no Unicorn or Chironex cards)
+export function ALZURS_DOUBLE_CROSS({userObj}) {
+    const bronzeAndSilverCards = userObj.deck.filter(el => el.type != "Gold");
+    const strongestBronzeOrSilverCard = bronzeAndSilverCards.sort((a, b) => b.strength - a.strength)[0];
+
+    strongestBronzeOrSilverCard.strength = strongestBronzeOrSilverCard.strength + 2;
+
+    userObj.deck.splice(userObj.deck.indexOf(strongestBronzeOrSilverCard), 1);
+
+    const positionsIdx = Math.floor(Math.random() * strongestBronzeOrSilverCard.positions.length);
+
+    userObj.topRow = userObj.topRow ? userObj.topRow :  [];
+    userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
+    userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
+
+    switch(positionsIdx){
+        case 0: 
+            userObj.topRow = [...userObj.topRow, strongestBronzeOrSilverCard] ;
+            putOnRow(userObj.topRow, '#player-topRow'); 
+            break;
+        case 1: 
+            userObj.middleRow = [...userObj.middleRow, strongestBronzeOrSilverCard]; 
+            putOnRow(userObj.middleRow, '#player-middleRow');  
+            break;
+        case 2: 
+            userObj.bottomRow = [...userObj.bottomRow, strongestBronzeOrSilverCard]; 
+            putOnRow(userObj.bottomRow, '#player-bottomRow');  
+            break;
+    }  
+}
+
+export function ROYAL_DECREE({userObj}) {
+    const goldCardsArr = userObj.deck.filter(el => el.type == "Gold");
+    const goldCardIdx = Math.floor(Math.random() * goldCardsArr.length);
+
+    const randomGoldCard = goldCardsArr[goldCardIdx];
+
+    userObj.deck.splice(userObj.deck.indexOf(randomGoldCard), 1);
+
+    randomGoldCard.strength = randomGoldCard.strength * 2;
+
+    const positionsIdx = Math.floor(Math.random() * randomGoldCard.positions.length);
+
+    userObj.topRow = userObj.topRow ? userObj.topRow :  [];
+    userObj.middleRow = userObj.middleRow ? userObj.middleRow : [];
+    userObj.bottomRow = userObj.bottomRow ? userObj.bottomRow : [];
+
+    switch(positionsIdx){
+        case 0: 
+            userObj.topRow = [...userObj.topRow, randomGoldCard] ;
+            putOnRow(userObj.topRow, '#player-topRow'); 
+            break;
+        case 1: 
+            userObj.middleRow = [...userObj.middleRow, randomGoldCard]; 
+            putOnRow(userObj.middleRow, '#player-middleRow');  
+            break;
+        case 2: 
+            userObj.bottomRow = [...userObj.bottomRow, randomGoldCard]; 
+            putOnRow(userObj.bottomRow, '#player-bottomRow');  
+            break;
+    }  
+    
+        // console.log('goldCardsArr', goldCardsArr);
+    // console.log('goldCardIdx', goldCardIdx);
+    // console.log('goldCrandomGoldCardardIdx', randomGoldCard);
+    // console.log('randomGoldCard.strength',  randomGoldCard.strength);
+    // console.log('positionsIdx', positionsIdx);
 }
 
 
-// ability: "Обреченность. Размещение: переместите отряд из другого ряда на этой стороне в этот ряд. Возьмите верхнюю карту из вашей колоды.",
-// name: "ПУГАЧ",
-// positions: ["Melee", "Ranged", "Siege"],
-// strength: 12,
-// type: "Silver",
-// img: '../img/Monster/FRIGHTENER.png',
-// audio: '../audio/Monster/HARPY.mp3'
+///////////////////////
+//
+// Nothern Realms deck
+//
+///////////////////////
 
-export function FRIGHTENER(userObj, targetRow) {
-    //decided to postpone since there are no abilities the damage rows
+export function REDANIAN_KNIGHT_ELECT({userObj, selectedCard, rowForAbilities}) {
 
-    const playerAllCardsOnBoard = [...document.querySelectorAll('.middle__player .card_in_hands')]; //choose all cards on players board
-    const cardsInTargetRow = [...targetRow.querySelectorAll('.card_in_hands')]; 
-    const cardsNotInTarget = playerAllCardsOnBoard.filter(el => !cardsInTargetRow.includes(el)); //filter all cards to remove those in target row
+    //
 
-    //add class and listeners for sorted cards
-    cardsNotInTarget.forEach(el => {
-        el.classList.add('active-card');        
-        el.addEventListener('click', appendElement)
-    });
+};
 
-    //move the card from hand to the table and remove all listeners and classes
-    function appendElement({target}) {
-        cardsNotInTarget.forEach(el => {
-            targetRow.append(target.parentNode);
-            el.classList.remove('active-card');        
+export function REDANIAN_KNIGHT({userObj, selectedCard, rowForAbilities}) {
 
-            el.removeEventListener('click', appendElement)
-        })
-    }
+    //
+
+};
+
+export function REDANIAN_ELITE({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+// ability: "Размещение: выберите другой бронзовый дружественный отряд и сыграйте его копию из вашей колоды",
+// name: "РАЗВЕДЧИК РУБАЙЛ",
+// positions: ["Ranged"],
+// strength: 1,
+// type: "Bronze",
+// img: '../img/NorthernRealms/REAVER SCOUT.png',
+// audio: '../audio/NorthernRealms/REAVER SCOUT.mp3'
+
+export function REAVER_SCOUT({userObj, rowForAbilities}) { 
+
+// choose Bronze cards
+    const bronzeCards =  userObj.deck.filter(elem=> elem.type === "Bronze"); 
+    const bronzeCard = bronzeCards[Math.floor(Math.random()*bronzeCards.length)]
+// remove from original array
+    const bronzeCardIndex = bronzeCards.indexOf(bronzeCard)
+    userObj.deck.splice(bronzeCardIndex,1);
+
+    switch(rowForAbilities){
+        case "player-topRow": 
+            userObj.topRow = [...userObj.topRow, bronzeCard] ;
+            putOnRow(userObj.topRow, '#player-topRow'); 
+            break;
+        case "player-middleRow": 
+            userObj.middleRow = [...userObj.middleRow, bronzeCard]; 
+            putOnRow(userObj.middleRow, '#player-middleRow');  
+            break;
+        case "player-bottomRow": 
+            userObj.bottomRow = [...userObj.bottomRow, bronzeCard]; 
+            putOnRow(userObj.bottomRow, '#player-bottomRow');  
+            break;
+    }  
 }
+
+export function PRINCE_STENNIS({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function SILE_DE_TANSARVILLE({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function TROLLOLOLO({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function KAEDWENI_CAVALRY({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function DETHMOLD({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function SHANI({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function GERALT_IGNI({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function KEIRA_METZ({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function FIRST_LIGHT({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function THUNDERBOLT({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function MARCHING_ORDERS({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function THALER({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export function SIGISMUND_DIJKSTRA({userObj, selectedCard, rowForAbilities}) {
+
+    //
+
+};
+
+export const allAbilities = { 
+// Monster deck
+    SLYZARD,
+    ARACHAS_DRONE,
+    CELAENO_HARPY,
+    ARACHAS_BEHEMOTH,
+    FORKTAIL,
+    OZZREL,
+    MORVUDD,
+    RUEHIN,
+    FRIGHTENER,
+    YENNEFER,
+    TRISS_BUTTERFLIES,
+    DRAUG,
+    MONSTER_NEST,
+    ALZURS_DOUBLE_CROSS,
+    ROYAL_DECREE,
+// Nothern Realms deck
+    REDANIAN_KNIGHT_ELECT,
+    REDANIAN_KNIGHT,
+    REDANIAN_ELITE,
+    REAVER_SCOUT,
+    PRINCE_STENNIS,
+    SILE_DE_TANSARVILLE,
+    TROLLOLOLO,
+    KAEDWENI_CAVALRY,
+    DETHMOLD,
+    SHANI,
+    GERALT_IGNI,
+    KEIRA_METZ,
+    FIRST_LIGHT,
+    THUNDERBOLT,
+    MARCHING_ORDERS,
+    THALER,
+    SIGISMUND_DIJKSTRA,
+};

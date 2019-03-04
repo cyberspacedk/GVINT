@@ -287,30 +287,4 @@ function listenRoomChange() {
 				 })
 			}
 		})
-
 }
-let btnReset = document.querySelector("#reset");
-let fraction = document.querySelector(".explanation-desc");
-btnReset.addEventListener("click", reset);
-export function reset(){
-	// firebase
-	// 	.database()
-	// 	.ref(`decks/nothernRealms`)
-	// 	.set();
-
-
-		firebase
-		.database()
-		.ref(`/`)
-		.once('value')
-		.then((snap) => snap.val())
-		.then(all => {
-			console.log("Alll object",all);
-			let reg = /[ \w-]+?(?=\.)/gi;
-			console.log(all.decks.monsters.reduce((acc, el) => acc += `${el.img.match(reg)[0]},\n`));
-	});
-}
-
-
-// decks.monsters
-// decks.nothernRealms

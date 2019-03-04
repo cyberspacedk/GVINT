@@ -82,7 +82,7 @@ export function MORVUDD({userObj, selectedCard, rowForAbilities}) {
 };
 
 export function RUEHIN({userObj, selectedCard, rowForAbilities}) {
-
+console.log("RUEHIN Test")
     //
 
 };
@@ -99,7 +99,7 @@ export function FRIGHTENER({userObj, targetRow}) {
     //decided to postpone since there are no abilities the damage rows
 
     const playerAllCardsOnBoard = [...document.querySelectorAll('.middle__player .card_in_hands')]; //choose all cards on players board
-    console.log("targetRow", targetRow);
+    console.log("targetRow from FRIGHTENER", targetRow);
     const cardsInTargetRow = [...targetRow.querySelectorAll('.card_in_hands')]; 
     const cardsNotInTarget = playerAllCardsOnBoard.filter(el => !cardsInTargetRow.includes(el)); //filter all cards to remove those in target row
 

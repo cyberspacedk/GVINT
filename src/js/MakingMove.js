@@ -257,7 +257,6 @@ class MakingMove{
   }
   // 2,1) Активуємо її властивість
   activeAbility(target){
-  //  
   let reg = /[ \w-]+?(?=\.)/gi;
   let objParamForAbiliti = {
     userObj: this.userObj,
@@ -270,11 +269,7 @@ class MakingMove{
     targetRow: this.rowForAbilities, ///
   }
   let nameOfFunction = this.selectedCard.img.match(reg)[0];
-  console.log(this.selectedCard.img.match(reg)[0]);
   allAbilities[nameOfFunction](objParamForAbiliti);
-  // allAbilities.REAVER_SCOUT(this.userObj, this.selectedCard, this.rowForAbilities);
-    // allAbilities.TRISS_BUTTERFLIES(this.userObj, this.opponentObj, this.drawingOfOpponentStep, this.displayResult, this.calculateTotalNumberOfPoints);
-    allAbilities.FRIGHTENER(this.userObj, target)
   }
   // 2,2) Перерахувати суму ряда і загальну кількість балів в раунді 
   calculateTotalNumberOfPoints(){

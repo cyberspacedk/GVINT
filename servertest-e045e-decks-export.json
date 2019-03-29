@@ -1,0 +1,404 @@
+{
+  "monsters" : [ {
+    "ability" : "без способности",
+    "audio" : "../audio/Monster/HARPY.mp3",
+    "img" : "../img/Monster/SLYZARD.png",
+    "name" : "ОСЛИЗГ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 2,
+    "type" : "Bronze"
+  }, {
+    "ability" : "без способности",
+    "audio" : "../audio/Monster/HARPY.mp3",
+    "img" : "../img/Monster/SLYZARD.png",
+    "name" : "ОСЛИЗГ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 2,
+    "type" : "Bronze"
+  }, {
+    "ability" : "без способности",
+    "audio" : "../audio/Monster/HARPY.mp3",
+    "img" : "../img/Monster/SLYZARD.png",
+    "name" : "ОСЛИЗГ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 2,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: сыграйте все копии этого отряда из вашей колоды.",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Monster/ARACHAS_DRONE.png",
+    "name" : "ГЛАВОГЛАЗ",
+    "positions" : [ "Ranged" ],
+    "strength" : 3,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: сыграйте все копии этого отряда из вашей колоды.",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Monster/ARACHAS_DRONE.png",
+    "name" : "ГЛАВОГЛАЗ",
+    "positions" : [ "Ranged" ],
+    "strength" : 3,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: сыграйте все копии этого отряда из вашей колоды.",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Monster/ARACHAS_DRONE.png",
+    "name" : "ГЛАВОГЛАЗ",
+    "positions" : [ "Ranged" ],
+    "strength" : 3,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: создайте 2 Яйца гарпий слева",
+    "audio" : "../audio/Monster/FLY.mp3",
+    "img" : "../img/Monster/CELAENO_HARPY.png",
+    "name" : "ГАРПИЯ_КЕЛЕНО",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 6,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: создайте 2 Яйца гарпий слева",
+    "audio" : "../audio/Monster/FLY.mp3",
+    "img" : "../img/Monster/CELAENO_HARPY.png",
+    "name" : "ГАРПИЯ_КЕЛЕНО",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 6,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: создайте 2 Яйца гарпий слева",
+    "audio" : "../audio/Monster/FLY.mp3",
+    "img" : "../img/Monster/CELAENO_HARPY.png",
+    "name" : "ГАРПИЯ_КЕЛЕНО",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 6,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Создавайте Молодого главоглаза в случайном ряду каждый раз, когда дружественный отряд поглощает карту, и наносите этой карте 1 ед. урона (игнорируя броню). Размещение: добавьте 2 ед. брони",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Monster/ARACHAS_BEHEMOTH.png",
+    "name" : "ОГРОМНЫЙ_ГЛАВОГЛАЗ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Создавайте Молодого главоглаза в случайном ряду каждый раз, когда дружественный отряд поглощает карту, и наносите этой карте 1 ед. урона (игнорируя броню). Размещение: добавьте 2 ед. брони",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Monster/ARACHAS_BEHEMOTH.png",
+    "name" : "ОГРОМНЫЙ_ГЛАВОГЛАЗ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Создавайте Молодого главоглаза в случайном ряду каждый раз, когда дружественный отряд поглощает карту, и наносите этой карте 1 ед. урона (игнорируя броню). Размещение: добавьте 2 ед. брони",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Monster/ARACHAS_BEHEMOTH.png",
+    "name" : "ОГРОМНЫЙ_ГЛАВОГЛАЗ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Поглотите 2 союзников и усилите себя их силой.",
+    "audio" : "../audio/Monster/FLY.mp3",
+    "img" : "../img/Monster/FORKTAIL.png",
+    "name" : "ВИЛКОХВОСТ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Поглотите 2 союзников и усилите себя их силой.",
+    "audio" : "../audio/Monster/FLY.mp3",
+    "img" : "../img/Monster/FORKTAIL.png",
+    "name" : "ВИЛКОХВОСТ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Поглотите 2 союзников и усилите себя их силой.",
+    "audio" : "../audio/Monster/FLY.mp3",
+    "img" : "../img/Monster/FORKTAIL.png",
+    "name" : "ВИЛКОХВОСТ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Поглотите бронзового или серебряного юнита с кладбища и увеличьте его силой.",
+    "audio" : "../audio/Monster/HARPY.mp3",
+    "img" : "../img/Monster/OZZREL.png",
+    "name" : "ОЗЗРЕЛ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 5,
+    "type" : "Silver"
+  }, {
+    "ability" : "Размещение: уберите или добавьте блокировку отряда. Если это вражеский отряд, нанесите ему урон, равный половине его силы (округляя к большему и игнорируя броню",
+    "audio" : "../audio/Monster/HARPY.mp3",
+    "img" : "../img/Monster/MORVUDD.png",
+    "name" : "МОРВУДД",
+    "positions" : [ "Melee" ],
+    "strength" : 6,
+    "type" : "Silver"
+  }, {
+    "ability" : "Усильте все свои другие инсектоиды и проклятые юниты в руках, колоде и на доске на 1.",
+    "audio" : "../audio/Monster/FLY.mp3",
+    "img" : "../img/Monster/RUEHIN.png",
+    "name" : "РУЕХИН",
+    "positions" : [ "Melee" ],
+    "strength" : 8,
+    "type" : "Silver"
+  }, {
+    "ability" : "Обреченность. Размещение: переместите отряд из другого ряда на этой стороне в этот ряд. Возьмите верхнюю карту из вашей колоды.",
+    "audio" : "../audio/Monster/HARPY.mp3",
+    "img" : "../img/Monster/FRIGHTENER.png",
+    "name" : "ПУГАЧ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 13,
+    "type" : "Silver"
+  }, {
+    "ability" : "Размещение: создайте Единорога или Хиронекса",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Monster/YENNEFER.png",
+    "name" : "ЙЕННИФЭР",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 6,
+    "type" : "Gold"
+  }, {
+    "ability" : "В начале каждого вашего хода усиливайте все остальные слабейшие дружественные отряды на 1 ед. Месть: усильте все остальные слабейшие дружественные отряды на 2 ед",
+    "audio" : "../audio/Monster/HARPY.mp3",
+    "img" : "../img/Monster/TRISS_BUTTERFLIES.png",
+    "name" : "ТРИСС_ЗАКЛИНАТЕЛЬНИЦА",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Gold"
+  }, {
+    "ability" : "Размещение: создайте Драугира в случайном ряду на стороне каждого игрока, имеющего в своем сбросе хотя бы одну бронзовую или серебряную карту",
+    "audio" : "../audio/Monster/FLY.mp3",
+    "img" : "../img/Monster/DRAUG.png",
+    "name" : "ДРАУГ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 10,
+    "type" : "Gold"
+  }, {
+    "ability" : "Создайте бронзового трупоеда или инсектоида и усильте его на 3 ед",
+    "audio" : "../audio/Monster/HARPY.mp3",
+    "img" : "../img/Monster/MONSTER_NEST.png",
+    "name" : "ГНЕЗДО_ЧУДОВИЩ",
+    "positions" : [ "Melee" ],
+    "strength" : 0,
+    "type" : "Silver"
+  }, {
+    "ability" : "Усильте сильнейший бронзовый или серебряный отряд из вашей колоды на 2 ед. и сыграйте его",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Neutral/ALZURS_DOUBLE_CROSS.png",
+    "name" : "ДВОЙНОЙ_КРЕСТ_АЛЬЗУРА",
+    "positions" : [ "Melee" ],
+    "strength" : 0,
+    "type" : "Silver"
+  }, {
+    "ability" : "Сыграйте золотой юнит из вашей колоды и увеличьте его на 2.",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Neutral/ROYAL_DECREE.png",
+    "name" : "КОРОЛЕВСКИЙ_УКАЗ",
+    "positions" : [ "Melee" ],
+    "strength" : 0,
+    "type" : "Gold"
+  } ],
+  "nothernRealms" : [ {
+    "ability" : "Если у этого юнита есть броня в конце хода, увеличьте количество смежных юнитов на 1. 2 Броня.",
+    "audio" : "../audio/NorthernRealms/REDANIAN_KNIGHT_ELECT.mp3",
+    "img" : "../img/NorthernRealms/REDANIAN_KNIGHT_ELECT.png",
+    "name" : "РЕДАНСКИЙ_РЫЦАРЬ_ИЗБРАННИК",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 7,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Если у этого юнита есть броня в конце хода, увеличьте количество смежных юнитов на 1. 2 Броня.",
+    "audio" : "../audio/NorthernRealms/REDANIAN_KNIGHT_ELECT.mp3",
+    "img" : "../img/NorthernRealms/REDANIAN_KNIGHT_ELECT.png",
+    "name" : "РЕДАНСКИЙ_РЫЦАРЬ_ИЗБРАННИК",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 7,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Если у этого юнита есть броня в конце хода, увеличьте количество смежных юнитов на 1. 2 Броня.",
+    "audio" : "../audio/NorthernRealms/REDANIAN_KNIGHT_ELECT.mp3",
+    "img" : "../img/NorthernRealms/REDANIAN_KNIGHT_ELECT.png",
+    "name" : "РЕДАНСКИЙ_РЫЦАРЬ_ИЗБРАННИК",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 7,
+    "type" : "Bronze"
+  }, {
+    "ability" : "В начале вашего хода, если у этого отряда нет брони, усиливайте его на 2 ед. и добавляйте ему 2 ед. брони",
+    "audio" : "../audio/NorthernRealms/REDANIAN_KNIGHT.mp3",
+    "img" : "../img/NorthernRealms/REDANIAN_KNIGHT.png",
+    "name" : "РЕДАНСКИЙ_РЫЦАРЬ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 7,
+    "type" : "Bronze"
+  }, {
+    "ability" : "В начале вашего хода, если у этого отряда нет брони, усиливайте его на 2 ед. и добавляйте ему 2 ед. брони",
+    "audio" : "../audio/NorthernRealms/REDANIAN_KNIGHT.mp3",
+    "img" : "../img/NorthernRealms/REDANIAN_KNIGHT.png",
+    "name" : "РЕДАНСКИЙ_РЫЦАРЬ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 7,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Усиливайте эту карту на 5 ед. каждый раз, когда ее броня уменьшается до 0. Размещение: добавьте 4 ед. брони",
+    "audio" : "../audio/NorthernRealms/REDANIAN_ELITE.mp3",
+    "img" : "../img/NorthernRealms/REDANIAN_ELITE.png",
+    "name" : "РЕДАНСКИЕ_ЭЛИТНЫЕ_ВОЙСКА",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Усиливайте эту карту на 5 ед. каждый раз, когда ее броня уменьшается до 0. Размещение: добавьте 4 ед. брони",
+    "audio" : "../audio/NorthernRealms/REDANIAN_ELITE.mp3",
+    "img" : "../img/NorthernRealms/REDANIAN_ELITE.png",
+    "name" : "РЕДАНСКИЕ_ЭЛИТНЫЕ_ВОЙСКА",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Усиливайте эту карту на 5 ед. каждый раз, когда ее броня уменьшается до 0. Размещение: добавьте 4 ед. брони",
+    "audio" : "../audio/NorthernRealms/REDANIAN_ELITE.mp3",
+    "img" : "../img/NorthernRealms/REDANIAN_ELITE.png",
+    "name" : "РЕДАНСКИЕ_ЭЛИТНЫЕ_ВОЙСКА",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: выберите другой бронзовый дружественный отряд и сыграйте его копию из вашей колоды",
+    "audio" : "../audio/NorthernRealms/REAVER_SCOUT.mp3",
+    "img" : "../img/NorthernRealms/REAVER_SCOUT.png",
+    "name" : "РАЗВЕДЧИК_РУБАЙЛ",
+    "positions" : [ "Ranged" ],
+    "strength" : 1,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Сыграйте случайного не шпионского бронзового или серебряного юнита из вашей колоды и дайте ему 5 брони. 3 Броня",
+    "audio" : "../audio/NorthernRealms/PRINCE_STENNIS.mp3",
+    "img" : "../img/NorthernRealms/PRINCE_STENNIS.png",
+    "name" : "ПРИНЦ_СТЕННИС",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 3,
+    "type" : "Silver"
+  }, {
+    "ability" : "Размещение: можете сыграть бронзовую особую карту из вашей руки и взять верхнюю карту из вашей колоды",
+    "audio" : "../audio/NorthernRealms/SILE_DE_TANSARVILLE.mp3",
+    "img" : "../img/NorthernRealms/SILE_DE_TANSARVILLE.png",
+    "name" : "ШЕАЛА_ДЕ_ТАНСЕРВИЛЛЬ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 4,
+    "type" : "Silver"
+  }, {
+    "ability" : "В начале каждого вашего хода добавляйте 2 ед. брони. Размещение: добавьте 4 ед. брони",
+    "audio" : "../audio/NorthernRealms/TROLLOLOLO.mp3",
+    "img" : "../img/NorthernRealms/TROLLOLOLO.png",
+    "name" : "ТРОЛОЛО",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 11,
+    "type" : "Silver"
+  }, {
+    "ability" : "Размещение: отнимите броню у отряда и усильте эту карту на значение силы, равное отнятой броне",
+    "audio" : "../audio/NorthernRealms/KAEDWENI_CAVALRY.mp3",
+    "img" : "../img/NorthernRealms/KAEDWENI_CAVALRY.png",
+    "name" : "ТЯЖЕЛАЯ_КАВАЛЕРИЯ_БУРОЙ_ХОРУГВИ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: отнимите броню у отряда и усильте эту карту на значение силы, равное отнятой броне",
+    "audio" : "../audio/NorthernRealms/KAEDWENI_CAVALRY.mp3",
+    "img" : "../img/NorthernRealms/KAEDWENI_CAVALRY.png",
+    "name" : "ТЯЖЕЛАЯ_КАВАЛЕРИЯ_БУРОЙ_ХОРУГВИ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: отнимите броню у отряда и усильте эту карту на значение силы, равное отнятой броне",
+    "audio" : "../audio/NorthernRealms/KAEDWENI_CAVALRY.mp3",
+    "img" : "../img/NorthernRealms/KAEDWENI_CAVALRY.png",
+    "name" : "ТЯЖЕЛАЯ_КАВАЛЕРИЯ_БУРОЙ_ХОРУГВИ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 8,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Размещение: создайте Проливной дождь, Чистое небо или Гром Альзура",
+    "audio" : "../audio/NorthernRealms/DETHMOLD.mp3",
+    "img" : "../img/NorthernRealms/DETHMOLD.png",
+    "name" : "ДЕТМОЛЬД",
+    "positions" : [ "Siege" ],
+    "strength" : 4,
+    "type" : "Silver"
+  }, {
+    "ability" : "Размещение: воскресите бронзовый или серебряный отряд и добавьте ему 2 ед. брони",
+    "audio" : "../audio/NorthernRealms/SHANI.mp3",
+    "img" : "../img/NorthernRealms/SHANI.png",
+    "name" : "ШАНИ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 4,
+    "type" : "Gold"
+  }, {
+    "ability" : "Размещение: уничтожьте все сильнейшие отряды в противоположном ряду, если общая сила этого ряда больше или равна 25",
+    "audio" : "../audio/NorthernRealms/GERALT_IGNI.mp3",
+    "img" : "../img/NorthernRealms/GERALT_IGNI.png",
+    "name" : "ГЕРАЛЬТ_ИГНИ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 5,
+    "type" : "Gold"
+  }, {
+    "ability" : "Размещение: создайте Аэромантию, Эпидемию или Гром.",
+    "audio" : "../audio/NorthernRealms/KEIRA_METZ.mp3",
+    "img" : "../img/NorthernRealms/KEIRA_METZ.png",
+    "name" : "КЕЙРА_МЕЦ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 6,
+    "type" : "Gold"
+  }, {
+    "ability" : "Создайте Чистое небо или Сбор",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Neutral/FIRST_LIGHT.png",
+    "name" : "РАССВЕТ",
+    "positions" : [ "Melee" ],
+    "strength" : 0,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Добавьте 2 ед. брони 3 смежным отрядам и усильте их на 3 ед",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Neutral/THUNDERBOLT.png",
+    "name" : "ГРОМ",
+    "positions" : [ "Melee" ],
+    "strength" : 0,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Добавьте 2 ед. брони 3 смежным отрядам и усильте их на 3 ед",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Neutral/THUNDERBOLT.png",
+    "name" : "ГРОМ",
+    "positions" : [ "Melee" ],
+    "strength" : 0,
+    "type" : "Bronze"
+  }, {
+    "ability" : "Увеличьте наименьшую бронзовую или серебряную единицу в вашей колоде на 2, затем сыграйте.",
+    "audio" : "../audio/Monster/ARCHANAS.mp3",
+    "img" : "../img/Neutral/MARCHING_ORDERS.png",
+    "name" : "ПОХОДНЫЕ_ЗАКАЗЫ",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 0,
+    "type" : "Silver"
+  }, {
+    "ability" : "Шпионаж. Одноразового использования. Возьмите 2 карты, оставьте одну и верните другую в свою колоду.",
+    "audio" : "../audio/NorthernRealms/THALER.mp3",
+    "img" : "../img/NorthernRealms/THALER.png",
+    "name" : "ТАЛЕР",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 13,
+    "type" : "Silver"
+  }, {
+    "ability" : "Размещение: сыграйте 2 верхние карты из вашей колоды",
+    "audio" : "../audio/NorthernRealms/SIGISMUND_DIJKSTRA.mp3",
+    "img" : "../img/NorthernRealms/SIGISMUND_DIJKSTRA.png",
+    "name" : "ДИЙКСТРА",
+    "positions" : [ "Melee", "Ranged", "Siege" ],
+    "strength" : 4,
+    "type" : "Gold"
+  } ]
+}
